@@ -5,30 +5,26 @@ using UnityEngine.UI;
 
 public class FPSCounter : MonoBehaviour
 {
-    /*    public TextMeshProUGUI FpsText;
-
-        private float pollingTime = 1f;
-        private float time;
-        public int frameCount;*/
     public Text fpsDisplay;
+    public Canvas outlineCanvas;
 
+    private void Start()
+    {
+        outlineCanvas.enabled = false;
+    }
 
     void Update()
     {
         int fps = (int)(1 / Time.unscaledDeltaTime);
         fpsDisplay.text = fps.ToString() + " FPS";
 
-/*        time += Time.deltaTime;
-
-        frameCount++;
-
-        if(time >= pollingTime)
+        if(fps <120)
         {
-            int frameRate = Mathf.RoundToInt(frameCount / time);
-            FpsText.text = frameRate.ToString() + " FPS";
-
-            time -= pollingTime;
-            frameCount = 0;
-        }*/
+            outlineCanvas.enabled = true;
+        }
+        else
+        {
+            outlineCanvas.enabled = false;
+        }
     }
 }

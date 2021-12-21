@@ -28,14 +28,14 @@ public class MazeRenderer : MonoBehaviour
                 var cell = maze[i, j];
                 var position = new Vector3(-width / 2 + i, 0, -height / 2 + j);
 
-                if(cell.HasFlag(WallState.UP))
+                if(/* j != height -1 && */cell.HasFlag(WallState.UP))
                 {
                     var topWall = Instantiate(wallPrefab, transform) as Transform;
                     topWall.position = position + new Vector3(0, 0, size / 2);
                     topWall.localScale = new Vector3(size, topWall.localScale.y, topWall.localScale.z);
                 }
 
-                if(cell.HasFlag(WallState.LEFT))
+                if(/* i != 0 && */cell.HasFlag(WallState.LEFT))
                 {
                     var leftWall = Instantiate(wallPrefab, transform) as Transform;
                     leftWall.position = position + new Vector3(-size / 2, 0, 0);
@@ -43,9 +43,9 @@ public class MazeRenderer : MonoBehaviour
                     leftWall.eulerAngles = new Vector3(0, 90, 0);
                 }
 
-                if(i == width - 1)
+                if (i == width - 1)
                 {
-                    if(cell.HasFlag(WallState.RIGHT))
+                    if (cell.HasFlag(WallState.RIGHT))
                     {
                         var rightWall = Instantiate(wallPrefab, transform) as Transform;
                         rightWall.position = position + new Vector3(+size / 2, 0, 0);
@@ -54,9 +54,9 @@ public class MazeRenderer : MonoBehaviour
                     }
                 }
 
-                if(j == 0)
+                if (j == 0)
                 {
-                    if(cell.HasFlag(WallState.DOWN))
+                    if (cell.HasFlag(WallState.DOWN))
                     {
                         var bottomWall = Instantiate(wallPrefab, transform) as Transform;
                         bottomWall.position = position + new Vector3(0, 0, -size / 2);
