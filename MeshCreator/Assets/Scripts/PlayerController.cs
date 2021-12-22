@@ -5,13 +5,18 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private float moveSpeed = 2f;
+
     private CharacterController _controller;
     private Player _controls;
     private bool isGrounded;
-    private float moveSpeed = 4f;
     private Vector3 velocity;
     private float gravity = -9.81f;
     private Vector2 move;
+
+    public Transform ground;
+    public float distanceToGround = 0.01f;
+    public LayerMask groundMask;
 
     private void Awake()
     {
@@ -32,6 +37,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         PlayerMovement();
+        Gravity();
     }
 
     private void PlayerMovement()
@@ -40,6 +46,19 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movement = (move.y * transform.forward) + (move.x * transform.right);
         _controller.Move(movement * moveSpeed * Time.deltaTime);
+    }
+
+    private void Gravity()
+    {
+        isGrounded = Physics.CheckSphere(ground.position, distanceToGround, groundMask);
+
+        if(isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }
+
+        velocity.y += gravity * Time.deltaTime;
+        _controller.Move(velocity * Time.deltaTime);
     }
 
 }

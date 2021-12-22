@@ -1,11 +1,18 @@
 using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
     public AudioMixer _audioMixer;
     public Sound[] _sounds;
+
+    //dodany kod
+    public Slider volumeSlider;
+    private static readonly string FirstPlay = "FirstPlay";
+    private int firstPlayInt;
+    private float musicSliderVolume;
 
     public static AudioManager instance;
 
@@ -52,7 +59,26 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
+        DontDestroyOnLoad(gameObject);
+
         Play("Theme");
+
+        firstPlayInt = PlayerPrefs.GetInt(FirstPlay);
+
+        if (firstPlayInt == 0)
+        {
+            PlayerPrefs.SetInt(FirstPlay, -1);
+        }
+        else
+        {
+            musicSliderVolume = PlayerPrefs.GetFloat("volumeSlider");
+            foreach (Sound s in _sounds)
+            {
+                s._source = gameObject.AddComponent<AudioSource>();
+                s._source.volume = musicSliderVolume;
+
+            }
+        }
     }
 
     public void Play(string name)
@@ -65,4 +91,15 @@ public class AudioManager : MonoBehaviour
         }
         s._source.Play();
     }
+
+/*    private void Update()
+    {
+        foreach (Sound s in _sounds)
+        {
+            s._source = gameObject.AddComponent<AudioSource>();
+            s._source.volume = s._volume;
+            PlayerPrefs.SetFloat("volumeSlider", s._volume);
+
+        }
+    }*/
 }

@@ -16,7 +16,7 @@ public class SoundSettingsHandler : MonoBehaviour
 
         if(firstPlayInt == 0)
         {
-            soundFloat = 1f;
+            soundFloat = .25f;
             SoundSlider.value = soundFloat;
             PlayerPrefs.SetFloat(SoundPref, soundFloat);
             PlayerPrefs.SetInt(FirstPlay, -1);

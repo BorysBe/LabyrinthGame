@@ -19,7 +19,7 @@ public class CollisionHandler : MonoBehaviour
         capsuleCollider = GetComponent<CapsuleCollider>();
     }
 
-    void OnCollisionEnter(CollisionHandler other)
+    void OnCollisionEnter(Collision other)
     {
         switch (other.gameObject.tag)
         {
