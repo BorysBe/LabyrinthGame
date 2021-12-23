@@ -1,43 +1,32 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class SoundSettingsHandler : MonoBehaviour
 {
-    private static readonly string FirstPlay = "FirstPlay";
-    private static readonly string SoundPref = "SoundPref";
-    private int firstPlayInt;
+
     public Slider SoundSlider;
-    private float soundFloat;
+    [SerializeField] float soundPreferences = 0;
+    public AudioMixer _audioMixer;
 
 
     void Start()
     {
-        firstPlayInt = PlayerPrefs.GetInt(FirstPlay);
+        bool result =_audioMixer.GetFloat("volume", out soundPreferences);
 
-        if(firstPlayInt == 0)
+        if(result == true)
         {
-            soundFloat = .25f;
-            SoundSlider.value = soundFloat;
-            PlayerPrefs.SetFloat(SoundPref, soundFloat);
-            PlayerPrefs.SetInt(FirstPlay, -1);
+            SoundSlider.value = soundPreferences;
         }
         else
         {
-            soundFloat = PlayerPrefs.GetFloat(SoundPref);
-            SoundSlider.value = soundFloat;
+            SoundSlider.value = 0;
         }
     }
 
-    public void SaveSoundSettings()
-    {
-        PlayerPrefs.SetFloat(SoundPref, SoundSlider.value);
-    }
 
-    private void OnApplicationFocus(bool inFocus)
+    public void SetVolume(float globalVolume)
     {
-         if(!inFocus)
-        {
-            SaveSoundSettings();
-        }
+        _audioMixer.SetFloat("volume", globalVolume);
     }
 }
