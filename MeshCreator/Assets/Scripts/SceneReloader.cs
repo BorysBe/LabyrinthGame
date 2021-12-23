@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 public class SceneReloader : MonoBehaviour
 {
     [SerializeField] float levelLoadDelay = 1f;
+    [SerializeField] public bool levelIsCompleted = false;
 
     private void OnTriggerEnter(Collider other)
     {
+        levelIsCompleted = true;
         Invoke("ReloadLevel", levelLoadDelay);
     }
     void ReloadLevel()

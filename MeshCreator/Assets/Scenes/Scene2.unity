@@ -337,6 +337,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 203895576, guid: f6266da048635944a9aea8044ef8fd3e, type: 3}
+      propertyPath: levelLoadDelay
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3213767071664456113, guid: f6266da048635944a9aea8044ef8fd3e, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2554,7 +2558,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8616321182021995167, guid: cad26cf367d5aa048bff21ab1dce287f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cad26cf367d5aa048bff21ab1dce287f, type: 3}

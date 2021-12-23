@@ -237,6 +237,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5317238047892184146, guid: 66c60c5e89e77164d9df33bf62ce6be8, type: 3}
+      propertyPath: volumeSlider
+      value: 
+      objectReference: {fileID: 1559431682}
+    - target: {fileID: 5317238047892184146, guid: 66c60c5e89e77164d9df33bf62ce6be8, type: 3}
       propertyPath: _sounds.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -403,6 +407,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1559431682 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7550215568145634933, guid: be16bd4fd2d394644901f80cd6e9dd55, type: 3}
+  m_PrefabInstance: {fileID: 7550215567346219426}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1907917899
 PrefabInstance:
   m_ObjectHideFlags: 0

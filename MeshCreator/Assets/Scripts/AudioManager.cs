@@ -2,9 +2,11 @@ using UnityEngine.Audio;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
+
     public AudioMixer _audioMixer;
     public Sound[] _sounds;
 
