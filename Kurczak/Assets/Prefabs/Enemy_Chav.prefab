@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 4529947152723500984}
   - component: {fileID: 4529947152723500987}
   - component: {fileID: 9172864976580693969}
+  - component: {fileID: 6302773555350459338}
   m_Layer: 0
   m_Name: Enemy_Chav
-  m_TagString: Untagged
+  m_TagString: Chav
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4529947152723500986}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -103,9 +104,26 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4529947152723500986}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73b976bd626016a4e8c4eccc90441b53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 200
+  _damageDealer: {fileID: 0}
+  xposition: 0
+  yposition: 0
+--- !u!114 &6302773555350459338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4529947152723500986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df5de5f4027457f4f804a1b80647dd39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   health: 100
+  _myHitbox: {fileID: 568974568145302460, guid: 9c48569f32dad1f46a15693089a4ba9f, type: 3}

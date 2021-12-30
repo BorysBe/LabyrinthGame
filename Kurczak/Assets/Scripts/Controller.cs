@@ -25,6 +25,14 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""TouchScreen"",
+                    ""type"": ""Button"",
+                    ""id"": ""ebf9f193-a0fb-4a93-932a-71048474aaed"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -93,6 +101,17 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0324807e-8b89-4fe2-8b0b-96e3d54d86e2"",
+                    ""path"": ""<Touchscreen>/primaryTouch/indirectTouch"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TouchScreen"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -102,6 +121,7 @@ public class @Controller : IInputActionCollection, IDisposable
         // Slider
         m_Slider = asset.FindActionMap("Slider", throwIfNotFound: true);
         m_Slider_Move = m_Slider.FindAction("Move", throwIfNotFound: true);
+        m_Slider_TouchScreen = m_Slider.FindAction("TouchScreen", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -152,11 +172,13 @@ public class @Controller : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Slider;
     private ISliderActions m_SliderActionsCallbackInterface;
     private readonly InputAction m_Slider_Move;
+    private readonly InputAction m_Slider_TouchScreen;
     public struct SliderActions
     {
         private @Controller m_Wrapper;
         public SliderActions(@Controller wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Slider_Move;
+        public InputAction @TouchScreen => m_Wrapper.m_Slider_TouchScreen;
         public InputActionMap Get() { return m_Wrapper.m_Slider; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -169,6 +191,9 @@ public class @Controller : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_SliderActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_SliderActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_SliderActionsCallbackInterface.OnMove;
+                @TouchScreen.started -= m_Wrapper.m_SliderActionsCallbackInterface.OnTouchScreen;
+                @TouchScreen.performed -= m_Wrapper.m_SliderActionsCallbackInterface.OnTouchScreen;
+                @TouchScreen.canceled -= m_Wrapper.m_SliderActionsCallbackInterface.OnTouchScreen;
             }
             m_Wrapper.m_SliderActionsCallbackInterface = instance;
             if (instance != null)
@@ -176,6 +201,9 @@ public class @Controller : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @TouchScreen.started += instance.OnTouchScreen;
+                @TouchScreen.performed += instance.OnTouchScreen;
+                @TouchScreen.canceled += instance.OnTouchScreen;
             }
         }
     }
@@ -183,5 +211,6 @@ public class @Controller : IInputActionCollection, IDisposable
     public interface ISliderActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnTouchScreen(InputAction.CallbackContext context);
     }
 }

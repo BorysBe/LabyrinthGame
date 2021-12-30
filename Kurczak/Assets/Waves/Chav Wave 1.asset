@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c325cfc7cf0b6447937db838ba0e9a1, type: 3}
   m_Name: Chav Wave 1
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 4529947152723500986, guid: cb02de8f7f53d694d805697dce9573c2, type: 3}
+  _enemyPrefab: {fileID: 4529947152723500986, guid: bfc124220420252469feea36e654adeb, type: 3}
   _pathPrefab: {fileID: 8078350800546268878, guid: e3ca49eec16795840a41cfd7deacc211, type: 3}
   timeBetweenSpawns: 5
   spawnRandomFactor: 0.3

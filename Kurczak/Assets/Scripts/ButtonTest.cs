@@ -5,13 +5,10 @@ using UnityEngine.InputSystem;
 
 public class ButtonTest : MonoBehaviour
 {
+
+
     public void Test()
     {
-        Debug.Log("I'm working");
-    }
-
-    private void OnMouseDown()
-    {
-        Debug.Log("I'm working");
+        Debug.Log("Onscreen button is working");
     }
 }

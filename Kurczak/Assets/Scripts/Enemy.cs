@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] float health = 100;
-    [SerializeField] DamageDealer _damageDealer;
+    [SerializeField] PlayerWeapon _damageDealer;
     public float xposition;
     public float yposition;
 
@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _damageDealer = GetComponent<DamageDealer>();
+        _damageDealer = GetComponent<PlayerWeapon>();
     }
 
     // Update is called once per frame
@@ -41,6 +41,5 @@ public class Enemy : MonoBehaviour
     {
 
         Debug.Log("enemy is shooted");
-        health -= _damageDealer.GetDamage();
     }
 }

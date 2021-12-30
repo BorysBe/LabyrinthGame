@@ -27,11 +27,15 @@ public class Movement : MonoBehaviour
     void Update()
     {
         _cameraMovement.Move(ReadMovementFromInput());
-
     }
 
     public float ReadMovementFromInput()
     {
         return (int)_controller.Slider.Move.ReadValue<float>();
+    }
+
+    public bool ReadInputFromButton()
+    {
+        return (bool)_controller.Slider.TouchScreen.ReadValue<bool>();
     }
 }
