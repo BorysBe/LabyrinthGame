@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Terrain : MonoBehaviour
+public class BloodyExplosion : MonoBehaviour
 {
 
     public List<GameObject> _sprites = new List<GameObject>();
     [SerializeField] float spriteChangeDelay = 1f;
+    [SerializeField] float timeToDestroy = .5f;
     float timer = 0;
     int sceneIndex = 0;
 
@@ -33,7 +34,7 @@ public class Terrain : MonoBehaviour
             _sprites[sceneIndex].SetActive(false);
             if (sceneIndex == _sprites.Count - 1)
             {
-                sceneIndex = 0;
+                Destroy(this.gameObject, timeToDestroy);
             }
             else
             {
@@ -43,3 +44,4 @@ public class Terrain : MonoBehaviour
         }
     }
 }
+

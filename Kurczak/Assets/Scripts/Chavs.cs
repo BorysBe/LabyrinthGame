@@ -5,14 +5,17 @@ public class Chavs : MonoBehaviour
 {
     private State _state;
 
+    public EnemyHealthbar _healthbar; 
     public Action ActiveDrawing { get; private set; }
     public Action ActiveSound { get; private set; }
 
     private AtlasLoader _loader;
 
     public int health = 200;
+    int currentHealth;
 
-    public GameObject _myHitbox;
+    public GameObject _chavGrave;
+    public GameObject _bloodyExplosion;
 
     // Start is called before the first frame update
     void Start()
@@ -20,8 +23,8 @@ public class Chavs : MonoBehaviour
         _loader = new AtlasLoader(@"Sprites\Enemies");
         SwitchStateTo(State.Move);
         var hitboxCanvas = GameObject.FindGameObjectWithTag("Hitbox Canvas");
-        Instantiate(_myHitbox, new Vector3(0, 0, 0), Quaternion.identity);
-        _myHitbox.transform.SetParent(hitboxCanvas.transform, false);
+        currentHealth = health;
+        _healthbar.SetHealth(currentHealth, health);
     }
 
     // Update is called once per frame
@@ -29,7 +32,7 @@ public class Chavs : MonoBehaviour
     {
         DrawChavs();
         SetPosition();
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
             SwitchStateTo(State.Dying); 
         }
@@ -65,7 +68,8 @@ public class Chavs : MonoBehaviour
 
     public void Damage(int value)
     {
-        health -= value;
+        currentHealth -= value;
+        _healthbar.SetHealth(currentHealth, health);
     }
 
 
@@ -93,8 +97,14 @@ public class Chavs : MonoBehaviour
             case State.Dying:
                 ActiveDrawing = delegate () {
                     var chav = GameObject.FindGameObjectWithTag("Chav");
-                    var spriteRenderer = chav.GetComponent<SpriteRenderer>();
-                    spriteRenderer.sprite = _loader.spriteDic["Chav"];
+                    Vector3 instantionPosition = chav.transform.position;
+                    Vector3 instantionPositionLeft = new Vector3(chav.transform.position.x - 2f, chav.transform.position.y, chav.transform.position.z);
+                    Vector3 instantionPositionRight = new Vector3(chav.transform.position.x + 2f, chav.transform.position.y, chav.transform.position.z);
+                    Instantiate(_bloodyExplosion, instantionPosition, Quaternion.identity);
+                    Instantiate(_bloodyExplosion, instantionPositionLeft, Quaternion.identity);
+                    Instantiate(_bloodyExplosion, instantionPositionRight, Quaternion.identity);
+                    Instantiate(_chavGrave, instantionPosition, Quaternion.identity);
+                    Destroy(chav);
                 };
                 ActiveSound = delegate { };
 
