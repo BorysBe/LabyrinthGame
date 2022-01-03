@@ -27,7 +27,6 @@ public abstract class Toucher : OnScreenControl, IPointerDownHandler, IPointerUp
     {
 
         var cam = Camera.main;
-        Vector3 point = new Vector3();
         Vector2 mousePos = new Vector2();
         mousePos.x = eventData.position.x;
         mousePos.y = cam.pixelHeight - eventData.position.y;

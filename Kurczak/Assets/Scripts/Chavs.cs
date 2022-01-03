@@ -1,11 +1,12 @@
 using System;
 using UnityEngine;
+using System.Collections;
 
 public class Chavs : MonoBehaviour
 {
     private State _state;
 
-    public EnemyHealthbar _healthbar; 
+    public EnemyHealthbar _healthbar;
     public Action ActiveDrawing { get; private set; }
     public Action ActiveSound { get; private set; }
 
@@ -23,6 +24,10 @@ public class Chavs : MonoBehaviour
         _loader = new AtlasLoader(@"Sprites\Enemies");
         SwitchStateTo(State.Move);
         var hitboxCanvas = GameObject.FindGameObjectWithTag("Hitbox Canvas");
+        var chavToucherBody = GameObject.FindGameObjectWithTag("ChavToucherBody");
+        var chavToucherHead = GameObject.FindGameObjectWithTag("ChavToucherHead");
+        chavToucherBody.GetComponent<ChavBodyHitbox>().enabled = true;
+        chavToucherHead.GetComponent<ChavBodyHitbox>().enabled = true;
         currentHealth = health;
         _healthbar.SetHealth(currentHealth, health);
     }
@@ -34,7 +39,7 @@ public class Chavs : MonoBehaviour
         SetPosition();
         if (currentHealth <= 0)
         {
-            SwitchStateTo(State.Dying); 
+            SwitchStateTo(State.Dying);
         }
     }
 
@@ -45,9 +50,13 @@ public class Chavs : MonoBehaviour
         point = cam.WorldToScreenPoint(this.WorldPosition);
 
         //Debug.Log("Chaw position: " + point.ToString("F3"));
-        var chavToucher = GameObject.FindGameObjectWithTag("ChavToucher");
+        var chavToucherBody = GameObject.FindGameObjectWithTag("ChavToucherBody");
 
-        chavToucher.transform.position = new Vector3(point.x, point.y, point.z);
+        chavToucherBody.transform.position = new Vector3(point.x, point.y, point.z);
+
+        var chavToucherHead = GameObject.FindGameObjectWithTag("ChavToucherHead");
+
+        chavToucherHead.transform.position = new Vector3(point.x, point.y, point.z);
     }
 
     public Vector3 WorldPosition
@@ -86,7 +95,8 @@ public class Chavs : MonoBehaviour
         switch (_state)
         {
             case State.Move:
-                ActiveDrawing = delegate () {
+                ActiveDrawing = delegate ()
+                {
                     var chav = GameObject.FindGameObjectWithTag("Chav");
                     var spriteRenderer = chav.GetComponent<SpriteRenderer>();
                     spriteRenderer.sprite = _loader.spriteDic["Chav"];
@@ -95,22 +105,26 @@ public class Chavs : MonoBehaviour
                 ActiveSound = delegate { };
                 break;
             case State.Dying:
-                ActiveDrawing = delegate () {
+                ActiveDrawing = delegate ()
+                {
                     var chav = GameObject.FindGameObjectWithTag("Chav");
                     Vector3 instantionPosition = chav.transform.position;
                     Vector3 instantionPositionLeft = new Vector3(chav.transform.position.x - 2f, chav.transform.position.y, chav.transform.position.z);
                     Vector3 instantionPositionRight = new Vector3(chav.transform.position.x + 2f, chav.transform.position.y, chav.transform.position.z);
                     Instantiate(_bloodyExplosion, instantionPosition, Quaternion.identity);
-                    Instantiate(_bloodyExplosion, instantionPositionLeft, Quaternion.identity);
-                    Instantiate(_bloodyExplosion, instantionPositionRight, Quaternion.identity);
                     Instantiate(_chavGrave, instantionPosition, Quaternion.identity);
+                    var chavToucherBody = GameObject.FindGameObjectWithTag("ChavToucherBody");
+                    var chavToucherHead = GameObject.FindGameObjectWithTag("ChavToucherHead");
+                    chavToucherBody.GetComponent<ChavBodyHitbox>().enabled = false;
+                    chavToucherHead.GetComponent<ChavBodyHitbox>().enabled = false;
                     Destroy(chav);
                 };
                 ActiveSound = delegate { };
 
                 break;
             case State.Shooting:
-                ActiveDrawing = delegate () {
+                ActiveDrawing = delegate ()
+                {
                     var chav = GameObject.FindGameObjectWithTag("Chav");
                     var spriteRenderer = chav.GetComponent<SpriteRenderer>();
                     spriteRenderer.sprite = _loader.spriteDic["Chav_attack"];

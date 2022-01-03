@@ -9,6 +9,8 @@ TagManager:
   - EventSystem
   - ChavToucher
   - Hitbox Canvas
+  - ChavToucherHead
+  - ChavToucherBody
   layers:
   - Default
   - TransparentFX

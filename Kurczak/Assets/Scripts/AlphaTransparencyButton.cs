@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 public class AlphaTransparencyButton : MonoBehaviour
 {
-    public Image img;
+    public Image[] img;
 
     void Start()
     {
-        img.alphaHitTestMinimumThreshold = 0.5f;
+        for(int i = 0; i < img.Length; i ++)
+        img[i].alphaHitTestMinimumThreshold = 0.5f;
     }
 
 }
