@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 4529947152723500984}
   - component: {fileID: 4529947152723500987}
   - component: {fileID: 6302773555350459338}
+  - component: {fileID: 3547829270250677770}
   m_Layer: 0
   m_Name: Enemy_Chav
   m_TagString: Chav
@@ -274,7 +275,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 22edb1d49d3dab8489fb943334d5c856, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -312,8 +313,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthbar: {fileID: 4179669639291470761}
   health: 100
-  _chavGrave: {fileID: 580610821453979240, guid: b72fcab55cd73d1478a941f8744eec26, type: 3}
-  _bloodyExplosion: {fileID: 5109212320150265131, guid: df13855951392324ca92a6152e08d321, type: 3}
+--- !u!95 &3547829270250677770
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4529947152723500986}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1215da1b9120f33489d8c7959055c86b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5507165466691015970
 GameObject:
   m_ObjectHideFlags: 0

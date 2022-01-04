@@ -10,7 +10,6 @@ public class ChavGrave : MonoBehaviour
     [SerializeField] float destroyDelay = 5f;
     [SerializeField] float speedController = 1;
     [SerializeField] [Range(0, 1)] float opacityChangedInTime = 1f;
-    [SerializeField] float timeDelay = 0.5f;
     float timer = 0;
     int sceneIndex = 0;
     public float positionY = 0;
@@ -29,12 +28,6 @@ public class ChavGrave : MonoBehaviour
 
     public void Update()
     {
-        if (timeDelay >= 0)
-        {
-            timeDelay -= Time.deltaTime;
-            return;
-        }
-        else
         {
             SpriteChanger();
             Move();
