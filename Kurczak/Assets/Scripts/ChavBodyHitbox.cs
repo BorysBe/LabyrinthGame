@@ -11,7 +11,7 @@ public class ChavBodyHitbox : Toucher
     {
         var chavs = GameObject.FindGameObjectWithTag("Chav");
         chavs.GetComponent<Chavs>().Damage(hitDamage);
-        
+        chavs.GetComponent<Chavs>().DrawInjuries(SetLastTouchPoint());
     }
 }
 

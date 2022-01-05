@@ -10,8 +10,9 @@ public class Chavs : MonoBehaviour
     public int health = 200;
     int currentHealth;
 
+    public GameObject[] _gunshotWoundPrefab;
+    GameObject gunshotWound;
 
-    
     public Action ActiveDrawing { get; private set; }
     public Action ActiveSound { get; private set; }
     private CoroutineTimer timer;
@@ -36,7 +37,6 @@ public class Chavs : MonoBehaviour
     }
     void Update()
     {
-
         SetPosition();
         if (currentHealth <= 0)
         {
@@ -71,10 +71,12 @@ public class Chavs : MonoBehaviour
         _healthbar.SetHealth(currentHealth, health);
     }
 
-    private void DrawInjuries()
+    public void DrawInjuries(Vector2 splatterPosition)
     {
-        //
+        gunshotWound = Instantiate(_gunshotWoundPrefab[UnityEngine.Random.Range(0, 5)], splatterPosition, Quaternion.identity);
+        gunshotWound.transform.SetParent(this.GetComponentInParent<Transform>());
     }
+
 
     public void Shot()
     {

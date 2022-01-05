@@ -6,7 +6,6 @@ using UnityEngine.InputSystem.OnScreen;
 //[AddComponentMenu("Input/On-Screen Button")]
 public abstract class Toucher : OnScreenControl, IPointerDownHandler, IPointerUpHandler
 {
-
     void Update()
     {
     }
@@ -32,10 +31,14 @@ public abstract class Toucher : OnScreenControl, IPointerDownHandler, IPointerUp
         mousePos.y = cam.pixelHeight - eventData.position.y;
 
         LastTouchPoint = cam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, cam.nearClipPlane));
-        Debug.Log("Last touch value :" + LastTouchPoint.x);
+        LastTouchPoint = new Vector3(LastTouchPoint.x, - LastTouchPoint.y, LastTouchPoint.z);
+        Debug.Log("Last touch value :" + LastTouchPoint.x + ", " + LastTouchPoint.y + ", " + LastTouchPoint.z);
     }
 
-
+    protected Vector3 SetLastTouchPoint()
+    {
+        return LastTouchPoint;
+    }
 
     [InputControl(layout = "Button")]
     [SerializeField]

@@ -17,6 +17,11 @@ public class ChavDie : StateMachineBehaviour
         chavToucherHead.GetComponent<ChavBodyHitbox>().enabled = false;
         _chav.GetComponent<EnemyPathing>().enabled = false;
         _chav.GetComponent<SpriteRenderer>().enabled = false;
+        GameObject[] gunshotWounds = GameObject.FindGameObjectsWithTag("GunshotWound");
+        foreach (GameObject g in gunshotWounds)
+        {
+            g.SetActive(false);
+        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
