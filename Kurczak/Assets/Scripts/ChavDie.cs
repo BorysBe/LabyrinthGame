@@ -6,6 +6,7 @@ public class ChavDie : StateMachineBehaviour
 {
 
     GameObject _chav;
+    public GameObject _chavCorpseFragments;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -13,11 +14,13 @@ public class ChavDie : StateMachineBehaviour
         _chav = GameObject.FindGameObjectWithTag("Chav");
         var chavToucherBody = GameObject.FindGameObjectWithTag("ChavToucherBody");
         var chavToucherHead = GameObject.FindGameObjectWithTag("ChavToucherHead");
-        chavToucherBody.GetComponent<ChavBodyHitbox>().enabled = false;
-        chavToucherHead.GetComponent<ChavBodyHitbox>().enabled = false;
+        //chavToucherBody.GetComponent<ChavBodyHitbox>().enabled = false;
+        //chavToucherHead.GetComponent<ChavBodyHitbox>().enabled = false;
         _chav.GetComponent<EnemyPathing>().enabled = false;
         _chav.GetComponent<SpriteRenderer>().enabled = false;
         GameObject[] gunshotWounds = GameObject.FindGameObjectsWithTag("GunshotWound");
+        Vector3 instantionPosition = _chav.transform.position;
+        Instantiate(_chavCorpseFragments, instantionPosition, Quaternion.identity);
         foreach (GameObject g in gunshotWounds)
         {
             g.SetActive(false);

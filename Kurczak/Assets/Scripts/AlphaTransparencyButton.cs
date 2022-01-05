@@ -10,7 +10,7 @@ public class AlphaTransparencyButton : MonoBehaviour
     void Start()
     {
         for(int i = 0; i < img.Length; i ++)
-        img[i].alphaHitTestMinimumThreshold = 0.5f;
+        img[i].alphaHitTestMinimumThreshold = 1f;
     }
 
 }

@@ -16,7 +16,7 @@ public class ChavShoot : StateMachineBehaviour
         var spriteRenderer = _chav.GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = _chav.GetComponent<Chavs>()._loader.spriteDic["Chav_attack"];
         ActiveSound = delegate { };
-        _chav.GetComponent<Chavs>().Shot();
+        //_chav.GetComponent<Chavs>().Shot();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

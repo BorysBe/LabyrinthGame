@@ -35,11 +35,6 @@ public abstract class Toucher : OnScreenControl, IPointerDownHandler, IPointerUp
         Debug.Log("Last touch value :" + LastTouchPoint.x + ", " + LastTouchPoint.y + ", " + LastTouchPoint.z);
     }
 
-    protected Vector3 SetLastTouchPoint()
-    {
-        return LastTouchPoint;
-    }
-
     [InputControl(layout = "Button")]
     [SerializeField]
     private string m_ControlPath;

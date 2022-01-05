@@ -17,7 +17,6 @@ public class Chavs : MonoBehaviour
     public Action ActiveSound { get; private set; }
     private CoroutineTimer timer;
     int shot = 0;
-    bool stopAttackSequence = false;
 
     Animator animator;
     GameObject chav;
@@ -30,28 +29,8 @@ public class Chavs : MonoBehaviour
         var hitboxCanvas = GameObject.FindGameObjectWithTag("Hitbox Canvas");
         var chavToucherBody = GameObject.FindGameObjectWithTag("ChavToucherBody");
         var chavToucherHead = GameObject.FindGameObjectWithTag("ChavToucherHead");
-        chavToucherBody.GetComponent<ChavBodyHitbox>().enabled = true;
-        chavToucherHead.GetComponent<ChavBodyHitbox>().enabled = true;
         currentHealth = health;
         _healthbar.SetHealth(currentHealth, health);
-    }
-    void Update()
-    {
-        SetPosition();
-        if (currentHealth <= 0)
-        {
-            animator.SetBool("isDead", true);
-        }
-    }
-
-    private void SetPosition()
-    {
-        Vector3 point = new Vector3(this.transform.position.x, this.transform.position.y, -1f);
-        var chavToucherBody = GameObject.FindGameObjectWithTag("ChavToucherBody");
-        chavToucherBody.transform.position = point;
-        var chavToucherHead = GameObject.FindGameObjectWithTag("ChavToucherHead");
-        chavToucherHead.transform.position = point;
-
     }
 
     public Vector3 WorldPosition
@@ -69,11 +48,15 @@ public class Chavs : MonoBehaviour
     {
         currentHealth -= value;
         _healthbar.SetHealth(currentHealth, health);
+        if (currentHealth <= 0)
+        {
+            animator.SetBool("isDead", true);
+        }
     }
 
     public void DrawInjuries(Vector2 splatterPosition)
     {
-        gunshotWound = Instantiate(_gunshotWoundPrefab[UnityEngine.Random.Range(0, 5)], splatterPosition, Quaternion.identity);
+        gunshotWound = Instantiate(_gunshotWoundPrefab[UnityEngine.Random.Range(0, _gunshotWoundPrefab.Length)], splatterPosition, Quaternion.identity);
         gunshotWound.transform.SetParent(this.GetComponentInParent<Transform>());
     }
 
