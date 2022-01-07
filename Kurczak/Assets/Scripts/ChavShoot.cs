@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ChavShoot : StateMachineBehaviour
@@ -14,9 +12,9 @@ public class ChavShoot : StateMachineBehaviour
     {
         _chav = GameObject.FindGameObjectWithTag("Chav");
         var spriteRenderer = _chav.GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = _chav.GetComponent<Chavs>()._loader.spriteDic["Chav_attack"];
+        spriteRenderer.sprite = _chav.GetComponent<Chavs>()._sprites[1];
         ActiveSound = delegate { };
-        //_chav.GetComponent<Chavs>().Shot();
+        _chav.GetComponent<EnemyAttack>().Shot();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

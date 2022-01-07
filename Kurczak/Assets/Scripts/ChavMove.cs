@@ -16,7 +16,7 @@ public class ChavMove : StateMachineBehaviour
         ActiveDrawing = delegate ()
         {
             var spriteRenderer = _chav.GetComponent<SpriteRenderer>();
-            spriteRenderer.sprite = _chav.GetComponent<Chavs>()._loader.spriteDic["Chav"];
+            spriteRenderer.sprite = _chav.GetComponent<Chavs>()._sprites[0];
 
         };
         ActiveSound = delegate { };

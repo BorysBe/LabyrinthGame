@@ -3,18 +3,19 @@ using UnityEngine.EventSystems;
 
 public class ChavBodyHitbox : Toucher
 {
+
     [SerializeField] int hitDamage = 20;
-    GameObject chavs;
+    EnemyHealth enemyHealth;
 
     private void Start()
     {
-        chavs = GameObject.FindGameObjectWithTag("Chav");
+        enemyHealth = this.transform.parent.parent.GetComponent<EnemyHealth>();
     }
 
     protected override void ActionOnTouch(PointerEventData eventData)
     {
-        chavs.GetComponent<Chavs>().Damage(hitDamage);
-        chavs.GetComponent<Chavs>().DrawInjuries(LastTouchPoint);
+        enemyHealth.Damage(hitDamage);
+        enemyHealth.DrawInjuries(LastTouchPoint);
     }
 }
 
