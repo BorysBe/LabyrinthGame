@@ -8,7 +8,7 @@ public class ChangeSpriteCommand : IChangeSpriteCommand
     private int spriteIndex = 0;
     private MonoBehaviourUpdateTimer _timer;
 
-    public Action ResetSpriteIndexAction { get; private set; }
+    private Action ResetSpriteIndexAction { get; set; }
 
     public ChangeSpriteCommand(List<GameObject> sprites, MonoBehaviourUpdateTimer timer, bool isLooped)
     {
@@ -21,19 +21,14 @@ public class ChangeSpriteCommand : IChangeSpriteCommand
 
         _timer.Tick += delegate ()
         {
-            spriteIndex++;
-            _sprites[spriteIndex - 1].SetActive(false);
+            _sprites[spriteIndex].SetActive(false);
+            _sprites[spriteIndex + 1].SetActive(true);
         };
 
         this._sprites = sprites;
-        foreach (GameObject s in _sprites)
-        {
-            s.SetActive(false);
-        }
-        _sprites[0].SetActive(true);
+        this.ForceReset();
         _timer.Start();
     }
-
 
     public bool CanExecute()
     {
@@ -42,8 +37,6 @@ public class ChangeSpriteCommand : IChangeSpriteCommand
 
     public void Execute()
     {
-        if (CanExecute())
-            _sprites[spriteIndex].SetActive(true);
         ResetSpriteIndexAction.Invoke();
     }
 
@@ -58,6 +51,16 @@ public class ChangeSpriteCommand : IChangeSpriteCommand
         {
             spriteIndex = 0;
         }
+    }
+
+    public void ForceReset()
+    {
+        foreach (GameObject s in _sprites)
+        {
+            s.SetActive(false);
+        }
+        spriteIndex = 0;
+        _sprites[spriteIndex].SetActive(true);
     }
 }
 

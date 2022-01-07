@@ -13,12 +13,7 @@ public class ChavMove : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _chav = GameObject.FindGameObjectWithTag("Chav");
-        ActiveDrawing = delegate ()
-        {
-            var spriteRenderer = _chav.GetComponent<SpriteRenderer>();
-            spriteRenderer.sprite = _chav.GetComponent<Chavs>()._sprites[0];
-
-        };
+        _chav.GetComponent<CharacterStateAnimation>().move.enabled = true;
         ActiveSound = delegate { };
     }
 
@@ -32,12 +27,12 @@ public class ChavMove : StateMachineBehaviour
     {
         ActiveDrawing?.Invoke();
     }
- 
+
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        _chav.GetComponent<CharacterStateAnimation>().move.enabled = false;
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

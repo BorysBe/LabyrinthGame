@@ -8,6 +8,7 @@ public class OneTimeAnimation : MonoBehaviour
     private MonoBehaviourUpdateTimer _timer;
     private ChangeSpriteCommand _changeSpriteCommand;
     [SerializeField] int timePerFrameMs = 100;
+    [SerializeField] bool destroyWhenEnded = false;
 
     public void Start()
     {
@@ -24,9 +25,18 @@ public class OneTimeAnimation : MonoBehaviour
         }
         else
         {
-            Destroy(this.gameObject);
+            if (destroyWhenEnded)
+            {
+                Destroy(this.gameObject);
+            }
+
             OnFinish?.Invoke();
         }
+    }
+
+    public void Reset()
+    {
+        _changeSpriteCommand.ForceReset();
     }
 
     public Action OnFinish;

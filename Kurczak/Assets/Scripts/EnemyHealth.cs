@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EnemyHealth: MonoBehaviour
+public class EnemyHealth : MonoBehaviour
 {
     public EnemyHealthbar _healthbar;
     Animator animator;
@@ -28,7 +28,7 @@ public class EnemyHealth: MonoBehaviour
         }
     }
 
-        public void DrawInjuries(Vector2 splatterPosition)
+    public void DrawInjuries(Vector2 splatterPosition)
     {
         gunshotWound = Instantiate(_gunshotWoundPrefab[Random.Range(0, _gunshotWoundPrefab.Length)], splatterPosition, Quaternion.identity);
         gunshotWound.transform.SetParent(this.GetComponentInParent<Transform>());

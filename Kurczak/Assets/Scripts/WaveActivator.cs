@@ -18,7 +18,8 @@ public class WaveActivator : MonoBehaviour
         {
             var newEnemy = Instantiate(_waveConfig.GetEnemyPrefab(), _waveConfig.GetWaypoints()[0].transform.position, Quaternion.identity);
             newEnemy.GetComponent<EnemyPathing>().SetWaveConfig(_waveConfig);
-
+            Animator _animator = newEnemy.GetComponentInParent<Animator>();
+            _animator.SetBool("Shooting", true);
             yield return new WaitForSeconds(_waveConfig.GetTimeBetweenSpawns());
         }
     }
