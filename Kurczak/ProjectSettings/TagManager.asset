@@ -13,6 +13,7 @@ TagManager:
   - ChavToucherBody
   - BloodySplatter
   - GunshotWound
+  - Explosion
   layers:
   - Default
   - TransparentFX

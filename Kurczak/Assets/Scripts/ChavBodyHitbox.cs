@@ -14,6 +14,7 @@ public class ChavBodyHitbox : Toucher
 
     protected override void ActionOnTouch(PointerEventData eventData)
     {
+        FindObjectOfType<Audio>().Play("PlayerShoot");
         enemyHealth.Damage(hitDamage);
         enemyHealth.DrawInjuries(LastTouchPoint);
     }

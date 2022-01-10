@@ -18,39 +18,40 @@ public class ChangeSpriteCommand : IChangeSpriteCommand
             ResetSpriteIndexAction = NullResetSpriteIndex;
 
         _timer = timer;
-
         _timer.Tick += delegate ()
         {
+            if (spriteIndex == _sprites.Count - 1)
+            {
+                ResetSpriteIndexAction.Invoke();
+                return;
+            }
             _sprites[spriteIndex].SetActive(false);
-            _sprites[spriteIndex + 1].SetActive(true);
+            spriteIndex++;
+            _sprites[spriteIndex].SetActive(true);
         };
-
         this._sprites = sprites;
         this.ForceReset();
-        _timer.Start();
     }
 
     public bool CanExecute()
     {
-        return spriteIndex < _sprites.Count;
+        return _timer.IsEnabled;
     }
 
     public void Execute()
     {
-        ResetSpriteIndexAction.Invoke();
+        _timer.Start();
     }
 
     private void NullResetSpriteIndex()
     {
-        // intentionally left blank
+         _timer.Stop();
+        ForceReset();
     }
 
     private void ResetSpriteIndex()
     {
-        if (spriteIndex == _sprites.Count - 1)
-        {
-            spriteIndex = 0;
-        }
+        ForceReset();
     }
 
     public void ForceReset()

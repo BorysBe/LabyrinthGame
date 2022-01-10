@@ -180,7 +180,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &580610821453979254
 Transform:
   m_ObjectHideFlags: 0
@@ -213,6 +213,7 @@ MonoBehaviour:
   - {fileID: 580610820366496086}
   - {fileID: 580610820429878159}
   spriteChangeDelay: 2
+  destroyDelay: 5
   speedController: 1
   opacityChangedInTime: 0.25
   positionY: 0

@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2928636976662170831
 Transform:
   m_ObjectHideFlags: 0
@@ -98,7 +98,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4525928728220208806
 Transform:
   m_ObjectHideFlags: 0
@@ -180,7 +180,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1167056654368949279
 Transform:
   m_ObjectHideFlags: 0
@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 7980050425737680143}
   m_Layer: 0
   m_Name: ExplosionTwo
-  m_TagString: Untagged
+  m_TagString: Explosion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -301,6 +301,7 @@ MonoBehaviour:
   - {fileID: 1579579053695051477}
   - {fileID: 3018660993048515378}
   timePerFrameMs: 100
+  destroyWhenEnded: 1
 --- !u!1 &3018660993048515378
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,7 +318,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5807108430706477986
 Transform:
   m_ObjectHideFlags: 0
@@ -399,7 +400,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8784982917824538813
 Transform:
   m_ObjectHideFlags: 0
@@ -481,7 +482,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4782599646420273869
 Transform:
   m_ObjectHideFlags: 0
@@ -563,7 +564,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6361637803734089027
 Transform:
   m_ObjectHideFlags: 0
@@ -678,7 +679,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5109212320293691348
 Transform:
   m_ObjectHideFlags: 0
@@ -760,7 +761,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5109212320691008072
 Transform:
   m_ObjectHideFlags: 0
@@ -842,7 +843,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5109212320850843807
 Transform:
   m_ObjectHideFlags: 0
@@ -924,7 +925,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5109212321704743820
 Transform:
   m_ObjectHideFlags: 0
@@ -1006,7 +1007,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5109212321823655488
 Transform:
   m_ObjectHideFlags: 0
@@ -1084,7 +1085,7 @@ GameObject:
   - component: {fileID: 4585479346668164643}
   m_Layer: 0
   m_Name: ExplosionThree
-  m_TagString: Untagged
+  m_TagString: Explosion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1127,6 +1128,7 @@ MonoBehaviour:
   - {fileID: 6127859775795792838}
   - {fileID: 837122181164235602}
   timePerFrameMs: 100
+  destroyWhenEnded: 1
 --- !u!1 &6127859775795792838
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,7 +1145,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7611064734281264341
 Transform:
   m_ObjectHideFlags: 0
@@ -1225,7 +1227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &870782060601392056
 Transform:
   m_ObjectHideFlags: 0
@@ -1303,7 +1305,7 @@ GameObject:
   - component: {fileID: 5916630016496624742}
   m_Layer: 0
   m_Name: ExplosionOne
-  m_TagString: Untagged
+  m_TagString: Explosion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1346,6 +1348,7 @@ MonoBehaviour:
   - {fileID: 5109212321823655494}
   - {fileID: 5109212320293691306}
   timePerFrameMs: 100
+  destroyWhenEnded: 1
 --- !u!1 &8486888176457891503
 GameObject:
   m_ObjectHideFlags: 0
@@ -1362,7 +1365,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &869311904132030275
 Transform:
   m_ObjectHideFlags: 0

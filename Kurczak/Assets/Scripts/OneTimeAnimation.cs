@@ -10,13 +10,14 @@ public class OneTimeAnimation : MonoBehaviour
     [SerializeField] int timePerFrameMs = 100;
     [SerializeField] bool destroyWhenEnded = false;
 
-    public void Start()
+    void Start()
     {
         _timer = new MonoBehaviourUpdateTimer(timePerFrameMs);
         _changeSpriteCommand = new ChangeSpriteCommand(_sprites, _timer, false);
+        _changeSpriteCommand.Execute();
     }
 
-    public void Update()
+    void Update()
     {
         _timer.Update();
         if (_changeSpriteCommand.CanExecute())
@@ -34,9 +35,14 @@ public class OneTimeAnimation : MonoBehaviour
         }
     }
 
-    public void Reset()
+    public void Stop()
     {
         _changeSpriteCommand.ForceReset();
+    }
+
+    public void Play()
+    {
+        _changeSpriteCommand.Execute();
     }
 
     public Action OnFinish;

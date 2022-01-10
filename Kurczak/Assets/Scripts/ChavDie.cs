@@ -12,12 +12,8 @@ public class ChavDie : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _chav = GameObject.FindGameObjectWithTag("Chav");
-        var chavToucherBody = GameObject.FindGameObjectWithTag("ChavToucherBody");
-        var chavToucherHead = GameObject.FindGameObjectWithTag("ChavToucherHead");
-        //chavToucherBody.GetComponent<ChavBodyHitbox>().enabled = false;
-        //chavToucherHead.GetComponent<ChavBodyHitbox>().enabled = false;
         _chav.GetComponent<EnemyPathing>().enabled = false;
-        _chav.GetComponent<SpriteRenderer>().enabled = false;
+        FindObjectOfType<Audio>().Play("WilhelmScream");
         GameObject[] gunshotWounds = GameObject.FindGameObjectsWithTag("GunshotWound");
         Vector3 instantionPosition = _chav.transform.position;
         Instantiate(_chavCorpseFragments, instantionPosition, Quaternion.identity);

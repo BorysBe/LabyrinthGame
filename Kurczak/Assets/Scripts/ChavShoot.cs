@@ -24,6 +24,7 @@ public class ChavShoot : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         var chav = GameObject.FindGameObjectWithTag("Chav");
+        chav.GetComponent<CharacterStateAnimation>().attack.Stop();
         chav.GetComponent<CharacterStateAnimation>().attack.enabled = false;
     }
 

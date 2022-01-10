@@ -9,6 +9,8 @@ public class MonoBehaviourUpdateTimer
     public int Interval { get; private set; }
 
     public Action Tick { get; set; }
+    public bool IsEnabled { get; internal set; }
+
     public Action _internalUpdate;
 
     public MonoBehaviourUpdateTimer(int interval)
@@ -19,11 +21,13 @@ public class MonoBehaviourUpdateTimer
 
     public void Start()
     {
+        IsEnabled = true;
         _internalUpdate = InternalUpdateAction;
     }
 
     public void Stop()
     {
+        IsEnabled = false;
         _internalUpdate = InternalUpdateNullAction;
     }
 
