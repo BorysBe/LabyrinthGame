@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2946451946043973240}
   - component: {fileID: 2946451946043973243}
   - component: {fileID: 2946451946043973242}
-  - component: {fileID: 2946451946043973241}
+  - component: {fileID: -3942854852888681166}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: EventSystem
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_TrackedDeviceOrientationAction: {fileID: 1025543830046995696, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
---- !u!114 &2946451946043973241
+--- !u!114 &-3942854852888681166
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -84,6 +84,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2946451946043973245}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eec0b8f587d2e1749b3c416f42714a74, type: 3}
+  m_Script: {fileID: 11500000, guid: 2faaa01c98c95bc4a89415e585bb831e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SoundSlider: {fileID: 0}
+  soundPreferences: 0
+  _audioMixer: {fileID: 0}

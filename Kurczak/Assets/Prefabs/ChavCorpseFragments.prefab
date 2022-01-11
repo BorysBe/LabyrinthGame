@@ -43,13 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627a0aa0bc0200240b80dd9464d4836d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _corpseFragmentsPrefab:
+  _RemainsPrefab:
   - {fileID: 3371791599944445568, guid: 183a9d7f5e8e7cb48933b210e4e82d44, type: 3}
   - {fileID: 1560713629122022710, guid: 0e37bf7751588594fb6ecbfa6116e252, type: 3}
   - {fileID: 7485238750646892665, guid: 9252a6d3822ebba49951cda8228bb3c8, type: 3}
-  - {fileID: 8293997802029298184, guid: 6860566954423564088bd45dc814bc85, type: 3}
-  - {fileID: 5945898282138171076, guid: 017b8e4754c329846862b238e0cbc0fc, type: 3}
-  - {fileID: 3371791599944445568, guid: 183a9d7f5e8e7cb48933b210e4e82d44, type: 3}
-  - {fileID: 1560713629122022710, guid: 0e37bf7751588594fb6ecbfa6116e252, type: 3}
-  - {fileID: 7485238750646892665, guid: 9252a6d3822ebba49951cda8228bb3c8, type: 3}
-  numberOfCorpseFragments: 50
+  numberOfRemains: 100
+  xMinRange: -5
+  xMaxRange: 5
+  yMinRange: -5
+  yMaxRange: -1

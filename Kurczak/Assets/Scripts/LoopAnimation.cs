@@ -1,21 +1,21 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class LoopAnimation : MonoBehaviour
+public class LoopAnimation : UpdateTimerMonoBehaviour
 {
-    [SerializeField] int timePerFrameMs = 100;
     public List<GameObject> _sprites = new List<GameObject>();
-    private MonoBehaviourUpdateTimer _timer;
     private ChangeSpriteCommand _changeSpriteCommand;
 
-    public void Start()
+    public override void Start()
     {
-        _timer = new MonoBehaviourUpdateTimer(timePerFrameMs);
+        base.Start();
         _changeSpriteCommand = new ChangeSpriteCommand(_sprites, _timer, true);
+        _changeSpriteCommand.Execute();
     }
 
-    public void Update()
+    public override void Update()
     {
+        base.Update();
         if (_changeSpriteCommand.CanExecute())
         {
             _changeSpriteCommand.Execute();

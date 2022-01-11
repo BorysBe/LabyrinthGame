@@ -11,6 +11,8 @@ public class EnemyHealth : MonoBehaviour
     public GameObject[] _gunshotWoundPrefab;
     GameObject gunshotWound;
 
+    public RemainsSpawner _remainsSpawner;
+
     private void Start()
     {
         currentHealth = health;
@@ -32,5 +34,7 @@ public class EnemyHealth : MonoBehaviour
     {
         gunshotWound = Instantiate(_gunshotWoundPrefab[Random.Range(0, _gunshotWoundPrefab.Length)], splatterPosition, Quaternion.identity);
         gunshotWound.transform.SetParent(this.GetComponentInParent<Transform>());
+        Vector3 spawnPosition = new Vector3(this.GetComponent<Transform>().position.x, this.GetComponent<Transform>().position.y, this.GetComponent<Transform>().position.z);
+        Instantiate(_remainsSpawner, spawnPosition, Quaternion.identity);
     }
 }

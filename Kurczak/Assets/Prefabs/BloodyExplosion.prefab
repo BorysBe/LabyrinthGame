@@ -294,13 +294,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 277c00c15a2df73489c5577a39db41f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timePerFrameMs: 100
   _sprites:
   - {fileID: 6372158039846754030}
   - {fileID: 8486888176457891503}
   - {fileID: 3658086897595107194}
   - {fileID: 1579579053695051477}
   - {fileID: 3018660993048515378}
-  timePerFrameMs: 100
   destroyWhenEnded: 1
 --- !u!1 &3018660993048515378
 GameObject:
@@ -639,6 +639,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5109212320150265173}
+  - component: {fileID: 5079207054311853506}
   m_Layer: 0
   m_Name: BloodyExplosion
   m_TagString: Untagged
@@ -663,6 +664,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5079207054311853506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5109212320150265131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c752540b96fd32e4e9aa2958374f003c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5109212320293691306
 GameObject:
   m_ObjectHideFlags: 0
@@ -1121,13 +1134,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 277c00c15a2df73489c5577a39db41f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timePerFrameMs: 100
   _sprites:
   - {fileID: 3924181505547348796}
   - {fileID: 3583196401934049141}
   - {fileID: 1099449107053022710}
   - {fileID: 6127859775795792838}
   - {fileID: 837122181164235602}
-  timePerFrameMs: 100
   destroyWhenEnded: 1
 --- !u!1 &6127859775795792838
 GameObject:
@@ -1341,13 +1354,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 277c00c15a2df73489c5577a39db41f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timePerFrameMs: 100
   _sprites:
   - {fileID: 5109212320850843805}
   - {fileID: 5109212320691008078}
   - {fileID: 5109212321704743810}
   - {fileID: 5109212321823655494}
   - {fileID: 5109212320293691306}
-  timePerFrameMs: 100
   destroyWhenEnded: 1
 --- !u!1 &8486888176457891503
 GameObject:
