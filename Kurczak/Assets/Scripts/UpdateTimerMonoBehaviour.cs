@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Diagnostics;
+using UnityEngine;
 
 public class UpdateTimerMonoBehaviour : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class UpdateTimerMonoBehaviour : MonoBehaviour
 
     public virtual void Update()
     {
+        if (_timer == null)
+            Debugger.Break();
         _timer.Update();
     }
 }

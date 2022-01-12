@@ -5,33 +5,19 @@ using UnityEngine;
 
 public class ChavMove : StateMachineBehaviour
 {
-    public Action ActiveDrawing { get; private set; }
-    public Action ActiveSound { get; private set; }
-
     GameObject _chav;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _chav = GameObject.FindGameObjectWithTag("Chav");
         _chav.GetComponent<CharacterStateAnimation>().move.enabled = true;
-        ActiveSound = delegate { };
-    }
-
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        DrawChavs();
-    }
-
-    private void DrawChavs()
-    {
-        ActiveDrawing?.Invoke();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _chav.GetComponent<CharacterStateAnimation>().move.enabled = false;
+        _chav.GetComponent<MoveEnemyBehaviour>().Stop();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

@@ -1,26 +1,29 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WaveActivator : MonoBehaviour
 {
-    [SerializeField] WaveConfig _waveConfig;
+    [SerializeField] int timeToActivateWave = 1;
+    [SerializeField] Vector3 spawnPoint; 
 
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Collision!");
-        StartCoroutine(SpawnAllEnemiesinWave());
+        CoroutineTimer coroutineTimer = new CoroutineTimer(timeToActivateWave, this);
+        coroutineTimer.Tick += delegate ()
+        {
+            SpawnEnemy(coroutineTimer);
+        };
+        coroutineTimer.Start();
     }
 
-    private IEnumerator SpawnAllEnemiesinWave()
+    private void SpawnEnemy(CoroutineTimer coroutineTimer)
     {
-        for (int enemyCount = 0; enemyCount < _waveConfig.GetNumberOfEnemies(); enemyCount++)
-        {
-            var newEnemy = Instantiate(_waveConfig.GetEnemyPrefab(), _waveConfig.GetWaypoints()[0].transform.position, Quaternion.identity);
-            newEnemy.GetComponent<EnemyPathing>().SetWaveConfig(_waveConfig);
-            Animator _animator = newEnemy.GetComponentInParent<Animator>();
-            _animator.SetBool("Shooting", true);
-            yield return new WaitForSeconds(_waveConfig.GetTimeBetweenSpawns());
-        }
+        var newEnemy = ObjectPooler.Instance.SpawnFromPool("Chav", spawnPoint, Quaternion.identity);
+        Animator _animator = newEnemy.GetComponentInParent<Animator>();
+        _animator.SetBool("Moving", true);
+        _animator.SetBool("Shooting", true);
+        newEnemy.GetComponent<MoveEnemyBehaviour>().Play();
+        coroutineTimer.Stop();
     }
 }

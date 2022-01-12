@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-
+    [SerializeField] float moveSpeed = 2f;
+    private CharacterController _characterController;
     private Controller _controller;
-    private CameraMovement _cameraMovement;
+    private Vector2 move;
 
     private void Awake()
     {
         _controller = new Controller();
-        _cameraMovement =  GetComponent<CameraMovement>();
+        _characterController = GetComponent<CharacterController>();
     }
 
     private void OnEnable()
@@ -19,23 +20,20 @@ public class Movement : MonoBehaviour
         _controller.Enable();
     }
 
-    private void OnDisable()
-    {
-        _controller.Disable();
-    }
+    //private void OnDisable()
+    //{
+    //    _controller.Disable();
+    //}
 
     void Update()
     {
-        _cameraMovement.Move(ReadMovementFromInput());
+        Moving();
     }
 
-    public float ReadMovementFromInput()
+    public void Moving()
     {
-        return (int)_controller.Slider.Move.ReadValue<float>();
-    }
-
-    public bool ReadInputFromButton()
-    {
-        return (bool)_controller.Slider.TouchScreen.ReadValue<bool>();
+        move = _controller.Slider.Move.ReadValue<Vector2>();
+        Vector3 movement = move.x * transform.right;
+        _characterController.Move(movement * moveSpeed * Time.deltaTime);
     }
 }

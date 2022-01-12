@@ -12,7 +12,7 @@ public class ChavDie : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _chav = GameObject.FindGameObjectWithTag("Chav");
-        _chav.GetComponent<EnemyPathing>().enabled = false;
+        _chav.GetComponent<MoveEnemyBehaviour>().enabled = false;
         FindObjectOfType<Audio>().Play("WilhelmScream");
         GameObject[] gunshotWounds = GameObject.FindGameObjectsWithTag("GunshotWound");
         Vector3 instantionPosition = _chav.transform.position;
