@@ -11,26 +11,31 @@ public class EnemyShootCommand: MonoBehaviour
         Debug.Log("Attack!");
         if (shot > 0)
             return;
-
         timer = new CoroutineTimer(timeOfAnimation, this);
         timer.Tick = TimeOfShootng;
-        timer.Start();
+        timer.Play();
+    }
+
+    public void Stop()
+    {
+        shot = 0;
+        timer.Stop();
     }
 
     void TimeOfShootng()
     {
-        var chav = GameObject.FindGameObjectWithTag("Chav");
         shot++;
         bool shouldShot = shot % 2 != 0;
 
         if (shouldShot)
         {
-            chav.GetComponent<CharacterStateAnimation>().attack.Play();
-            chav.GetComponent<CharacterSounds>().shot.Play();
+            GetComponentInParent<CharacterStateAnimation>().attack.Play();
+            GetComponentInParent<CharacterSounds>().shot.Play();
         }
         else
         {
-            chav.GetComponent<CharacterStateAnimation>().attack.Stop();
+            GetComponentInParent<CharacterStateAnimation>().attack.Stop();
+            GetComponentInParent<CharacterSounds>().shot.Stop();
         }
     }
 }

@@ -12,7 +12,6 @@ public class GraveAnimation : StateMachineBehaviour
         _chav = GameObject.FindGameObjectWithTag("Chav");
         Vector3 instantionPosition = _chav.transform.position;
         Instantiate(_chavGrave, instantionPosition, Quaternion.identity);
-        Destroy(_chav);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

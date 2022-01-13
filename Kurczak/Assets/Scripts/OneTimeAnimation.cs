@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OneTimeAnimation : UpdateTimerMonoBehaviour
+public class OneTimeAnimation : UpdateTimerMonoBehaviour, IPlayable
 {
     public List<GameObject> _sprites = new List<GameObject>();
     private ChangeSpriteCommand _changeSpriteCommand;
@@ -12,8 +12,7 @@ public class OneTimeAnimation : UpdateTimerMonoBehaviour
     {
         base.Start();
         _timer = new MonoBehaviourUpdateTimer(timePerFrameMs);
-        _changeSpriteCommand = new ChangeSpriteCommand(_sprites, _timer, false);
-        _changeSpriteCommand.Execute();
+        _changeSpriteCommand = new ChangeSpriteCommand(_sprites, _timer, false, firstFrameActive);
     }
 
     public override void Update()
@@ -34,12 +33,12 @@ public class OneTimeAnimation : UpdateTimerMonoBehaviour
         }
     }
 
-    public void Stop()
+    public override void Stop()
     {
         _changeSpriteCommand.ForceReset();
     }
 
-    public void Play()
+    public override void Play()
     {
         _changeSpriteCommand.Execute();
     }

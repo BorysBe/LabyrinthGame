@@ -1,16 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class LoopAnimation : UpdateTimerMonoBehaviour
+public class LoopAnimation : UpdateTimerMonoBehaviour, IPlayable
 {
+
     public List<GameObject> _sprites = new List<GameObject>();
     private ChangeSpriteCommand _changeSpriteCommand;
 
     public override void Start()
     {
         base.Start();
-        _changeSpriteCommand = new ChangeSpriteCommand(_sprites, _timer, true);
-        _changeSpriteCommand.Execute();
+        _changeSpriteCommand = new ChangeSpriteCommand(_sprites, _timer, true, firstFrameActive);
     }
 
     public override void Update()
@@ -20,6 +21,16 @@ public class LoopAnimation : UpdateTimerMonoBehaviour
         {
             _changeSpriteCommand.Execute();
         }
+    }
+
+    public override void Play()
+    {
+        _changeSpriteCommand.Execute();
+    }
+
+    public override void Stop()
+    {
+        //Intentionally left blank.
     }
 }
 

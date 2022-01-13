@@ -1,10 +1,10 @@
-using System.Collections.Generic;
-using UnityEngine;
-
-public class WaveActivator : MonoBehaviour
+ using System.Collections.Generic;
+ using UnityEngine;
+ 
+ public class WaveActivator : MonoBehaviour
 {
-    [SerializeField] int timeToActivateWave = 1;
-    [SerializeField] Vector3 spawnPoint; 
+    [SerializeField] int timeToActivateWave = 100;
+    [SerializeField] Vector3 spawnPoint;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,16 +14,14 @@ public class WaveActivator : MonoBehaviour
         {
             SpawnEnemy(coroutineTimer);
         };
-        coroutineTimer.Start();
+        coroutineTimer.Play();
     }
-
+ 
     private void SpawnEnemy(CoroutineTimer coroutineTimer)
     {
-        var newEnemy = ObjectPooler.Instance.SpawnFromPool("Chav", spawnPoint, Quaternion.identity);
+        var newEnemy = EnemyFactory.Instance.Spawn("Chav", spawnPoint, Quaternion.identity);
         Animator _animator = newEnemy.GetComponentInParent<Animator>();
-        _animator.SetBool("Moving", true);
         _animator.SetBool("Shooting", true);
-        newEnemy.GetComponent<MoveEnemyBehaviour>().Play();
         coroutineTimer.Stop();
     }
 }

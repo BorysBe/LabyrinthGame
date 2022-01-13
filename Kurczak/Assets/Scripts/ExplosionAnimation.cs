@@ -11,7 +11,8 @@ public class ExplosionAnimation : StateMachineBehaviour
     {
         _chav = GameObject.FindGameObjectWithTag("Chav");
         Vector3 instantionPosition = _chav.transform.position;
-        Instantiate(_bloodyExplosion, instantionPosition, Quaternion.identity);
+        var explosion = EnemyFactory.Instance.Spawn("BloodyExplosion", Quaternion.identity);
+        explosion.GetComponent<OneTimeAnimationComposite>().Play();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class ChavShoot : StateMachineBehaviour
+public class ChavMoveWithShooting : StateMachineBehaviour
 {
 
     public Action ActiveSound { get; private set; }
@@ -11,7 +11,16 @@ public class ChavShoot : StateMachineBehaviour
     {
         var chav = GameObject.FindGameObjectWithTag("Chav");
         chav.GetComponent<EnemyShootCommand>().Execute();
+        chav.GetComponent<CharacterStateAnimation>().move.Play();
+        chav.GetComponent<MoveEnemyBehaviour>().Play();
+        chav.GetComponent<MoveEnemyBehaviour>().OnStop += ChangeStateToIdle;
+    }
 
+    private void ChangeStateToIdle()
+    {
+        var chav = GameObject.FindGameObjectWithTag("Chav");
+        var animator = chav.GetComponent<Animator>();
+        animator.SetBool("ReturnToIdleState", true);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -25,7 +34,12 @@ public class ChavShoot : StateMachineBehaviour
     {
         var chav = GameObject.FindGameObjectWithTag("Chav");
         chav.GetComponent<CharacterStateAnimation>().attack.Stop();
-        chav.GetComponent<CharacterStateAnimation>().attack.enabled = false;
+        chav.GetComponent<EnemyShootCommand>().Stop();
+        EnemyFactory.Instance.SetSpawnPointFor("BloodyExplosion", chav.transform.position);
+        chav.GetComponent<CharacterStateAnimation>().move.Stop();
+        chav.GetComponent<MoveEnemyBehaviour>().Stop();
+        chav.GetComponent<MoveEnemyBehaviour>().OnStop -= ChangeStateToIdle;
+        animator.SetBool("Shooting", false);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

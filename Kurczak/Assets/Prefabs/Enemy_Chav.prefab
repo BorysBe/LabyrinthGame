@@ -359,11 +359,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4529947152723500986}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b80161b8d6c591947aa4a707e9c8819e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playOnAwake: 0
+  firstFrameActive: 1
   timePerFrameMs: 100
   _sprites:
   - {fileID: 5302990124936587472}
@@ -374,11 +376,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4529947152723500986}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b80161b8d6c591947aa4a707e9c8819e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playOnAwake: 0
+  firstFrameActive: 1
   timePerFrameMs: 100
   _sprites:
   - {fileID: 5302990124936587472}
@@ -394,6 +398,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 277c00c15a2df73489c5577a39db41f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playOnAwake: 0
+  firstFrameActive: 1
   timePerFrameMs: 250
   _sprites:
   - {fileID: 5302990124936587472}

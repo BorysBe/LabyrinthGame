@@ -211,13 +211,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 662451906}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad207614d7489ed458b3bb0feda6df68, type: 3}
+  m_Script: {fileID: 11500000, guid: 6821924964d55ca46be14015ccb90d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pools:
   - tag: Chav
     prefab: {fileID: 4529947152723500986, guid: bfc124220420252469feea36e654adeb, type: 3}
-    size: 20
+    size: 1
+  - tag: BloodyExplosion
+    prefab: {fileID: 5109212320150265131, guid: df13855951392324ca92a6152e08d321, type: 3}
+    size: 1
 --- !u!4 &662451908
 Transform:
   m_ObjectHideFlags: 0
@@ -424,6 +427,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1675074282 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2946451946043973245, guid: f883f5bbe56623e429dc2ff04452d245, type: 3}
+  m_PrefabInstance: {fileID: 2946451946904501518}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1675074287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675074282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18fffd5322140f64384b23167653f9a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1708763168 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2063745099334061839, guid: de7940e8fc3502c4d879429236c05cb0, type: 3}
@@ -441,6 +461,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b80161b8d6c591947aa4a707e9c8819e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playOnAwake: 1
+  firstFrameActive: 1
   timePerFrameMs: 300
   _sprites:
   - {fileID: 978285525}
@@ -648,6 +670,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2063745099334061839, guid: de7940e8fc3502c4d879429236c05cb0, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de7940e8fc3502c4d879429236c05cb0, type: 3}
 --- !u!1001 &2503169164324959661
@@ -711,11 +737,11 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 2881ab626a48bbb4cb8c6586ecc6794a, type: 2}
     - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
       propertyPath: spawnPoint.x
-      value: -12.114
+      value: -14.55
       objectReference: {fileID: 0}
     - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
       propertyPath: spawnPoint.y
-      value: -6.4
+      value: -9.5
       objectReference: {fileID: 0}
     - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
       propertyPath: spawnPoint.z

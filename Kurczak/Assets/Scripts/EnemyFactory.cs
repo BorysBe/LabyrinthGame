@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPooler : MonoBehaviour
+public class EnemyFactory : MonoBehaviour
 {
     [System.Serializable]
     public class Pool
@@ -12,7 +13,7 @@ public class ObjectPooler : MonoBehaviour
         public int size;
     }
 
-    public static ObjectPooler Instance;
+    public static EnemyFactory Instance;
 
     private void Awake()
     {
@@ -21,6 +22,7 @@ public class ObjectPooler : MonoBehaviour
 
     public List<Pool> pools;
     public Dictionary<string, Queue<GameObject>> poolDictionary;
+    private Dictionary<string, Vector3> _spawnPoints = new Dictionary<string, Vector3>();
 
     void Start()
     {
@@ -41,18 +43,27 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
-    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
+    public GameObject Spawn(string tag, Quaternion rotation)
     {
-        if(!poolDictionary.ContainsKey(tag))
+        return Spawn(tag, _spawnPoints[tag], rotation);
+    }
+
+    public GameObject Spawn(string tag, Vector3 position, Quaternion rotation)
+    {
+        if (!poolDictionary.ContainsKey(tag))
         {
             Debug.LogWarning("Pool with tag " + tag + "doesn't excist.");
             return null;
         }
         GameObject objectToSpawn = poolDictionary[tag].Dequeue();
-        objectToSpawn.SetActive(true);
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
         poolDictionary[tag].Enqueue(objectToSpawn);
         return objectToSpawn;
+    }
+
+    public void SetSpawnPointFor(string tag, Vector3 position)
+    {
+        _spawnPoints[tag] = position;
     }
 }

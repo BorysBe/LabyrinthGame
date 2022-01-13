@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class CoroutineTimer
+public class CoroutineTimer: IPlayable
 {
     private IEnumerator _routine;
     private readonly MonoBehaviour _behaviour;
@@ -19,7 +19,7 @@ public class CoroutineTimer
         _behaviour = behaviour;
     }
 
-    public void Start()
+    public void Play()
     {
         _routine = YieldTick();
         _behaviour.StartCoroutine(_routine);

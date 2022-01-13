@@ -2,10 +2,13 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveEnemyBehaviour : MonoBehaviour
+public class MoveEnemyBehaviour : MonoBehaviour, IPlayable
 {
+    public Action OnStop;
     [SerializeField] float moveSpeed = 2f;
     [SerializeField] GameObject enemyPath;
+    private Vector3 deafaultPosition;
+
     private Action MoveAction { get; set; }
 
     List<Transform> waypoints;
@@ -20,12 +23,21 @@ public class MoveEnemyBehaviour : MonoBehaviour
 
     public void Play()
     {
+        deafaultPosition = transform.position;
         MoveAction = Move;
     }
 
     public void Stop()
     {
+        SetDefaultPosition();
+        waypointIndex = 0;
         MoveAction = NullObjectMove;
+        OnStop?.Invoke();
+    }
+
+    private void SetDefaultPosition()
+    {
+        transform.position = deafaultPosition;
     }
 
     private List<Transform> GetWaypoints()
@@ -51,7 +63,7 @@ public class MoveEnemyBehaviour : MonoBehaviour
 
     private void Move()
     {
-        
+
         if (waypointIndex <= waypoints.Count - 1)
         {
             var targetPosition = waypoints[waypointIndex].transform.position;
@@ -65,8 +77,6 @@ public class MoveEnemyBehaviour : MonoBehaviour
             }
         }
         else
-        {
-            this.gameObject.SetActive(false);
-        }
+            Stop();
     }
 }
