@@ -175,9 +175,10 @@ GameObject:
   - component: {fileID: 580610821453979254}
   - component: {fileID: 580610821453979255}
   - component: {fileID: 8861781701810236680}
+  - component: {fileID: -7521192785711393393}
   m_Layer: 0
   m_Name: Chav_grave
-  m_TagString: Untagged
+  m_TagString: ChavGrave
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -190,7 +191,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580610821453979240}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.2}
+  m_LocalPosition: {x: 0, y: 0.018646799, z: -0.1732354}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 580610820366496084}
@@ -210,15 +211,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d845bc38ea8eef478ee28b7b47b524c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 2
+  requestedXPositionOffset: 0
+  requestedYPositionOffset: 5
+  requestedZPositionOffset: 0
+  opacityChangedInTime: 0.25
+--- !u!114 &8861781701810236680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580610821453979240}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b80161b8d6c591947aa4a707e9c8819e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playOnAwake: 0
+  firstFrameActive: 1
+  timePerFrameMs: 200
   _sprites:
   - {fileID: 580610820366496086}
   - {fileID: 580610820429878159}
-  spriteChangeDelay: 2
-  destroyDelay: 5
-  speedController: 1
-  opacityChangedInTime: 0.25
-  positionY: 0
---- !u!114 &8861781701810236680
+--- !u!114 &-7521192785711393393
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -227,10 +243,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 580610821453979240}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b80161b8d6c591947aa4a707e9c8819e, type: 3}
+  m_Script: {fileID: 11500000, guid: 1af3d5e7fdd55234ebeb272fd707894d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timePerFrameMs: 200
-  _sprites:
-  - {fileID: 580610820366496086}
-  - {fileID: 580610820429878159}
+  offsetAndOpacity: {fileID: 580610821453979255}

@@ -16,6 +16,7 @@ TagManager:
   - Explosion
   - Ground
   - Terrain
+  - ChavGrave
   layers:
   - Default
   - TransparentFX

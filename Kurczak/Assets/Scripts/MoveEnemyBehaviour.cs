@@ -77,6 +77,9 @@ public class MoveEnemyBehaviour : MonoBehaviour, IPlayable
             }
         }
         else
+        {
             Stop();
+        }
+
     }
 }

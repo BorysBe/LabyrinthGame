@@ -10,7 +10,6 @@ public class ExplosionAnimation : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _chav = GameObject.FindGameObjectWithTag("Chav");
-        Vector3 instantionPosition = _chav.transform.position;
         var explosion = EnemyFactory.Instance.Spawn("BloodyExplosion", Quaternion.identity);
         explosion.GetComponent<OneTimeAnimationComposite>().Play();
     }

@@ -36,6 +36,7 @@ public class ChavMoveWithShooting : StateMachineBehaviour
         chav.GetComponent<CharacterStateAnimation>().attack.Stop();
         chav.GetComponent<EnemyShootCommand>().Stop();
         EnemyFactory.Instance.SetSpawnPointFor("BloodyExplosion", chav.transform.position);
+        EnemyFactory.Instance.SetSpawnPointFor("ChavGrave", chav.transform.position);
         chav.GetComponent<CharacterStateAnimation>().move.Stop();
         chav.GetComponent<MoveEnemyBehaviour>().Stop();
         chav.GetComponent<MoveEnemyBehaviour>().OnStop -= ChangeStateToIdle;

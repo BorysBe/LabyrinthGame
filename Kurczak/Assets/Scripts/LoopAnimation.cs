@@ -17,7 +17,7 @@ public class LoopAnimation : UpdateTimerMonoBehaviour, IPlayable
     public override void Update()
     {
         base.Update();
-        if (_changeSpriteCommand.CanExecute())
+        if (_changeSpriteCommand?.CanExecute()??false)
         {
             _changeSpriteCommand.Execute();
         }
@@ -25,7 +25,7 @@ public class LoopAnimation : UpdateTimerMonoBehaviour, IPlayable
 
     public override void Play()
     {
-        _changeSpriteCommand.Execute();
+        _changeSpriteCommand?.Execute();
     }
 
     public override void Stop()

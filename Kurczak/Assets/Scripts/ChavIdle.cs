@@ -19,6 +19,7 @@ public class ChavIdle : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        chav = GameObject.FindGameObjectWithTag("Chav");
         chav.GetComponent<Animator>().SetBool("ReturnToIdleState", false);
     }
 

@@ -37,4 +37,10 @@ public class EnemyHealth : MonoBehaviour
         Vector3 spawnPosition = new Vector3(this.GetComponent<Transform>().position.x, this.GetComponent<Transform>().position.y, this.GetComponent<Transform>().position.z);
         Instantiate(_remainsSpawner, spawnPosition, Quaternion.identity);
     }
+
+    public void ResetHealth()
+    {
+        currentHealth = health;
+        _healthbar.SetHealth(currentHealth, health);
+    }
 }

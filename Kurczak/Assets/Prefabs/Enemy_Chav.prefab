@@ -213,13 +213,12 @@ GameObject:
   - component: {fileID: 3074340528726993669}
   - component: {fileID: 4156805254099957633}
   - component: {fileID: 3488279379883819788}
-  - component: {fileID: 2333754319281223147}
-  - component: {fileID: 4647104991235996643}
   - component: {fileID: 9177993683307360813}
   - component: {fileID: 8270324062727821424}
   - component: {fileID: 7479253641220165679}
   - component: {fileID: -4740378835437198377}
   - component: {fileID: 4094119331494321485}
+  - component: {fileID: 7277395734172492854}
   m_Layer: 0
   m_Name: Enemy_Chav
   m_TagString: Chav
@@ -349,43 +348,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d14af95849f34e54e8d363b5f28f24c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idle: {fileID: 2333754319281223147}
-  move: {fileID: 4647104991235996643}
+  move: {fileID: 7277395734172492854}
   attack: {fileID: 9177993683307360813}
---- !u!114 &2333754319281223147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4529947152723500986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b80161b8d6c591947aa4a707e9c8819e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playOnAwake: 0
-  firstFrameActive: 1
-  timePerFrameMs: 100
-  _sprites:
-  - {fileID: 5302990124936587472}
---- !u!114 &4647104991235996643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4529947152723500986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b80161b8d6c591947aa4a707e9c8819e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playOnAwake: 0
-  firstFrameActive: 1
-  timePerFrameMs: 100
-  _sprites:
-  - {fileID: 5302990124936587472}
 --- !u!114 &9177993683307360813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,6 +508,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   enemyPath: {fileID: 8078350800546268878, guid: e3ca49eec16795840a41cfd7deacc211, type: 3}
+--- !u!114 &7277395734172492854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4529947152723500986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b80161b8d6c591947aa4a707e9c8819e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playOnAwake: 0
+  firstFrameActive: 1
+  timePerFrameMs: 100
+  _sprites:
+  - {fileID: 5302990124936587472}
 --- !u!1 &5507165466691015970
 GameObject:
   m_ObjectHideFlags: 0
