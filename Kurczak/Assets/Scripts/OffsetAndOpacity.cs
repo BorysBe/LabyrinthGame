@@ -4,29 +4,27 @@ using UnityEngine;
 public class OffsetAndOpacity : MonoBehaviour
 {
     List<GameObject> pictures;
-    [SerializeField] float moveSpeed = 2;
-    Vector3 requestedPositionOffset;
-    [SerializeField] float requestedXPositionOffset = 0f;
-    [SerializeField] float requestedYPositionOffset = 0f;
-    [SerializeField] float requestedZPositionOffset = 0f;
     [SerializeField] [Range(0, 1)] float opacityChangedInTime = 1f;
     float opacityValue = 1f;
     float positionY = 0f;
     float speedController = 2f;
-
-    public string ownerTag => transform.tag;
-
+    public bool transitionActivated;
+    int timeToReset = 4000;
 
     public void Start()
     {
         pictures = GetComponent<LoopAnimation>()._sprites;
+        transitionActivated = false;
     }
     void Update()
     {
-        Move();
-        OpacityChange();
+        if(transitionActivated)
+        {
+            MoveUpwards();
+            OpacityChange();
+        }
     }
-    void Move()
+    void MoveUpwards()
     {
         positionY = speedController * Time.deltaTime;
         this.transform.Translate(0, positionY, 0);
@@ -39,11 +37,25 @@ public class OffsetAndOpacity : MonoBehaviour
             p.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, opacityValue);
         }
     }
-    public void OpacityReset()
+    void PropertiesReset(CoroutineTimer coroutineTimer)
     {
         foreach (GameObject p in pictures)
         {
-            p.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
+            opacityValue = 1f;
+            transitionActivated = false;
+            coroutineTimer.Stop();
         }
-    }  
+    }
+
+    public void CoroutineTimerReset()
+    {
+        CoroutineTimer coroutineTimer = new CoroutineTimer(timeToReset, this);
+        coroutineTimer.Tick += delegate ()
+        {
+            PropertiesReset(coroutineTimer);
+        };
+        coroutineTimer.Play();
+    }
+
+
 }

@@ -6,11 +6,13 @@ public class ExplosionAnimation : StateMachineBehaviour
 {
     public GameObject _bloodyExplosion;
     GameObject _chav;
+    private GameObject explosion;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _chav = GameObject.FindGameObjectWithTag("Chav");
-        var explosion = EnemyFactory.Instance.Spawn("BloodyExplosion", Quaternion.identity);
+        explosion = EnemyFactory.Instance.Spawn("BloodyExplosion", Quaternion.identity);
         explosion.GetComponent<OneTimeAnimationComposite>().Play();
     }
 
@@ -21,10 +23,9 @@ public class ExplosionAnimation : StateMachineBehaviour
     //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

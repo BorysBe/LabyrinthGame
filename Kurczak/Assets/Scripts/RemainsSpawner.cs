@@ -24,7 +24,7 @@ public class RemainsSpawner : MonoBehaviour
         for(int i = 0; i < numberOfRemains; i ++)
         {
             fragment = Instantiate(_RemainsPrefab[Random.Range(0, _RemainsPrefab.Length)],
-                new Vector3(Random.Range(xMinRange, xMaxRange)+ this.transform.position.x, Random.Range(yMinRange, yMaxRange), 0f),
+                new Vector3(Random.Range(xMinRange, xMaxRange)+ this.transform.position.x, Random.Range(yMinRange, yMaxRange), 1f),
                 Quaternion.identity);
             fragment.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(rotationNegative, rotationPositive)));
             fragment.transform.SetParent(this.GetComponentInParent<Transform>());

@@ -1,10 +1,23 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class OneTimeAnimationComposite : MonoBehaviour, IPlayable
 {
     [SerializeField] List<OneTimeAnimation> animations = new List<OneTimeAnimation>();
+    [SerializeField] bool actionOnFinish = true;
+
+    public void Start()
+    {
+        foreach (var a in animations)
+        {
+            a.OnFinish += delegate ()
+            {
+                if (actionOnFinish)
+                    OnFinish();
+            };
+        }
+    }
 
     public void Play()
     {
@@ -21,4 +34,6 @@ public class OneTimeAnimationComposite : MonoBehaviour, IPlayable
             a.Stop();
         }
     }
+
+    public Action OnFinish;
 }

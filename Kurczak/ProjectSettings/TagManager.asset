@@ -17,6 +17,8 @@ TagManager:
   - Ground
   - Terrain
   - ChavGrave
+  - Score
+  - ChavSpawn
   layers:
   - Default
   - TransparentFX

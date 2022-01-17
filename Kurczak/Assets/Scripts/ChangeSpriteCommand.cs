@@ -5,15 +5,15 @@ using UnityEngine;
 public class ChangeSpriteCommand : IChangeSpriteCommand
 {
     private readonly List<GameObject> _sprites;
-    bool firstFrameActive = false;
     private int spriteIndex = 0;
     private MonoBehaviourUpdateTimer _timer;
 
     private Action ResetSpriteIndexAction { get; set; }
 
-    public ChangeSpriteCommand(List<GameObject> sprites, MonoBehaviourUpdateTimer timer, bool isLooped, bool firstFrameActive )
+    public Action OnFinish;
+
+    public ChangeSpriteCommand(List<GameObject> sprites, MonoBehaviourUpdateTimer timer, bool isLooped)
     {
-        this.firstFrameActive = firstFrameActive;
         if (isLooped)
             ResetSpriteIndexAction = ResetSpriteIndex;
         else
@@ -25,6 +25,11 @@ public class ChangeSpriteCommand : IChangeSpriteCommand
             if (spriteIndex == _sprites.Count - 1)
             {
                 ResetSpriteIndexAction.Invoke();
+                if (!isLooped)
+                {
+                    _timer.Stop();
+                    OnFinish?.Invoke();
+                }
                 return;
             }
             _sprites[spriteIndex].SetActive(false);
@@ -32,7 +37,7 @@ public class ChangeSpriteCommand : IChangeSpriteCommand
             _sprites[spriteIndex].SetActive(true);
         };
         this._sprites = sprites;
-        DeactivateAllFrames();
+        ForceReset();
     }
 
     public bool CanExecute()
@@ -59,7 +64,7 @@ public class ChangeSpriteCommand : IChangeSpriteCommand
     public void ForceReset()
     {
         DeactivateAllFrames();
-        _sprites[spriteIndex].SetActive(firstFrameActive);
+        _sprites[spriteIndex].SetActive(true);
     }
 
     private void DeactivateAllFrames()

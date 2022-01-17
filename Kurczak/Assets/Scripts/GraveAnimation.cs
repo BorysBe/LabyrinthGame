@@ -12,8 +12,9 @@ public class GraveAnimation : StateMachineBehaviour
         chav = GameObject.FindGameObjectWithTag("Chav");
         chav.GetComponent<EnemyHealth>().ResetHealth();
         var grave = EnemyFactory.Instance.Spawn("ChavGrave", Quaternion.identity);
-        //chavGrave.GetComponent<LoopAnimation>().Play();
-        chavGrave.GetComponent<ChavGrave>().Play();
+        grave.GetComponent<LoopAnimation>().Play();
+        grave.GetComponent<OffsetAndOpacity>().transitionActivated = true;
+        grave.GetComponent<OffsetAndOpacity>().CoroutineTimerReset();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

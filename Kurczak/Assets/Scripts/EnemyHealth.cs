@@ -2,6 +2,7 @@
 
 public class EnemyHealth : MonoBehaviour
 {
+    [SerializeField] int scoreAdded = 200;
     public EnemyHealthbar _healthbar;
     Animator animator;
 
@@ -42,5 +43,7 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth = health;
         _healthbar.SetHealth(currentHealth, health);
+        GameObject score = GameObject.FindGameObjectWithTag("Score");
+        score.GetComponent<Score>().CountCurrentScore(scoreAdded);
     }
 }

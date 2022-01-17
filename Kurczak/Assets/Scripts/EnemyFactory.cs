@@ -12,6 +12,7 @@ public class EnemyFactory : MonoBehaviour
         public GameObject prefab;
         public int size;
     }
+    [SerializeField] Vector3 developerRoomPosition = new Vector3(0f, -100f, 0f);
 
     public static EnemyFactory Instance;
 
@@ -34,10 +35,27 @@ public class EnemyFactory : MonoBehaviour
 
             for (int i = 0; i < pool.size; i++)
             {
-                GameObject obj = Instantiate(pool.prefab);
+                GameObject obj = Instantiate(pool.prefab, developerRoomPosition, Quaternion.identity);
                 obj.SetActive(true);
                 objectPool.Enqueue(obj);
-            }
+                
+                var animation = obj.GetComponent<OneTimeAnimationComposite>();
+                if (animation)
+                {
+                    animation.OnFinish += delegate
+                    {
+                        obj.transform.position = developerRoomPosition;
+                    };
+                }
+                var animation2 = obj.GetComponent<OneTimeAnimation>();
+                if (animation2)
+                {
+                    animation2.OnFinish += delegate
+                    {
+                        obj.transform.position = developerRoomPosition;
+                    };
+                }
+             }
 
             poolDictionary.Add(pool.tag, objectPool);
         }

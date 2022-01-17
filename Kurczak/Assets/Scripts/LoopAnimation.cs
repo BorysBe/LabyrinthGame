@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class LoopAnimation : UpdateTimerMonoBehaviour, IPlayable
 {
-
-    public List<GameObject> _sprites = new List<GameObject>();
-    private ChangeSpriteCommand _changeSpriteCommand;
-
+    protected override bool isLooped { get; } = true;
     public override void Start()
     {
         base.Start();
-        _changeSpriteCommand = new ChangeSpriteCommand(_sprites, _timer, true, firstFrameActive);
     }
 
     public override void Update()
     {
         base.Update();
-        if (_changeSpriteCommand?.CanExecute()??false)
+        if (_changeSpriteCommand.CanExecute())
         {
             _changeSpriteCommand.Execute();
         }
@@ -25,7 +21,7 @@ public class LoopAnimation : UpdateTimerMonoBehaviour, IPlayable
 
     public override void Play()
     {
-        _changeSpriteCommand?.Execute();
+        _changeSpriteCommand.Execute();
     }
 
     public override void Stop()
