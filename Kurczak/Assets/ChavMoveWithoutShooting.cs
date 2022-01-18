@@ -2,16 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosionAnimation : StateMachineBehaviour
+public class ChavMoveWithoutShooting : StateMachineBehaviour
 {
-    public GameObject _bloodyExplosion;
-    private GameObject explosion;
-
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        explosion = EnemyFactory.Instance.Spawn("BloodyExplosion", Quaternion.identity);
-        explosion.GetComponent<OneTimeAnimationComposite>().Play();
+        animator.SetBool("ReturnToIdleState", false);
+        animator.GetComponent<MoveEnemyBehaviour>().Play();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -23,6 +20,7 @@ public class ExplosionAnimation : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
+    //    
     //}
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

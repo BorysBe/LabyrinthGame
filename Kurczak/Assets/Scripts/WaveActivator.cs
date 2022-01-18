@@ -4,6 +4,7 @@
  public class WaveActivator : MonoBehaviour
 {
     [SerializeField] int timeToActivateWave = 100;
+    [SerializeField] int timetoRectivateTimer = 5000;
     [SerializeField] Vector3 spawnPoint;
     private bool startTrigger = true;
 
@@ -18,6 +19,13 @@
                 SpawnEnemy(coroutineTimer);
             };
             coroutineTimer.Play();
+            DeactivateTrigger();
+            CoroutineTimer coroutineToReactivateTrigger = new CoroutineTimer(timetoRectivateTimer, this);
+            coroutineToReactivateTrigger.Tick += delegate ()
+            {
+                ActivateTriggerByCoroutine(coroutineToReactivateTrigger);
+            };
+            coroutineToReactivateTrigger.Play();
         }
     }
  
@@ -37,5 +45,11 @@
     public void DeactivateTrigger()
     {
         startTrigger = false;
+    }
+
+    private void ActivateTriggerByCoroutine(CoroutineTimer coroutineTimer)
+    {
+        startTrigger = true;
+        coroutineTimer.Stop();
     }
 }

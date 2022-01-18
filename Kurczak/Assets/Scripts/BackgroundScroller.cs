@@ -7,7 +7,6 @@ public class BackgroundScroller : MonoBehaviour
     [Range(-1f, 1f)] public float scrollSpeed = 0.5f;
     private float offset = 0;
     //private Material _material;
-    SpriteChanger _spriteChanger;
 
     //test
     public int materialIndex = 0;

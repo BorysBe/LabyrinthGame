@@ -78,6 +78,7 @@ public class MoveEnemyBehaviour : MonoBehaviour, IPlayable
         }
         else
         {
+            this.GetComponent<Animator>().SetBool("ReturnToIdleState", true);
             Stop();
         }
 

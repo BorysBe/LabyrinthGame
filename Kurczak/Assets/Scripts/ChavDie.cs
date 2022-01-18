@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class ChavDie : StateMachineBehaviour
 {
-    GameObject chav;
     public GameObject _chavCorpseFragments;
     GameObject chavSpawn;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        chav = GameObject.FindGameObjectWithTag("Chav");
+        EnemyFactory.Instance.SetSpawnPointFor("BloodyExplosion", animator.transform.position);
+        EnemyFactory.Instance.SetSpawnPointFor("ChavGrave", animator.transform.position);
+        Instantiate(_chavCorpseFragments, animator.transform.position, Quaternion.identity);
+        animator.GetComponent<CharacterStateAnimation>().move.Stop();
+        animator.GetComponent<MoveEnemyBehaviour>().Stop();
+        animator.SetBool("ReturnToIdleState", true);
+        animator.SetBool("Shooting", false);
         FindObjectOfType<Audio>().Play("WilhelmScream");
-        Vector3 instantionPosition = chav.transform.position;
-        Instantiate(_chavCorpseFragments, instantionPosition, Quaternion.identity);
+
+
         chavSpawn = GameObject.FindGameObjectWithTag("ChavSpawn");
         chavSpawn.GetComponent<WaveActivator>().ActivateTrigger();
     }
@@ -31,7 +36,10 @@ public class ChavDie : StateMachineBehaviour
         GameObject[] gunshotWounds = GameObject.FindGameObjectsWithTag("GunshotWound");
         foreach (GameObject g in gunshotWounds)
         {
-            Destroy(g);
+            if(g.transform.IsChildOf(animator.transform))
+            {
+                Destroy(g);
+            }
         }
     }
 

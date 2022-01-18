@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class ChavIdle : StateMachineBehaviour
 {
-    GameObject chav;
-    GameObject chavSpawn;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        chavSpawn = GameObject.FindGameObjectWithTag("ChavSpawn");
-        chavSpawn.GetComponent<WaveActivator>().ActivateTrigger();
-    }
+    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //}
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -22,9 +18,7 @@ public class ChavIdle : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        chav = GameObject.FindGameObjectWithTag("Chav");
-        chav.GetComponent<Animator>().SetBool("ReturnToIdleState", false);
-        chavSpawn.GetComponent<WaveActivator>().DeactivateTrigger();
+        animator.GetComponent<Animator>().SetBool("ReturnToIdleState", false);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

@@ -326,6 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58bdafc8b50e204393fa9b25e9fa000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreAdded: 200
   _healthbar: {fileID: 4179669639291470761}
   health: 100
   _gunshotWoundPrefab:
@@ -362,13 +363,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 277c00c15a2df73489c5577a39db41f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playOnAwake: 0
-  firstFrameActive: 1
-  timePerFrameMs: 250
   _sprites:
   - {fileID: 5302990124936587472}
   - {fileID: 7561598564789001780}
-  destroyWhenEnded: 0
+  playOnAwake: 0
+  timePerFrameMs: 250
+  actionOnFinish: 0
 --- !u!114 &8270324062727821424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,11 +520,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b80161b8d6c591947aa4a707e9c8819e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playOnAwake: 0
-  firstFrameActive: 1
-  timePerFrameMs: 100
   _sprites:
   - {fileID: 5302990124936587472}
+  playOnAwake: 0
+  timePerFrameMs: 100
+  actionOnFinish: 0
 --- !u!1 &5507165466691015970
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,6 +1000,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 4821582790950553651}
     m_Modifications:
     - target: {fileID: 5902762754903692574, guid: a42b7f6d99e59cc49852c23e52b0e478, type: 3}
+      propertyPath: hitDamage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5902762754903692574, guid: a42b7f6d99e59cc49852c23e52b0e478, type: 3}
       propertyPath: _remainsSpawner
       value: 
       objectReference: {fileID: 0}
@@ -1007,6 +1011,10 @@ PrefabInstance:
       propertyPath: enemyHealthSystem
       value: 
       objectReference: {fileID: 4156805254099957633}
+    - target: {fileID: 5902762756737260656, guid: a42b7f6d99e59cc49852c23e52b0e478, type: 3}
+      propertyPath: hitDamage
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 5902762756737260656, guid: a42b7f6d99e59cc49852c23e52b0e478, type: 3}
       propertyPath: _remainsSpawner
       value: 

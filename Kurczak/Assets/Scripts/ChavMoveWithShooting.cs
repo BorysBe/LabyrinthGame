@@ -3,25 +3,14 @@ using UnityEngine;
 
 public class ChavMoveWithShooting : StateMachineBehaviour
 {
-
     public Action ActiveSound { get; private set; }
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        var chav = GameObject.FindGameObjectWithTag("Chav");
-        chav.GetComponent<EnemyShootCommand>().Execute();
-        chav.GetComponent<CharacterStateAnimation>().move.Play();
-        chav.GetComponent<MoveEnemyBehaviour>().Play();
-        chav.GetComponent<MoveEnemyBehaviour>().OnStop += ChangeStateToIdle;
+        animator.GetComponent<EnemyShootCommand>().Execute();
     }
 
-    private void ChangeStateToIdle()
-    {
-        var chav = GameObject.FindGameObjectWithTag("Chav");
-        var animator = chav.GetComponent<Animator>();
-        animator.SetBool("ReturnToIdleState", true);
-    }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -32,14 +21,11 @@ public class ChavMoveWithShooting : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        var chav = GameObject.FindGameObjectWithTag("Chav");
-        chav.GetComponent<CharacterStateAnimation>().attack.Stop();
-        chav.GetComponent<EnemyShootCommand>().Stop();
-        EnemyFactory.Instance.SetSpawnPointFor("BloodyExplosion", chav.transform.position);
-        EnemyFactory.Instance.SetSpawnPointFor("ChavGrave", chav.transform.position);
-        chav.GetComponent<CharacterStateAnimation>().move.Stop();
-        chav.GetComponent<MoveEnemyBehaviour>().Stop();
-        chav.GetComponent<MoveEnemyBehaviour>().OnStop -= ChangeStateToIdle;
+        animator.GetComponent<CharacterStateAnimation>().attack.Stop();
+        animator.GetComponent<EnemyShootCommand>().Stop();
+        animator.GetComponent<CharacterStateAnimation>().move.Stop();
+        animator.GetComponent<MoveEnemyBehaviour>().Stop();
+        animator.SetBool("ReturnToIdleState", true);
         animator.SetBool("Shooting", false);
     }
 

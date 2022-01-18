@@ -55,7 +55,7 @@ public class EnemyFactory : MonoBehaviour
                         obj.transform.position = developerRoomPosition;
                     };
                 }
-             }
+            }
 
             poolDictionary.Add(pool.tag, objectPool);
         }
