@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+public class EnemyLifeCycle : ObjectLifeCycle, IPlayable
 {
     [SerializeField] int scoreAdded = 200;
     public EnemyHealthbar _healthbar;
@@ -14,10 +14,10 @@ public class EnemyHealth : MonoBehaviour
 
     public RemainsSpawner _remainsSpawner;
 
+    public System.Action OnFinish { get; set; }
+
     private void Start()
     {
-        currentHealth = health;
-        _healthbar.SetHealth(currentHealth, health);
         animator = this.GetComponent<Animator>();
     }
 
@@ -39,11 +39,15 @@ public class EnemyHealth : MonoBehaviour
         Instantiate(_remainsSpawner, spawnPosition, Quaternion.identity);
     }
 
-    public void ResetHealth()
+    public void Stop()
+    {
+        GameObject score = GameObject.FindGameObjectWithTag("Score");
+        score.GetComponent<Score>().CountCurrentScore(scoreAdded);
+    }
+
+    public void Play()
     {
         currentHealth = health;
         _healthbar.SetHealth(currentHealth, health);
-        GameObject score = GameObject.FindGameObjectWithTag("Score");
-        score.GetComponent<Score>().CountCurrentScore(scoreAdded);
     }
 }

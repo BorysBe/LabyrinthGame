@@ -5,12 +5,12 @@ public class ChavBodyHitbox : Toucher
 {
 
     [SerializeField] int hitDamage = 20;
-    EnemyHealth enemyHealth;
+    EnemyLifeCycle enemyHealth;
 
 
     private void Start()
     {
-        enemyHealth = this.transform.parent.parent.GetComponent<EnemyHealth>();
+        enemyHealth = this.transform.parent.parent.GetComponent<EnemyLifeCycle>();
     }
 
     protected override void ActionOnTouch(PointerEventData eventData)

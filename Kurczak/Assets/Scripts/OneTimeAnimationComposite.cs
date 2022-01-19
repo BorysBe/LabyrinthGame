@@ -7,6 +7,8 @@ public class OneTimeAnimationComposite : MonoBehaviour, IPlayable
     [SerializeField] List<OneTimeAnimation> animations = new List<OneTimeAnimation>();
     [SerializeField] bool actionOnFinish = true;
 
+    public Action OnFinish { get; set; }
+
     public void Start()
     {
         foreach (var a in animations)
@@ -34,6 +36,4 @@ public class OneTimeAnimationComposite : MonoBehaviour, IPlayable
             a.Stop();
         }
     }
-
-    public Action OnFinish;
 }

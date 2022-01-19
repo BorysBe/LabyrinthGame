@@ -5,7 +5,8 @@
 {
     [SerializeField] int timeToActivateWave = 100;
     [SerializeField] int timetoRectivateTimer = 5000;
-    [SerializeField] Vector3 spawnPoint;
+    [SerializeField] string spawnedEnemy;
+    [SerializeField] string[] attachedAnimationsNames;
     private bool startTrigger = true;
 
     private void OnTriggerEnter(Collider other)
@@ -31,8 +32,13 @@
  
     private void SpawnEnemy(CoroutineTimer coroutineTimer)
     {
-        var newEnemy = EnemyFactory.Instance.Spawn("Chav", spawnPoint, Quaternion.identity);
+        var newEnemy = EnemyFactory.Instance.SpawnAtDeveloperRoom(spawnedEnemy, Quaternion.identity);
         Animator _animator = newEnemy.GetComponentInParent<Animator>();
+        foreach (string s in attachedAnimationsNames)
+        {
+            var attachedAnimation = EnemyFactory.Instance.attachAnimation(s);
+            newEnemy.GetComponent<CharacterStateAnimation>().AddAnimation(attachedAnimation);
+        }
         _animator.SetBool("Shooting", true);
         coroutineTimer.Stop();
     }

@@ -1,16 +1,20 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class GraveAnimation : StateMachineBehaviour
 {
     public GameObject chavGrave;
+    List<GameObject> animations;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
-        animator.GetComponent<EnemyHealth>().ResetHealth();
-        var grave = EnemyFactory.Instance.Spawn("ChavGrave", Quaternion.identity);
+        animator.GetComponent<EnemyLifeCycle>().Stop();
+        animations = animator.GetComponent<CharacterStateAnimation>().attachedAnimations;
+        GameObject grave = animations.Where(obj => obj.name == "ChavGrave(Clone)").SingleOrDefault();
+        grave.transform.position = animator.GetComponent<CharacterStateAnimation>().ReturnPositionOfAnimation();
         grave.GetComponent<LoopAnimation>().Play();
         grave.GetComponent<OffsetAndOpacity>().transitionActivated = true;
         grave.GetComponent<OffsetAndOpacity>().CoroutineTimerReset();

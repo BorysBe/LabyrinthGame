@@ -19,6 +19,8 @@ TagManager:
   - ChavGrave
   - Score
   - ChavSpawn
+  - Active
+  - Inactive
   layers:
   - Default
   - TransparentFX

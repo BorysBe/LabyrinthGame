@@ -11,6 +11,7 @@ public class CoroutineTimer: IPlayable
     private readonly float _intervalFloat;
 
     public Action Tick { get; set; }
+    public Action OnFinish { get; set; }
 
     public CoroutineTimer(int interval, MonoBehaviour behaviour)
     {
@@ -37,6 +38,7 @@ public class CoroutineTimer: IPlayable
     public void Stop()
     {
         _behaviour.StopCoroutine(_routine);
+        OnFinish?.Invoke();
     }
 }
 

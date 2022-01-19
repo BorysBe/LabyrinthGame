@@ -301,8 +301,7 @@ MonoBehaviour:
   - {fileID: 1579579053695051477}
   - {fileID: 3018660993048515378}
   playOnAwake: 0
-  timePerFrameMs: 100
-  actionOnFinish: 1
+  timePerFrameMs: 3000
 --- !u!1 &3018660993048515378
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,6 +640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5109212320150265173}
   - component: {fileID: 6362462838291317948}
+  - component: {fileID: -7405952153481312379}
   m_Layer: 0
   m_Name: BloodyExplosion
   m_TagString: Explosion
@@ -682,6 +682,18 @@ MonoBehaviour:
   - {fileID: 7980050425737680143}
   - {fileID: 4585479346668164643}
   actionOnFinish: 1
+--- !u!114 &-7405952153481312379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5109212320150265131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0bbf3409c394c346b22efe6ed5a3ad3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5109212320293691306
 GameObject:
   m_ObjectHideFlags: 0
@@ -1147,8 +1159,7 @@ MonoBehaviour:
   - {fileID: 6127859775795792838}
   - {fileID: 837122181164235602}
   playOnAwake: 0
-  timePerFrameMs: 100
-  actionOnFinish: 1
+  timePerFrameMs: 3000
 --- !u!1 &6127859775795792838
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,8 +1379,7 @@ MonoBehaviour:
   - {fileID: 5109212321823655494}
   - {fileID: 5109212320293691306}
   playOnAwake: 0
-  timePerFrameMs: 100
-  actionOnFinish: 1
+  timePerFrameMs: 3000
 --- !u!1 &8486888176457891503
 GameObject:
   m_ObjectHideFlags: 0

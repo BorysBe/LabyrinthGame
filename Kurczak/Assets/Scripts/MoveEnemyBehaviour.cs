@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class MoveEnemyBehaviour : MonoBehaviour, IPlayable
 {
-    public Action OnStop;
     [SerializeField] float moveSpeed = 2f;
     [SerializeField] GameObject enemyPath;
     private Vector3 deafaultPosition;
 
     private Action MoveAction { get; set; }
+    public Action OnFinish { get; set; }
 
     List<Transform> waypoints;
     int waypointIndex = 0;
@@ -17,7 +17,6 @@ public class MoveEnemyBehaviour : MonoBehaviour, IPlayable
     void Start()
     {
         waypoints = GetWaypoints();
-        transform.position = waypoints[waypointIndex].transform.position;
         MoveAction = NullObjectMove;
     }
 
@@ -29,10 +28,24 @@ public class MoveEnemyBehaviour : MonoBehaviour, IPlayable
 
     public void Stop()
     {
-        SetDefaultPosition();
         waypointIndex = 0;
         MoveAction = NullObjectMove;
-        OnStop?.Invoke();
+        OnFinish?.Invoke();
+        StopAllAnimations();
+    }
+
+    private void StopAllAnimations()
+    {
+        var stoppable = new List<IPlayable> {
+            GetComponent<OneTimeAnimation>(),
+            GetComponent<LoopAnimation>(),
+            GetComponent<OneTimeAnimationComposite>(),
+            GetComponent<EnemyLifeCycle>()
+        };
+        foreach (var anim in stoppable)
+        {
+            anim.Stop();
+        }
     }
 
     private void SetDefaultPosition()
@@ -63,13 +76,16 @@ public class MoveEnemyBehaviour : MonoBehaviour, IPlayable
 
     private void Move()
     {
-
+        if (waypointIndex == 0)
+        {
+            var targetPosition = waypoints[waypointIndex].transform.position;
+            this.transform.position = targetPosition;
+        }
         if (waypointIndex <= waypoints.Count - 1)
         {
             var targetPosition = waypoints[waypointIndex].transform.position;
-            var transform = this.GetComponentInParent<Transform>();
             var movementThisFrame = moveSpeed * Time.deltaTime;
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementThisFrame);
+            this.transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementThisFrame);
 
             if (transform.position == targetPosition)
             {

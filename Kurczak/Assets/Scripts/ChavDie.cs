@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 
 public class ChavDie : StateMachineBehaviour
 {
@@ -10,8 +9,7 @@ public class ChavDie : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        EnemyFactory.Instance.SetSpawnPointFor("BloodyExplosion", animator.transform.position);
-        EnemyFactory.Instance.SetSpawnPointFor("ChavGrave", animator.transform.position);
+        animator.GetComponent<CharacterStateAnimation>().SetPositionOfAnimation(animator.transform.position);
         Instantiate(_chavCorpseFragments, animator.transform.position, Quaternion.identity);
         animator.GetComponent<CharacterStateAnimation>().move.Stop();
         animator.GetComponent<MoveEnemyBehaviour>().Stop();

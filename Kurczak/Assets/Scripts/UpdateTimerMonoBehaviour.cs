@@ -9,8 +9,7 @@ public abstract class UpdateTimerMonoBehaviour : MonoBehaviour, IPlayable
     [SerializeField] protected bool playOnAwake = false;
     protected MonoBehaviourUpdateTimer _timer;
     [SerializeField] protected int timePerFrameMs = 100;
-    [SerializeField] protected bool actionOnFinish = false;
-    public Action OnFinish;
+    public Action OnFinish { get; set; }
 
     protected abstract bool isLooped { get; }
 
@@ -37,10 +36,8 @@ public abstract class UpdateTimerMonoBehaviour : MonoBehaviour, IPlayable
 
     public virtual void Stop()
     {
-        if (actionOnFinish)
-        {
-            OnFinish?.Invoke();
-        }
+
+       OnFinish?.Invoke();
     }
 
     public virtual void Update()

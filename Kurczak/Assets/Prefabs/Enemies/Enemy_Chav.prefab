@@ -211,7 +211,6 @@ GameObject:
   - component: {fileID: 4821582790950553651}
   - component: {fileID: 3547829270250677770}
   - component: {fileID: 3074340528726993669}
-  - component: {fileID: 4156805254099957633}
   - component: {fileID: 3488279379883819788}
   - component: {fileID: 9177993683307360813}
   - component: {fileID: 8270324062727821424}
@@ -219,9 +218,11 @@ GameObject:
   - component: {fileID: -4740378835437198377}
   - component: {fileID: 4094119331494321485}
   - component: {fileID: 7277395734172492854}
+  - component: {fileID: 7837698442012492234}
+  - component: {fileID: -7714742346053158151}
   m_Layer: 0
   m_Name: Enemy_Chav
-  m_TagString: Chav
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -314,29 +315,6 @@ SpriteMask:
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
---- !u!114 &4156805254099957633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4529947152723500986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e58bdafc8b50e204393fa9b25e9fa000, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreAdded: 200
-  _healthbar: {fileID: 4179669639291470761}
-  health: 100
-  _gunshotWoundPrefab:
-  - {fileID: 6061367814920214376, guid: 460c3e89ef80f0d40b9adb7ffbb0e865, type: 3}
-  - {fileID: 9109831108733957696, guid: 25989420fa031bf48a8b0faec0a91402, type: 3}
-  - {fileID: 8427868966554561553, guid: 1cd055f524205324a86a4303431088e3, type: 3}
-  - {fileID: 6043444072221924087, guid: becfd01937ad9b940b646b8247f9b405, type: 3}
-  - {fileID: 5673664918923697572, guid: 9e37436e37cc5b94b88e97ed9bc3d252, type: 3}
-  - {fileID: 5354806784362958313, guid: d54a41392ab2ce845a164c4520f80fcd, type: 3}
-  _remainsSpawner: {fileID: 790687321700729788, guid: 0c80e179359c2d3438780f8ea358980d, type: 3}
 --- !u!114 &3488279379883819788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,6 +329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move: {fileID: 7277395734172492854}
   attack: {fileID: 9177993683307360813}
+  attachedAnimations: []
 --- !u!114 &9177993683307360813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,7 +347,6 @@ MonoBehaviour:
   - {fileID: 7561598564789001780}
   playOnAwake: 0
   timePerFrameMs: 250
-  actionOnFinish: 0
 --- !u!114 &8270324062727821424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,7 +502,41 @@ MonoBehaviour:
   - {fileID: 5302990124936587472}
   playOnAwake: 0
   timePerFrameMs: 100
-  actionOnFinish: 0
+--- !u!114 &7837698442012492234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4529947152723500986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e58bdafc8b50e204393fa9b25e9fa000, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreAdded: 200
+  _healthbar: {fileID: 4179669639291470761}
+  health: 100
+  _gunshotWoundPrefab:
+  - {fileID: 6061367814920214376, guid: 460c3e89ef80f0d40b9adb7ffbb0e865, type: 3}
+  - {fileID: 9109831108733957696, guid: 25989420fa031bf48a8b0faec0a91402, type: 3}
+  - {fileID: 8427868966554561553, guid: 1cd055f524205324a86a4303431088e3, type: 3}
+  - {fileID: 6043444072221924087, guid: becfd01937ad9b940b646b8247f9b405, type: 3}
+  - {fileID: 5673664918923697572, guid: 9e37436e37cc5b94b88e97ed9bc3d252, type: 3}
+  - {fileID: 5354806784362958313, guid: d54a41392ab2ce845a164c4520f80fcd, type: 3}
+  _remainsSpawner: {fileID: 7119012095797926604, guid: a0163722d31182247b3bae04c524385e, type: 3}
+--- !u!114 &-7714742346053158151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4529947152723500986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0bbf3409c394c346b22efe6ed5a3ad3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5507165466691015970
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,7 +1022,7 @@ PrefabInstance:
     - target: {fileID: 5902762754903692574, guid: a42b7f6d99e59cc49852c23e52b0e478, type: 3}
       propertyPath: enemyHealthSystem
       value: 
-      objectReference: {fileID: 4156805254099957633}
+      objectReference: {fileID: 0}
     - target: {fileID: 5902762756737260656, guid: a42b7f6d99e59cc49852c23e52b0e478, type: 3}
       propertyPath: hitDamage
       value: 50
@@ -1022,11 +1034,19 @@ PrefabInstance:
     - target: {fileID: 5902762756737260656, guid: a42b7f6d99e59cc49852c23e52b0e478, type: 3}
       propertyPath: enemyHealthSystem
       value: 
-      objectReference: {fileID: 4156805254099957633}
+      objectReference: {fileID: 0}
+    - target: {fileID: 7184296705799320802, guid: a42b7f6d99e59cc49852c23e52b0e478, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fa19d7d9c819cf84099e978d13e6849d, type: 3}
     - target: {fileID: 7184296705799320802, guid: a42b7f6d99e59cc49852c23e52b0e478, type: 3}
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7184296706063170956, guid: a42b7f6d99e59cc49852c23e52b0e478, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ceb7f33b832178647ba304a84838ccc1, type: 3}
     - target: {fileID: 7230204368872612756, guid: a42b7f6d99e59cc49852c23e52b0e478, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

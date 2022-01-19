@@ -228,6 +228,9 @@ MonoBehaviour:
   - tag: ChavGrave
     prefab: {fileID: 580610821453979240, guid: b72fcab55cd73d1478a941f8744eec26, type: 3}
     size: 3
+  - tag: Satanist
+    prefab: {fileID: 4529947152723500986, guid: 2d05077c1c45958428693936553f469c, type: 3}
+    size: 3
 --- !u!4 &662451908
 Transform:
   m_ObjectHideFlags: 0
@@ -346,12 +349,28 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: spawnedEnemy
+      value: Chav
+      objectReference: {fileID: 0}
+    - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
       propertyPath: waveActivated
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
       propertyPath: timeToActivateWave
-      value: 100
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: attachedAnimationsNames.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: attachedAnimationsNames.Array.data[0]
+      value: ChavGrave
+      objectReference: {fileID: 0}
+    - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: attachedAnimationsNames.Array.data[1]
+      value: BloodyExplosion
       objectReference: {fileID: 0}
     - target: {fileID: 3341786963965429804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
       propertyPath: m_Size.x
@@ -493,6 +512,87 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1001 &1035378437
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2507220183434567188, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: m_Name
+      value: Satanist_WaveActivator Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880676559191570292, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880676559191570292, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 55.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880676559191570292, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880676559191570292, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880676559191570292, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880676559191570292, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880676559191570292, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880676559191570292, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880676559191570292, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880676559191570292, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880676559191570292, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171463017635291634, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: spawnPoint.x
+      value: 55.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171463017635291634, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: spawnPoint.y
+      value: -1.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171463017635291634, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: spawnPoint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171463017635291634, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: spawnedEnemy
+      value: Satanist
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171463017635291634, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: timeToActivateWave
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882127770334793012, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
 --- !u!114 &1240088683 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9015322295929363851, guid: cadcb33f3d7e5334d8d76ca9048565d4, type: 3}
@@ -769,64 +869,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
-      propertyPath: enemyPath
-      value: 
-      objectReference: {fileID: 8078350800546268878, guid: e3ca49eec16795840a41cfd7deacc211, type: 3}
-    - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
-      propertyPath: _waveConfig
-      value: 
-      objectReference: {fileID: 11400000, guid: 2881ab626a48bbb4cb8c6586ecc6794a, type: 2}
-    - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
-      propertyPath: spawnPoint.x
-      value: -14.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
-      propertyPath: spawnPoint.y
-      value: -9.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
-      propertyPath: spawnPoint.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
-      propertyPath: waveActivated
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
       propertyPath: timeToActivateWave
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 3341786963965429804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
-      propertyPath: m_Size.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3341786963965429804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
-      propertyPath: m_Size.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3341786963965429804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
-      propertyPath: m_Center.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3341786963965429804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
-      propertyPath: m_Center.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3341786963965429804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7046435233749687052, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
       propertyPath: m_Name
       value: Chav_WaveActivator
-      objectReference: {fileID: 0}
-    - target: {fileID: 7046435233749687052, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7046435233749687052, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
-      propertyPath: m_TagString
-      value: ChavSpawn
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
@@ -954,7 +1002,8 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 10
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4767038824902543952, guid: ceddb1271fbb49b48a83acc039d8c2f4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ceddb1271fbb49b48a83acc039d8c2f4, type: 3}
 --- !u!1001 &6504158413788664287
 PrefabInstance:

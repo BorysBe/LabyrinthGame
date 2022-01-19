@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 344000684867478762}
   m_Layer: 0
   m_Name: Chav_WaveActivator
-  m_TagString: Untagged
+  m_TagString: ChavSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,7 +91,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7046435233749687052}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -108,3 +108,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d829ba83ea3e60f40bf626c5ea8acbbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToActivateWave: 100
+  timetoRectivateTimer: 5000
+  spawnedEnemy: Chav
+  attachedAnimationsNames:
+  - ChavGrave
+  - BloodyExplosion

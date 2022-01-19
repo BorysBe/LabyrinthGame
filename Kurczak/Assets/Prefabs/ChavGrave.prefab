@@ -175,8 +175,9 @@ GameObject:
   - component: {fileID: 580610821453979254}
   - component: {fileID: 580610821453979255}
   - component: {fileID: 8861781701810236680}
+  - component: {fileID: -3721966373342671563}
   m_Layer: 0
-  m_Name: Chav_grave
+  m_Name: ChavGrave
   m_TagString: ChavGrave
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,5 +229,16 @@ MonoBehaviour:
   - {fileID: 580610820366496086}
   - {fileID: 580610820429878159}
   playOnAwake: 0
-  firstFrameActive: 0
   timePerFrameMs: 200
+--- !u!114 &-3721966373342671563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580610821453979240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0bbf3409c394c346b22efe6ed5a3ad3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
