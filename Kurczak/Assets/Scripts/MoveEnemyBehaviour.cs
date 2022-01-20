@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MoveEnemyBehaviour : MonoBehaviour, IPlayable
@@ -42,7 +43,7 @@ public class MoveEnemyBehaviour : MonoBehaviour, IPlayable
             GetComponent<OneTimeAnimationComposite>(),
             GetComponent<EnemyLifeCycle>()
         };
-        foreach (var anim in stoppable)
+        foreach (var anim in stoppable.Where(x => x != null))
         {
             anim.Stop();
         }

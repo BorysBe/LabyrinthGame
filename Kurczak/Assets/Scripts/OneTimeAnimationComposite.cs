@@ -5,7 +5,6 @@ using UnityEngine;
 public class OneTimeAnimationComposite : MonoBehaviour, IPlayable
 {
     [SerializeField] List<OneTimeAnimation> animations = new List<OneTimeAnimation>();
-    [SerializeField] bool actionOnFinish = true;
 
     public Action OnFinish { get; set; }
 
@@ -15,8 +14,7 @@ public class OneTimeAnimationComposite : MonoBehaviour, IPlayable
         {
             a.OnFinish += delegate ()
             {
-                if (actionOnFinish)
-                    OnFinish();
+                OnFinish?.Invoke();
             };
         }
     }

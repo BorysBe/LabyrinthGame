@@ -231,6 +231,9 @@ MonoBehaviour:
   - tag: Satanist
     prefab: {fileID: 4529947152723500986, guid: 2d05077c1c45958428693936553f469c, type: 3}
     size: 3
+  - tag: Portal
+    prefab: {fileID: 8519720678214458230, guid: a6d7726028cf5af4ebe3c39ef5840fb4, type: 3}
+    size: 3
 --- !u!4 &662451908
 Transform:
   m_ObjectHideFlags: 0
@@ -370,6 +373,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
       propertyPath: attachedAnimationsNames.Array.data[1]
+      value: BloodyExplosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: attachedAnimationsNames.Array.data[2]
       value: BloodyExplosion
       objectReference: {fileID: 0}
     - target: {fileID: 3341786963965429804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
@@ -529,7 +536,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4880676559191570292, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 55.27
+      value: 57.54
       objectReference: {fileID: 0}
     - target: {fileID: 4880676559191570292, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -586,6 +593,14 @@ PrefabInstance:
     - target: {fileID: 5171463017635291634, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
       propertyPath: timeToActivateWave
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171463017635291634, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: attachedAnimationsNames.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171463017635291634, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: attachedAnimationsNames.Array.data[2]
+      value: Portal
       objectReference: {fileID: 0}
     - target: {fileID: 7882127770334793012, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
       propertyPath: m_IsTrigger

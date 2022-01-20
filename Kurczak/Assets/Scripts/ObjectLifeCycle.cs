@@ -7,14 +7,13 @@ public class ObjectLifeCycle :MonoBehaviour, IPlayable
 {
     public Action OnFinish { get; set; }
 
-    public void Play()
+    public virtual void Play()
     {
-
     }
 
-    public void Stop()
+    public virtual void Stop()
     {
-
+        OnFinish?.Invoke();
     }
 
     // Start is called before the first frame update

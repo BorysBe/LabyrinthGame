@@ -14,6 +14,7 @@ public class ExplosionAnimation : StateMachineBehaviour
         GameObject explosion = animations.Where(obj => obj.name == "BloodyExplosion(Clone)").SingleOrDefault();
         explosion.transform.position = animator.GetComponent<CharacterStateAnimation>().ReturnPositionOfAnimation();
         explosion.GetComponent<OneTimeAnimationComposite>().Play();
+        explosion.GetComponent<BloodyExplosionLifeCycle>().Play();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

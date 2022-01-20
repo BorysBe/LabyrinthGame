@@ -1,7 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OffsetAndOpacity : MonoBehaviour
+public class SatanistDieAnimation : MonoBehaviour
 {
     List<GameObject> pictures;
     [SerializeField] [Range(0, 1)] float opacityChangedInTime = 1f;
@@ -10,6 +11,7 @@ public class OffsetAndOpacity : MonoBehaviour
     float speedController = 2f;
     public bool transitionActivated;
     int timeToReset = 4000;
+    Vector3 InitiativePosition;
 
     public void Start()
     {
@@ -18,35 +20,26 @@ public class OffsetAndOpacity : MonoBehaviour
     }
     void Update()
     {
-        if(transitionActivated)
+        if (transitionActivated)
         {
             MoveUpwards();
-            OpacityChange();
         }
     }
     public void Play()
     {
+        InitiativePosition = this.transform.position;
         transitionActivated = true;
         CoroutineTimerReset();
     }
-    void MoveUpwards()
+void MoveUpwards()
     {
         positionY = speedController * Time.deltaTime;
         this.transform.Translate(0, positionY, 0);
-    }
-    void OpacityChange()
-    {
-        opacityValue -= opacityChangedInTime * Time.deltaTime;
-        foreach (GameObject p in pictures)
-        {
-            p.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, opacityValue);
-        }
     }
     void PropertiesReset(CoroutineTimer coroutineTimer)
     {
         foreach (GameObject p in pictures)
         {
-            GetComponentInParent<GraveLifeCycle>().Stop();
             opacityValue = 1f;
             transitionActivated = false;
             coroutineTimer.Stop();
@@ -62,6 +55,4 @@ public class OffsetAndOpacity : MonoBehaviour
         };
         coroutineTimer.Play();
     }
-
-
 }

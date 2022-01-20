@@ -1,22 +1,20 @@
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 
-public class GraveAnimation : StateMachineBehaviour
+public class SatanistMoveWithoutShooting : StateMachineBehaviour
 {
-    public GameObject chavGrave;
-    List<GameObject> animations;
+    private List<GameObject> animations;
+    GameObject portal;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
-        animator.GetComponent<EnemyLifeCycle>().Stop();
+        animator.SetBool("ReturnToIdleState", false);
+        animator.GetComponent<MoveEnemyBehaviour>().Play();
         animations = animator.GetComponent<CharacterStateAnimation>().attachedAnimations;
-        GameObject grave = animations.Where(obj => obj.name == "ChavGrave(Clone)").SingleOrDefault();
-        grave.transform.position = animator.GetComponent<CharacterStateAnimation>().ReturnPositionOfAnimation();
-        grave.GetComponent<LoopAnimation>().Play();
-        grave.GetComponent<OffsetAndOpacity>().Play();
+        portal = animations.Where(obj => obj.name == "Portal(Clone)").SingleOrDefault();
+
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -28,7 +26,8 @@ public class GraveAnimation : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<Animator>().SetBool("isDead", false);
+        portal.transform.position = animator.transform.position;
+        portal.GetComponent<OneTimeAnimation>().Play();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

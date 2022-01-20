@@ -14,8 +14,6 @@ public class EnemyLifeCycle : ObjectLifeCycle, IPlayable
 
     public RemainsSpawner _remainsSpawner;
 
-    public System.Action OnFinish { get; set; }
-
     private void Start()
     {
         animator = this.GetComponent<Animator>();
@@ -39,13 +37,14 @@ public class EnemyLifeCycle : ObjectLifeCycle, IPlayable
         Instantiate(_remainsSpawner, spawnPosition, Quaternion.identity);
     }
 
-    public void Stop()
+    public override void Stop()
     {
         GameObject score = GameObject.FindGameObjectWithTag("Score");
         score.GetComponent<Score>().CountCurrentScore(scoreAdded);
+        base.Stop();
     }
 
-    public void Play()
+    public override void Play()
     {
         currentHealth = health;
         _healthbar.SetHealth(currentHealth, health);

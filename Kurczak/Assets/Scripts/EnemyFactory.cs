@@ -29,7 +29,11 @@ public class EnemyFactory : MonoBehaviour
                 objectPool.Enqueue(obj);
 
                 if (ContainsPlayableChild<EnemyLifeCycle>(obj))
-                    SetFinishingInDeveloperRoom<EnemyLifeCycle>(obj);
+                    SetFinishingInDeveloperRoom<EnemyLifeCycle>(obj); 
+                if (ContainsPlayableChild<BloodyExplosionLifeCycle>(obj))
+                    SetFinishingInDeveloperRoom<BloodyExplosionLifeCycle>(obj);
+                if (ContainsPlayableChild<GraveLifeCycle>(obj))
+                    SetFinishingInDeveloperRoom<GraveLifeCycle>(obj);
             }
 
             poolDictionary.Add(pool.tag, objectPool);
@@ -84,7 +88,6 @@ public class EnemyFactory : MonoBehaviour
             return null;
         }
     }
-
     private void SetFinishingInDeveloperRoom<T>(GameObject obj) where T : IPlayable
     {
         var animation = obj.GetComponent<T>();
