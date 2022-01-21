@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &341279003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +153,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9dfe3e88f53a348b0025b6703625fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sourceTexture: {fileID: 2800000, guid: e6a119953346cd240a3e002b60f96a56, type: 3}
+  textureArray:
+  - {fileID: 2800000, guid: e6a119953346cd240a3e002b60f96a56, type: 3}
+  - {fileID: 2800000, guid: 9bf57728ba81a584ea249f14bd864985, type: 3}
+  - {fileID: 2800000, guid: 67d5550b6c9593041a98837f7f2ff162, type: 3}
 --- !u!212 &341279004
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -213,7 +216,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 341279002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.061661754, y: -99.9124, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
