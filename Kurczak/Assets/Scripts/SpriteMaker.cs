@@ -18,33 +18,72 @@ public class SpriteMaker : MonoBehaviour
 
         renderer.sprite = MakeSprite(texture);
     }
-    private Vector2 TranslateWordPositionToTexturePosition(Vector2 clickPosition)
-    {
-        Vector3 localScale = transform.root.GetComponent<Transform>().localScale;
-        Vector2 screenSize = new Vector2(Screen.width, Screen.height);
-        Vector2 textureSize = new Vector2(textureArray[0].width * localScale.x, textureArray[0].height * localScale.y);
-        Vector2 textureScreenPosition = Camera.main.WorldToScreenPoint(transform.position);
-        Vector2 textureStartPosition = textureScreenPosition - textureSize / 2;
-        return clickPosition - textureStartPosition;
-    }
 
     public void UpdateDrawing(Texture2D addedTexture, Vector2 clickPosition)
     {
         Vector2 relativePosition = TranslateWordPositionToTexturePosition(clickPosition);
-        texture = AddTextureWithCoordinates(addedTexture, (int)relativePosition.x, (int)relativePosition.y);
+        texture = AddTextureWithCoordinates(texture, addedTexture, (int)relativePosition.x, (int)relativePosition.y, textureArray);
         renderer.sprite = MakeSprite(texture);
     }
-    private Texture2D AddTextureWithCoordinates(Texture2D addedTexture, int posX, int posY)
+
+    public void ResetTexture()
     {
-        textureArray.Add(addedTexture);
-        int newX = posX - addedTexture.width / 2;
-        int newY = posY - addedTexture.height / 2;
-        Color[] getPixels = addedTexture.GetPixels(newX, newY, addedTexture.width, addedTexture.height);
-        Texture2D sizedLayer = ClearTexture(textureArray[0].width, textureArray[0].height);
-        sizedLayer.SetPixels(0, 0, addedTexture.width, addedTexture.height, getPixels);
-        Color[][] adjustedLayers = new Color[textureArray.Count][];
-        adjustedLayers[textureArray.Count -1] = sizedLayer.GetPixels();
-        return MergeTextures(textureArray, addedTexture, getPixels, adjustedLayers);
+        for (int i = textureArray.Count - 1; i > 0; i --)
+        {
+            textureArray.RemoveRange(1, textureArray.Count - 1);
+        }
+        texture = MakeTexture(textureArray);
+        renderer.sprite = MakeSprite(texture);
+    }
+    private Texture2D AddTextureWithCoordinates(Texture2D texture, Texture2D addedTexture, int posX, int posY, List<Texture2D> layers)
+    {
+        layers.Add(addedTexture);
+        Texture2D newTexture = new Texture2D(layers[0].width, layers[0].height);
+        int newX = (posX > addedTexture.width / 2) ? posX - addedTexture.width / 2 : 0;
+        int newY = (posY > addedTexture.height / 2) ? posY - addedTexture.height / 2 : 0;
+        int setWidth, setHeight;
+        setWidth = (addedTexture.width + newX < newTexture.width) ? addedTexture.width : newTexture.width - newX;
+        setHeight = (addedTexture.height + newY < newTexture.height) ? addedTexture.height : newTexture.height - newY;
+        Color[] previousTexture = texture.GetPixels();
+        Color[] getPixels = addedTexture.GetPixels(0, 0, addedTexture.width, addedTexture.height);
+        Texture2D sizedLayer = ClearTexture(layers[0].width, layers[0].height);    
+        sizedLayer.SetPixels(newX, newY, setWidth, setHeight, getPixels);
+        Color[] adjustedLayers = sizedLayer.GetPixels();
+
+        for (int x = 0; x < newTexture.width; x++)
+        {
+            for (int y = 0; y < newTexture.height; y++)
+            {
+                int pixelIndex = x + (y * newTexture.width);
+                for (int i = 0; i < layers.Count; i++)
+                {
+                    Color sourcePixel = adjustedLayers[pixelIndex];
+
+                    if (sourcePixel.a > 0 && previousTexture[pixelIndex].a > 0)
+                    {
+                        previousTexture[pixelIndex] = NormalBlend(previousTexture[pixelIndex], sourcePixel);
+                    }
+                }
+            }
+        }
+
+        newTexture.SetPixels(previousTexture);
+        newTexture.Apply();
+
+        newTexture.wrapMode = TextureWrapMode.Clamp;
+
+        return newTexture;
+    }
+    private Vector2 TranslateWordPositionToTexturePosition(Vector2 clickPosition)
+    {
+        Vector2 screenSize = new Vector2(Screen.width, Screen.height);
+        Vector2 planeMin = Camera.main.WorldToScreenPoint(transform.GetComponentInChildren<SpriteRenderer>().bounds.min);
+        Vector2 planeMax = Camera.main.WorldToScreenPoint(transform.GetComponentInChildren<SpriteRenderer>().bounds.max);
+        float xProportion = Mathf.InverseLerp(planeMin.x, planeMax.x, clickPosition.x);
+        float yProportion = Mathf.InverseLerp(planeMin.y, planeMax.y, screenSize.y - clickPosition.y);
+        float xPoint = xProportion * textureArray[0].width;
+        float yPoint = yProportion * textureArray[0].height;
+        return new Vector2(xPoint, yPoint);
     }
 
     private Texture2D MakeTexture(List<Texture2D> layers)
