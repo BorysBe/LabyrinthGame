@@ -891,6 +891,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chav_WaveActivator
       objectReference: {fileID: 0}
+    - target: {fileID: 7046435233749687052, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
 --- !u!1001 &2946451946904501518

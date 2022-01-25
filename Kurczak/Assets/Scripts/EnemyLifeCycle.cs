@@ -29,11 +29,6 @@ public class EnemyLifeCycle : ObjectLifeCycle, IPlayable
 
     public override void Stop()
     {
-        SpriteRenderer[] renderers = transform.GetComponentsInChildren<SpriteRenderer>(true);
-        foreach (var r in renderers)
-        {
-            r.transform.GetComponent<SpriteMaker>().ResetTexture();
-        }
         GameObject score = GameObject.FindGameObjectWithTag("Score");
         score.GetComponent<Score>().CountCurrentScore(scoreAdded);
         base.Stop();
