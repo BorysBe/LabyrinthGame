@@ -1,6 +1,3 @@
-using System;
-using UnityEngine;
-
 public class OneTimeAnimation : UpdateTimerMonoBehaviour, IPlayable
 {
     protected override bool isLooped { get; } = false;

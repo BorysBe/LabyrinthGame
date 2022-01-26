@@ -1,7 +1,6 @@
- using System.Collections.Generic;
- using UnityEngine;
- 
- public class WaveActivator : MonoBehaviour
+using UnityEngine;
+
+public class WaveActivator : MonoBehaviour
 {
     [SerializeField] int timeToActivateWave = 100;
     [SerializeField] int timetoRectivateTimer = 5000;
@@ -32,13 +31,8 @@
  
     private void SpawnEnemy(CoroutineTimer coroutineTimer)
     {
-        var newEnemy = EnemyFactory.Instance.SpawnAtDeveloperRoom(spawnedEnemy, Quaternion.identity);
-        Animator _animator = newEnemy.GetComponentInParent<Animator>();
-        foreach (string s in attachedAnimationsNames)
-        {
-            var attachedAnimation = EnemyFactory.Instance.attachAnimation(s);
-            newEnemy.GetComponent<CharacterStateAnimation>().AddAnimation(attachedAnimation);
-        }
+        var newEnemy = EnemyFactory.Instance.SpawnAtDeveloperRoom(spawnedEnemy, null);
+        Animator _animator = newEnemy.GameObject.GetComponentInParent<Animator>();
         _animator.SetBool("Shooting", true);
         coroutineTimer.Stop();
     }

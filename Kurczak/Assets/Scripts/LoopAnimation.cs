@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LoopAnimation : UpdateTimerMonoBehaviour, IPlayable
-{
+{ 
     protected override bool isLooped { get; } = true;
     public override void Start()
     {

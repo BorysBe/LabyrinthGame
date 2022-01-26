@@ -1,20 +1,14 @@
-using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 public class ExplosionAnimation : StateMachineBehaviour
 {
-    List<GameObject> animations;
-    public GameObject _bloodyExplosion;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animations = animator.GetComponent<CharacterStateAnimation>().attachedAnimations;
-        GameObject explosion = animations.Where(obj => obj.name == "BloodyExplosion(Clone)").SingleOrDefault();
-        explosion.transform.position = animator.GetComponent<CharacterStateAnimation>().ReturnPositionOfAnimation();
-        explosion.GetComponent<OneTimeAnimationComposite>().Play();
-        explosion.GetComponent<BloodyExplosionLifeCycle>().Play();
+        var position = animator.GetComponent<CharacterStateAnimation>().ReturnPositionOfAnimation();
+        var explosion = EnemyFactory.Instance.Spawn("BloodyExplosion", position, null);
+        explosion.Play();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

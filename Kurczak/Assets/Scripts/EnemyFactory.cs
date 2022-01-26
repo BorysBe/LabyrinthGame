@@ -8,6 +8,7 @@ public class EnemyFactory : MonoBehaviour
     public static EnemyFactory Instance;
     public List<Pool> pools;
     public Dictionary<string, Queue<GameObject>> poolDictionary;
+    public Dictionary<string, IPlayStrategy> strategies = new Dictionary<string, IPlayStrategy>();
 
     void Awake()
     {
@@ -17,10 +18,15 @@ public class EnemyFactory : MonoBehaviour
     void Start()
     {
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
-
+        strategies.Add("Chav", new ChavStrategy());
+        strategies.Add("BloodyExplosion", new BloodyExplosionStrategy());
+        strategies.Add("ChavGrave", new ChavGraveStrategy());
+        strategies.Add("BloodDrop", new BloodDropStrategy());
         foreach (Pool pool in pools)
         {
             var objectPool = new Queue<GameObject>();
+
+
 
             for (int idx = 0; idx < pool.size; idx++)
             {
@@ -29,73 +35,53 @@ public class EnemyFactory : MonoBehaviour
                 objectPool.Enqueue(obj);
 
                 if (ContainsPlayableChild<EnemyLifeCycle>(obj))
-                    SetFinishingInDeveloperRoom<EnemyLifeCycle>(obj); 
+                    SetFinishingInDeveloperRoom<EnemyLifeCycle>(obj, "Chav"); 
                 if (ContainsPlayableChild<BloodyExplosionLifeCycle>(obj))
-                    SetFinishingInDeveloperRoom<BloodyExplosionLifeCycle>(obj);
+                    SetFinishingInDeveloperRoom<BloodyExplosionLifeCycle>(obj, "BloodyExplosion");
                 if (ContainsPlayableChild<GraveLifeCycle>(obj))
-                    SetFinishingInDeveloperRoom<GraveLifeCycle>(obj);
+                    SetFinishingInDeveloperRoom<GraveLifeCycle>(obj, "ChavGrave");
+                if (ContainsPlayableChild<BloodDropLifeCycle>(obj))
+                    SetFinishingInDeveloperRoom<BloodDropLifeCycle>(obj, "BloodDrop");
             }
 
-            poolDictionary.Add(pool.tag, objectPool);
+            poolDictionary.Add(pool.key, objectPool);
         }
     }
 
-    public GameObject SpawnAtDeveloperRoom(string spawnedEnemy, Quaternion identity)
+    public IPlayableGameObject SpawnAtDeveloperRoom(string spawnedEnemy, Transform related)
     {
-        return Spawn(spawnedEnemy, GetDeveloperRoomPosition(), identity);
+        return Spawn(spawnedEnemy, GetDeveloperRoomPosition(), related);
     }
 
-    public GameObject Spawn(string tag, Vector3 position, Quaternion rotation)
+    public IPlayableGameObject Spawn(string key, Vector3 position, Transform related)
     {
-        if (!poolDictionary.ContainsKey(tag))
+        if (!poolDictionary.ContainsKey(key))
         {
-            throw new Exception("Pool with tag " + tag + "doesn't exist.");
+            throw new Exception("Pool with key " + key + "doesn't exist.");
         }
 
-        GameObject objectToSpawn = poolDictionary[tag].Dequeue();
-        if (objectToSpawn.transform.tag != "Active")
-        {
-            objectToSpawn.transform.position = position;
-            objectToSpawn.transform.rotation = rotation;
-            poolDictionary[tag].Enqueue(objectToSpawn);
-            objectToSpawn.transform.tag = "Active";
-            return objectToSpawn;
-        }
-        else
-        {
-            poolDictionary[tag].Enqueue(objectToSpawn);
-            return null;
-        }
+        GameObject objectToSpawn = GetFromPool(key);
+        objectToSpawn.transform.position = position;
+        return new PlayableGameObject(objectToSpawn, strategies[key], related);
     }
 
-    public GameObject attachAnimation(string tag)
+    public GameObject GetFromPool(string key)
     {
-        if (!poolDictionary.ContainsKey(tag))
+        if (!poolDictionary.ContainsKey(key))
         {
-            Debug.LogWarning("Pool with tag " + tag + "doesn't excist.");
-            return null;
+            throw new Exception("Pool with key " + key + "doesn't exist.");
         }
-        GameObject objectToSpawn = poolDictionary[tag].Dequeue();
-        if (objectToSpawn.transform.tag != "Active")
-        {
-            poolDictionary[tag].Enqueue(objectToSpawn);
-            objectToSpawn.transform.tag = "Active";
-            return objectToSpawn;
-        }
-        else
-        {
-            poolDictionary[tag].Enqueue(objectToSpawn);
-            return null;
-        }
+        return poolDictionary[key].Dequeue();
     }
-    private void SetFinishingInDeveloperRoom<T>(GameObject obj) where T : IPlayable
+
+    private void SetFinishingInDeveloperRoom<T>(GameObject obj, string key) where T : IPlayable
     {
         var animation = obj.GetComponent<T>();
         {
             animation.OnFinish += delegate
             {
-                obj.transform.tag = "Inactive";
                 obj.transform.position = developerRoomPosition;
+                poolDictionary[key].Enqueue(obj);
             };
         }
     }
@@ -113,7 +99,7 @@ public class EnemyFactory : MonoBehaviour
     [System.Serializable]
     public class Pool
     {
-        public string tag;
+        public string key;
         public GameObject prefab;
         public int size;
     }

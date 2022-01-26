@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class ImageFactory: MonoBehaviour
 {
-    public List<Texture2D> wounds = new List<Texture2D>();
+    [SerializeField] RandomTextureFactory wounds;
     SpriteRenderer renderer;
     [SerializeField] Vector2Int drawAreaParameters;
     Texture2D drawArea;
@@ -19,7 +19,7 @@ public class ImageFactory: MonoBehaviour
     public  void SpriteDrawer(Vector3 lastTouchPoint)
     {
         Vector2 relativePosition = TranslateWordPositionToTexturePosition(lastTouchPoint);
-        var wound = wounds[0];
+        var wound = wounds.CreateRandomTexture();
         List<Color> colors = new List<Color>();
         for (int idx = 0; idx < wound.width * wound.height; idx++)
             colors.Add(new Color(0, 1, 0));

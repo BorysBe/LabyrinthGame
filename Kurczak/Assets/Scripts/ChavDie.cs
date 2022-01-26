@@ -29,17 +29,9 @@ public class ChavDie : StateMachineBehaviour
     //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        GameObject[] gunshotWounds = GameObject.FindGameObjectsWithTag("GunshotWound");
-        foreach (GameObject g in gunshotWounds)
-        {
-            if(g.transform.IsChildOf(animator.transform))
-            {
-                Destroy(g);
-            }
-        }
-    }
+    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //}
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

@@ -29,6 +29,11 @@ public class EnemyLifeCycle : ObjectLifeCycle, IPlayable
 
     public override void Stop()
     {
+        BloodDropLifeCycle[] bloodDrops = transform.GetComponentsInChildren<BloodDropLifeCycle>();
+        foreach (var b in bloodDrops)
+        {
+            b.Stop();
+        }
         GameObject score = GameObject.FindGameObjectWithTag("Score");
         score.GetComponent<Score>().CountCurrentScore(scoreAdded);
         base.Stop();

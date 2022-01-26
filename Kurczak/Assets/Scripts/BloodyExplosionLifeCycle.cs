@@ -9,6 +9,7 @@ public class BloodyExplosionLifeCycle : ObjectLifeCycle, IPlayable
         var animation = GetComponentInParent<OneTimeAnimationComposite>();
         animation.OnFinish += delegate()
         {
+
             this.OnFinish?.Invoke();
         };
     }

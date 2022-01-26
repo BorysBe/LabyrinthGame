@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6426098771091657011, guid: 7a8f5feaa1889e3459a5ddc7f25c8223, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6426098771091657011, guid: 7a8f5feaa1889e3459a5ddc7f25c8223, type: 3}
       propertyPath: m_LocalPosition.x
@@ -219,21 +219,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   developerRoomPosition: {x: 0, y: -100, z: 0}
   pools:
-  - tag: Chav
+  - key: Chav
     prefab: {fileID: 4529947152723500986, guid: bfc124220420252469feea36e654adeb, type: 3}
     size: 3
-  - tag: BloodyExplosion
+  - key: BloodyExplosion
     prefab: {fileID: 5109212320150265131, guid: df13855951392324ca92a6152e08d321, type: 3}
     size: 3
-  - tag: ChavGrave
+  - key: ChavGrave
     prefab: {fileID: 580610821453979240, guid: b72fcab55cd73d1478a941f8744eec26, type: 3}
     size: 3
-  - tag: Satanist
+  - key: EnemySatanist
     prefab: {fileID: 4529947152723500986, guid: 2d05077c1c45958428693936553f469c, type: 3}
     size: 3
-  - tag: Portal
+  - key: Portal
     prefab: {fileID: 8519720678214458230, guid: a6d7726028cf5af4ebe3c39ef5840fb4, type: 3}
     size: 3
+  - key: BloodDrop
+    prefab: {fileID: 4933154205328245203, guid: c8e519ba28fc5874c92859356779e3a9, type: 3}
+    size: 9
 --- !u!4 &662451908
 Transform:
   m_ObjectHideFlags: 0
@@ -246,7 +249,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &787790122 stripped
 GameObject:
@@ -289,7 +292,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 52140505035485804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 52140505035485804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -365,7 +368,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
       propertyPath: attachedAnimationsNames.Array.size
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
       propertyPath: attachedAnimationsNames.Array.data[0]
@@ -377,7 +380,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
       propertyPath: attachedAnimationsNames.Array.data[2]
-      value: BloodyExplosion
+      value: BloodDrop
+      objectReference: {fileID: 0}
+    - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: attachedAnimationsNames.Array.data[3]
+      value: BloodDrop
+      objectReference: {fileID: 0}
+    - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: attachedAnimationsNames.Array.data[4]
+      value: BloodDrop
       objectReference: {fileID: 0}
     - target: {fileID: 3341786963965429804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
       propertyPath: m_Size.x
@@ -430,7 +441,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6973603358732392340, guid: 80674633ef5ac5643ada4d6a4e42e1d9, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6973603358732392340, guid: 80674633ef5ac5643ada4d6a4e42e1d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -532,7 +543,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4880676559191570292, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4880676559191570292, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -684,7 +695,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6740057727210467697, guid: 68439982f3728a043a9eeae1acda8bbd, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6740057727210467697, guid: 68439982f3728a043a9eeae1acda8bbd, type: 3}
       propertyPath: m_AnchorMax.x
@@ -832,71 +843,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de7940e8fc3502c4d879429236c05cb0, type: 3}
---- !u!1001 &2503169164324959661
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 52140505035485804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 52140505035485804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -12.114
-      objectReference: {fileID: 0}
-    - target: {fileID: 52140505035485804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -6.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 52140505035485804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 52140505035485804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 52140505035485804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 52140505035485804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 52140505035485804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 52140505035485804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 52140505035485804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 52140505035485804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
-      propertyPath: timeToActivateWave
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7046435233749687052, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
-      propertyPath: m_Name
-      value: Chav_WaveActivator
-      objectReference: {fileID: 0}
-    - target: {fileID: 7046435233749687052, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
 --- !u!1001 &2946451946904501518
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1033,7 +979,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6504158412616762376, guid: 37b442a41a2d33f45a345efe22349972, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6504158412616762376, guid: 37b442a41a2d33f45a345efe22349972, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1098,7 +1044,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4092671055234628354, guid: cadcb33f3d7e5334d8d76ca9048565d4, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4092671055234628354, guid: cadcb33f3d7e5334d8d76ca9048565d4, type: 3}
       propertyPath: m_AnchorMax.x

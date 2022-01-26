@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 public class GraveAnimation : StateMachineBehaviour
 {
@@ -10,13 +9,9 @@ public class GraveAnimation : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
-        animator.GetComponent<EnemyLifeCycle>().Stop();
-        animations = animator.GetComponent<CharacterStateAnimation>().attachedAnimations;
-        GameObject grave = animations.Where(obj => obj.name == "ChavGrave(Clone)").SingleOrDefault();
-        grave.transform.position = animator.GetComponent<CharacterStateAnimation>().ReturnPositionOfAnimation();
-        grave.GetComponent<LoopAnimation>().Play();
-        grave.GetComponent<OffsetAndOpacity>().Play();
+        var position = animator.GetComponent<CharacterStateAnimation>().ReturnPositionOfAnimation();
+        var grave = EnemyFactory.Instance.Spawn("ChavGrave", position, null);
+        grave.Play();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

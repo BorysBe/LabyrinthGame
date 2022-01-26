@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TextureFactory
-    : MonoBehaviour
+public class RandomTextureFactory : MonoBehaviour
 {
     public Texture2D[] textures;
 
