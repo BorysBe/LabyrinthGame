@@ -218,7 +218,6 @@ GameObject:
   - component: {fileID: 4094119331494321485}
   - component: {fileID: 7277395734172492854}
   - component: {fileID: 7837698442012492234}
-  - component: {fileID: 1783559505960935868}
   m_Layer: 0
   m_Name: Enemy_Chav
   m_TagString: Untagged
@@ -468,25 +467,6 @@ MonoBehaviour:
   _healthbar: {fileID: 4179669639291470761}
   health: 100
   _remainsSpawner: {fileID: 790687321700729788, guid: 0c80e179359c2d3438780f8ea358980d, type: 3}
---- !u!114 &1783559505960935868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4529947152723500986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c346928eb12a4e49b78fd192f90a0cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textures:
-  - {fileID: 2800000, guid: a949d9e69896fe947bcd13f5146417af, type: 3}
-  - {fileID: 2800000, guid: 1fca536f1a8dda2438cdc83c7ccfcdbf, type: 3}
-  - {fileID: 2800000, guid: cae3f2c00458626428be777a5cdb6afc, type: 3}
-  - {fileID: 2800000, guid: 38ece67a1a4df4149b85967332c424d9, type: 3}
-  - {fileID: 2800000, guid: 22beab18d923a074a9f42fd3f5c312a4, type: 3}
-  - {fileID: 2800000, guid: f8d44771bcb52f8439a5174f43ff523d, type: 3}
 --- !u!1 &5507165466691015970
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,7 +594,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4155447068125675612}
   - component: {fileID: 7016481658439930765}
-  - component: {fileID: 5469700234100204507}
+  - component: {fileID: 284059988267120435}
   m_Layer: 0
   m_Name: WoundArea
   m_TagString: Untagged
@@ -687,7 +667,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5469700234100204507
+--- !u!114 &284059988267120435
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -696,11 +676,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 6141917507390475778}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8697da1b71a3ac943aa44bb8cc11f3f1, type: 3}
+  m_Script: {fileID: 11500000, guid: db4b78bef1fd2b847a6192bad4559542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wounds: {fileID: 1783559505960935868}
-  drawAreaParameters: {x: 465, y: 190}
+  drawAreaParameters: {x: 460, y: 190}
+  textures:
+  - {fileID: 2800000, guid: a949d9e69896fe947bcd13f5146417af, type: 3}
+  - {fileID: 2800000, guid: 1fca536f1a8dda2438cdc83c7ccfcdbf, type: 3}
+  - {fileID: 2800000, guid: cae3f2c00458626428be777a5cdb6afc, type: 3}
+  - {fileID: 2800000, guid: 38ece67a1a4df4149b85967332c424d9, type: 3}
+  - {fileID: 2800000, guid: 22beab18d923a074a9f42fd3f5c312a4, type: 3}
+  - {fileID: 2800000, guid: f8d44771bcb52f8439a5174f43ff523d, type: 3}
 --- !u!1 &6371072556559283672
 GameObject:
   m_ObjectHideFlags: 0
@@ -786,7 +772,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8845846981825271832}
   - component: {fileID: 3056626920761999311}
-  - component: {fileID: 3626404397477176604}
+  - component: {fileID: 6541219688665222675}
   m_Layer: 0
   m_Name: WoundArea
   m_TagString: Untagged
@@ -859,7 +845,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3626404397477176604
+--- !u!114 &6541219688665222675
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -868,11 +854,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 6530262477010536049}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8697da1b71a3ac943aa44bb8cc11f3f1, type: 3}
+  m_Script: {fileID: 11500000, guid: db4b78bef1fd2b847a6192bad4559542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wounds: {fileID: 1783559505960935868}
-  drawAreaParameters: {x: 465, y: 190}
+  drawAreaParameters: {x: 460, y: 190}
+  textures:
+  - {fileID: 2800000, guid: a949d9e69896fe947bcd13f5146417af, type: 3}
+  - {fileID: 2800000, guid: 1fca536f1a8dda2438cdc83c7ccfcdbf, type: 3}
+  - {fileID: 2800000, guid: cae3f2c00458626428be777a5cdb6afc, type: 3}
+  - {fileID: 2800000, guid: 38ece67a1a4df4149b85967332c424d9, type: 3}
+  - {fileID: 2800000, guid: 22beab18d923a074a9f42fd3f5c312a4, type: 3}
+  - {fileID: 2800000, guid: f8d44771bcb52f8439a5174f43ff523d, type: 3}
 --- !u!1 &8787007040340660984
 GameObject:
   m_ObjectHideFlags: 0

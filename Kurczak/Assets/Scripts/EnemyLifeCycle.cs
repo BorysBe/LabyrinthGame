@@ -23,19 +23,17 @@ public class EnemyLifeCycle : ObjectLifeCycle, IPlayable
         _healthbar.SetHealth(currentHealth, health);
         if (currentHealth <= 0)
         {
-            animator.SetBool("isDead", true);
+            Die();
         }
     }
 
     public override void Stop()
     {
-        BloodDropLifeCycle[] bloodDrops = transform.GetComponentsInChildren<BloodDropLifeCycle>();
+        BloodSpringLifeCycle[] bloodDrops = transform.GetComponentsInChildren<BloodSpringLifeCycle>();
         foreach (var b in bloodDrops)
         {
             b.Stop();
         }
-        GameObject score = GameObject.FindGameObjectWithTag("Score");
-        score.GetComponent<Score>().CountCurrentScore(scoreAdded);
         base.Stop();
     }
 
@@ -43,5 +41,27 @@ public class EnemyLifeCycle : ObjectLifeCycle, IPlayable
     {
         currentHealth = health;
         _healthbar.SetHealth(currentHealth, health);
+    }
+
+    private void AddScore()
+    {
+        GameObject score = GameObject.FindGameObjectWithTag("Score");
+        score.GetComponent<Score>().CountCurrentScore(scoreAdded);
+    }
+
+    private void ClearImages()
+    {
+        SpriteRendererDrawer[] images = transform.GetComponentsInChildren<SpriteRendererDrawer>();
+        foreach (var i in images)
+        {
+            i.ClearImage();
+        }
+    }
+
+    private void Die()
+    {
+        animator.SetBool("isDead", true);
+        AddScore();
+        ClearImages();
     }
 }

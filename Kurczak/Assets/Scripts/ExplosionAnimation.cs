@@ -7,7 +7,7 @@ public class ExplosionAnimation : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         var position = animator.GetComponent<CharacterStateAnimation>().ReturnPositionOfAnimation();
-        var explosion = EnemyFactory.Instance.Spawn("BloodyExplosion", position, null);
+        var explosion = EnemyFactory.Instance.Spawn(PrefabType.BloodyExplosion, position, null);
         explosion.Play();
     }
 

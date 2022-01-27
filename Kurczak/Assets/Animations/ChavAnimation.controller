@@ -369,7 +369,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70389e3618247854db720d2cbc735ac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chavCorpseFragments: {fileID: 7119012095797926595, guid: a0163722d31182247b3bae04c524385e, type: 3}
 --- !u!1102 &3899062862448220174
 AnimatorState:
   serializedVersion: 6

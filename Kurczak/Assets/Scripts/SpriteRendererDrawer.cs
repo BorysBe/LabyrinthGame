@@ -1,32 +1,35 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class ImageFactory: MonoBehaviour
+public class SpriteRendererDrawer: MonoBehaviour
 {
-    [SerializeField] RandomTextureFactory wounds;
+    TextureFactory textureFactory;
     SpriteRenderer renderer;
     [SerializeField] Vector2Int drawAreaParameters;
     Texture2D drawArea;
+    [SerializeField] Texture2D[] textures;
 
     void Start()
     {
+        textureFactory = new TextureFactory(textures);
         renderer = GetComponent<SpriteRenderer>();
         drawArea = new Texture2D(drawAreaParameters.x, drawAreaParameters.y);
-        renderer.sprite = CreateEmptySprite(drawArea);
+        renderer.sprite = textureFactory.CreateEmpty(drawArea);
     }
 
-    public  void SpriteDrawer(Vector3 lastTouchPoint)
+    public void DrawSprite(Vector3 lastTouchPoint)
     {
         Vector2 relativePosition = TranslateWordPositionToTexturePosition(lastTouchPoint);
-        var wound = wounds.CreateRandomTexture();
-        List<Color> colors = new List<Color>();
-        for (int idx = 0; idx < wound.width * wound.height; idx++)
-            colors.Add(new Color(0, 1, 0));
-
-        Color[] getPixels = wound.GetPixels(0, 0, wound.width, wound.height);
-        renderer.sprite.texture.SetPixels((int)relativePosition.x, (int)relativePosition.y, wound.width, wound.height, getPixels);
+        var sprite = textureFactory.CreateRandom();
+        Color[] getPixels = sprite.GetPixels(0, 0, sprite.width, sprite.height);
+        renderer.sprite.texture.SetPixels((int)relativePosition.x, (int)relativePosition.y, sprite.width, sprite.height, getPixels);
         renderer.sprite.texture.Apply();
+    }
+
+    public void ClearImage()
+    {
+        drawArea = new Texture2D(drawAreaParameters.x, drawAreaParameters.y);
+        renderer.sprite = textureFactory.CreateEmpty(drawArea);
     }
 
     private Vector2 TranslateWordPositionToTexturePosition(Vector2 clickPosition)
@@ -41,15 +44,4 @@ public class ImageFactory: MonoBehaviour
         return new Vector2(xPoint, yPoint);
     }
 
-    private Sprite CreateEmptySprite(Texture2D texture)
-    {
-        var sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.one * 0.5f);
-        List<Color> colors = new List<Color>();
-        for (int idx = 0; idx < texture.width * texture.height; idx++)
-            colors.Add(new Color(0, 0, 0, 0));
-        Color[] getPixels = colors.ToArray();
-        texture.SetPixels(0, 0, texture.width, texture.height, getPixels);
-        texture.Apply();
-        return sprite;
-    }
 }

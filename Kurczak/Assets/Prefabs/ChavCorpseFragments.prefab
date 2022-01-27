@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7119012095797926605}
   - component: {fileID: 7119012095797926604}
+  - component: {fileID: -3662052513439903856}
   m_Layer: 0
   m_Name: ChavCorpseFragments
   m_TagString: Untagged
@@ -43,12 +44,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627a0aa0bc0200240b80dd9464d4836d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _RemainsPrefab:
+  RemainsPrefab:
   - {fileID: 3371791599944445568, guid: 183a9d7f5e8e7cb48933b210e4e82d44, type: 3}
   - {fileID: 1560713629122022710, guid: 0e37bf7751588594fb6ecbfa6116e252, type: 3}
   - {fileID: 7485238750646892665, guid: 9252a6d3822ebba49951cda8228bb3c8, type: 3}
   numberOfRemains: 100
+  moveSpeed: 10
   xMinRange: -5
   xMaxRange: 5
   yMinRange: -5
   yMaxRange: -1
+--- !u!114 &-3662052513439903856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7119012095797926595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0713f48272ec167408411702cdac07a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -7,8 +7,8 @@ public class EnemyFactory : MonoBehaviour
     [SerializeField] Vector3 developerRoomPosition = new Vector3(0f, -100f, 0f);
     public static EnemyFactory Instance;
     public List<Pool> pools;
-    public Dictionary<string, Queue<GameObject>> poolDictionary;
-    public Dictionary<string, IPlayStrategy> strategies = new Dictionary<string, IPlayStrategy>();
+    public Dictionary<PrefabType, Queue<GameObject>> poolDictionary;
+    public Dictionary<PrefabType, IPlayStrategy> strategies = new Dictionary<PrefabType, IPlayStrategy>();
 
     void Awake()
     {
@@ -17,16 +17,15 @@ public class EnemyFactory : MonoBehaviour
 
     void Start()
     {
-        poolDictionary = new Dictionary<string, Queue<GameObject>>();
-        strategies.Add("Chav", new ChavStrategy());
-        strategies.Add("BloodyExplosion", new BloodyExplosionStrategy());
-        strategies.Add("ChavGrave", new ChavGraveStrategy());
-        strategies.Add("BloodDrop", new BloodDropStrategy());
+        poolDictionary = new Dictionary<PrefabType, Queue<GameObject>>();
+        strategies.Add(PrefabType.Chav, new ChavStrategy());
+        strategies.Add(PrefabType.BloodyExplosion, new BloodyExplosionStrategy());
+        strategies.Add(PrefabType.ChavGrave, new ChavGraveStrategy());
+        strategies.Add(PrefabType.BloodSpring, new BloodSpringStrategy());
+        strategies.Add(PrefabType.ChavCorpseFragments, new ChavCorpseFragmentsStrategy());
         foreach (Pool pool in pools)
         {
             var objectPool = new Queue<GameObject>();
-
-
 
             for (int idx = 0; idx < pool.size; idx++)
             {
@@ -35,25 +34,27 @@ public class EnemyFactory : MonoBehaviour
                 objectPool.Enqueue(obj);
 
                 if (ContainsPlayableChild<EnemyLifeCycle>(obj))
-                    SetFinishingInDeveloperRoom<EnemyLifeCycle>(obj, "Chav"); 
+                    SetFinishingInDeveloperRoom<EnemyLifeCycle>(obj, PrefabType.Chav); 
                 if (ContainsPlayableChild<BloodyExplosionLifeCycle>(obj))
-                    SetFinishingInDeveloperRoom<BloodyExplosionLifeCycle>(obj, "BloodyExplosion");
+                    SetFinishingInDeveloperRoom<BloodyExplosionLifeCycle>(obj, PrefabType.BloodyExplosion);
                 if (ContainsPlayableChild<GraveLifeCycle>(obj))
-                    SetFinishingInDeveloperRoom<GraveLifeCycle>(obj, "ChavGrave");
-                if (ContainsPlayableChild<BloodDropLifeCycle>(obj))
-                    SetFinishingInDeveloperRoom<BloodDropLifeCycle>(obj, "BloodDrop");
+                    SetFinishingInDeveloperRoom<GraveLifeCycle>(obj, PrefabType.ChavGrave);
+                if (ContainsPlayableChild<BloodSpringLifeCycle>(obj))
+                    SetFinishingInDeveloperRoom<BloodSpringLifeCycle>(obj, PrefabType.BloodSpring);
+                if (ContainsPlayableChild<ChavCorpseFragmentsLifeCycle>(obj))
+                    SetFinishingInDeveloperRoom<ChavCorpseFragmentsLifeCycle>(obj, PrefabType.ChavCorpseFragments);
             }
 
             poolDictionary.Add(pool.key, objectPool);
         }
     }
 
-    public IPlayableGameObject SpawnAtDeveloperRoom(string spawnedEnemy, Transform related)
+    public IPlayableGameObject SpawnAtDeveloperRoom(PrefabType spawnedEnemy, Transform related)
     {
         return Spawn(spawnedEnemy, GetDeveloperRoomPosition(), related);
     }
 
-    public IPlayableGameObject Spawn(string key, Vector3 position, Transform related)
+    public IPlayableGameObject Spawn(PrefabType key, Vector3 position, Transform related)
     {
         if (!poolDictionary.ContainsKey(key))
         {
@@ -65,7 +66,7 @@ public class EnemyFactory : MonoBehaviour
         return new PlayableGameObject(objectToSpawn, strategies[key], related);
     }
 
-    public GameObject GetFromPool(string key)
+    public GameObject GetFromPool(PrefabType key)
     {
         if (!poolDictionary.ContainsKey(key))
         {
@@ -74,7 +75,7 @@ public class EnemyFactory : MonoBehaviour
         return poolDictionary[key].Dequeue();
     }
 
-    private void SetFinishingInDeveloperRoom<T>(GameObject obj, string key) where T : IPlayable
+    private void SetFinishingInDeveloperRoom<T>(GameObject obj, PrefabType key) where T : IPlayable
     {
         var animation = obj.GetComponent<T>();
         {
@@ -99,7 +100,7 @@ public class EnemyFactory : MonoBehaviour
     [System.Serializable]
     public class Pool
     {
-        public string key;
+        public PrefabType key;
         public GameObject prefab;
         public int size;
     }

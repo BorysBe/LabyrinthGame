@@ -18,11 +18,10 @@ public class ChavBodyHitbox : Toucher
     {
         FindObjectOfType<Audio>().Play("PlayerShoot");
         animations = transform.root.GetComponent<CharacterStateAnimation>().attachedAnimations;
-        enemyHealth.Damage(hitDamage);
-        woundArea.GetComponent<ImageFactory>().SpriteDrawer(this.LastMousePosition);
-        var blood = EnemyFactory.Instance.Spawn("BloodDrop", this.LastTouchPoint, transform.root);
- //       blood.GameObject.transform.SetParent(transform.root);
+        woundArea.GetComponent<SpriteRendererDrawer>().DrawSprite(this.LastMousePosition);
+        var blood = EnemyFactory.Instance.Spawn(PrefabType.BloodSpring, this.LastTouchPoint, transform.root);
         blood.Play();
+        enemyHealth.Damage(hitDamage);
     }
 }
 

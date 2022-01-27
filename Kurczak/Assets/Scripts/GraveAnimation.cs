@@ -10,7 +10,7 @@ public class GraveAnimation : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         var position = animator.GetComponent<CharacterStateAnimation>().ReturnPositionOfAnimation();
-        var grave = EnemyFactory.Instance.Spawn("ChavGrave", position, null);
+        var grave = EnemyFactory.Instance.Spawn(PrefabType.ChavGrave, position, null);
         grave.Play();
     }
 

@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
-internal class BloodDropStrategy : IPlayStrategy
+internal class BloodSpringStrategy : IPlayStrategy
 {
     public void Execute(GameObject objectToSpawn, Transform related)
     {
         objectToSpawn.GetComponent<OneTimeAnimation>().Play();
-        objectToSpawn.GetComponent<BloodDropLifeCycle>().Play();
+        objectToSpawn.GetComponent<BloodSpringLifeCycle>().Play();
         objectToSpawn.transform.SetParent(related.transform);
     }
 }

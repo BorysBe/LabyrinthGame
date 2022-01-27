@@ -4,7 +4,7 @@ public class WaveActivator : MonoBehaviour
 {
     [SerializeField] int timeToActivateWave = 100;
     [SerializeField] int timetoRectivateTimer = 5000;
-    [SerializeField] string spawnedEnemy;
+    [SerializeField] PrefabType spawnedEnemy;
     [SerializeField] string[] attachedAnimationsNames;
     private bool startTrigger = true;
 

@@ -3,14 +3,15 @@ using UnityEngine;
 
 public class ChavDie : StateMachineBehaviour
 {
-    public GameObject _chavCorpseFragments;
     GameObject chavSpawn;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.GetComponent<CharacterStateAnimation>().SetPositionOfAnimation(animator.transform.position);
-        Instantiate(_chavCorpseFragments, animator.transform.position, Quaternion.identity);
+        var position = animator.GetComponent<CharacterStateAnimation>().ReturnPositionOfAnimation();
+        var bodyFragments = EnemyFactory.Instance.Spawn(PrefabType.ChavCorpseFragments, position, null);
+        bodyFragments.Play();
         animator.GetComponent<CharacterStateAnimation>().move.Stop();
         animator.GetComponent<MoveEnemyBehaviour>().Stop();
         animator.SetBool("ReturnToIdleState", true);
