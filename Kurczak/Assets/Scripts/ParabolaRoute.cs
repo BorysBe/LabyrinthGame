@@ -1,17 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParabolaRout : MonoBehaviour
+public class ParabolaRoute : MonoBehaviour, IPlayable
 {
-    public float Speed = 1;
+    public float Speed = 8;
     [SerializeField] public List<Vector3> ParabolaCheckpoints = new List<Vector3>();
-    public bool Autostart = true;
     public bool Animation = true;
     internal bool nextParbola = false;
     protected float animationTime = float.MaxValue;
     protected ParabolaFly gizmo;
     protected ParabolaFly parabolaFly;
+
+    public System.Action OnFinish { get; set; }
+    private Action MoveAction { get; set; }
 
     void OnDrawGizmos()
     {
@@ -39,18 +42,52 @@ public class ParabolaRout : MonoBehaviour
 
     void Start()
     {
-        parabolaFly = new ParabolaFly(ParabolaCheckpoints);
-        if (Autostart)
-        {
-            RefreshTransforms(Speed);
-            FollowParabola();
-        }
+        MoveAction = NullObjectMove;
     }
 
     void Update()
     {
-        nextParbola = false;
+        MoveAction.Invoke();
+    }
 
+
+    public void Play()
+    {
+        parabolaFly = new ParabolaFly(ParabolaCheckpoints);
+        RefreshTransforms(Speed);
+        FollowParabola();
+        MoveAction = Move;
+    }
+
+    public void Stop()
+    {
+        MoveAction = NullObjectMove;
+        ResetCheckpoints();
+        OnFinish?.Invoke();
+    }
+
+    public void AddChceckpoints(Vector3 pos1, Vector3 pos2, Vector3 pos3)
+    {
+        ParabolaCheckpoints.Add(pos1);
+        ParabolaCheckpoints.Add(pos2);
+        ParabolaCheckpoints.Add(pos3);
+    }
+
+    private void ResetCheckpoints()
+    {
+        ParabolaCheckpoints.Clear();
+    }
+
+    private void FollowParabola()
+    {
+        RefreshTransforms(Speed);
+        animationTime = 0f;
+        transform.position = parabolaFly.Points[0];
+        Animation = true;
+    }
+
+    private void Move()
+    {
         if (Animation && parabolaFly != null && animationTime < parabolaFly.GetDuration())
         {
             int parabolaIndexBefore;
@@ -69,51 +106,27 @@ public class ParabolaRout : MonoBehaviour
         }
     }
 
-    public void FollowParabola()
-    {
-        RefreshTransforms(Speed);
-        animationTime = 0f;
-        transform.position = parabolaFly.Points[0];
-        Animation = true;
-    }
-
-    public Vector3 getHighestPoint(int parabolaIndex)
-    {
-        return parabolaFly.getHighestPoint(parabolaIndex);
-    }
-
     public List<Vector3> getPoints()
     {
         return parabolaFly.Points;
     }
 
-    public Vector3 GetPositionAtTime(float time)
-    {
-        return parabolaFly.GetPositionAtTime(time);
-    }
-
-    public float GetDuration()
-    {
-        return parabolaFly.GetDuration();
-    }
-    public void StopFollow()
-    {
-        animationTime = float.MaxValue;
-    }
     public void RefreshTransforms(float speed)
     {
         parabolaFly.RefreshTransforms(speed);
     }
 
-    public static float DistanceToLine(Ray ray, Vector3 point)
-    {
-        return Vector3.Cross(ray.direction, point - ray.origin).magnitude;
-    }
 
     public static Vector3 ClosestPointInLine(Ray ray, Vector3 point)
     {
         return ray.origin + ray.direction * Vector3.Dot(ray.direction, point - ray.origin);
     }
+
+    private void NullObjectMove()
+    {
+        // intentionally left blank
+    }
+
 
     public class ParabolaFly
     {
@@ -128,10 +141,6 @@ public class ParabolaRout : MonoBehaviour
             {
                 Points.Add(ParabolaCheckPoints[i]);
             }
-
-            if ((Points.Count - 1) % 2 != 0)
-                throw new UnityException("ParabolaRoot needs odd number of points");
-
             if (parabolas == null || parabolas.Length < (Points.Count - 1) / 2)
             {
                 parabolas = new Parabola3D[(Points.Count - 1) / 2];

@@ -1,24 +1,23 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class RemainsSpawner : MonoBehaviour, IPlayable
 {
     public System.Action OnFinish { get; set; }
-    private Action MoveAction { get; set; }
     public GameObject[] RemainsPrefab;
     [SerializeField] int numberOfRemains = 100;
     [SerializeField] float moveSpeed = 2f;
     List<GameObject> remainsToSpawn = new List<GameObject>();
     List<GameObject> spawnedRemains = new List<GameObject>();
-    [SerializeField][Range(-5f, 0f)] float xMinRange = -5f;
-    [SerializeField] [Range(0f, -5f)] float xMaxRange = 5f;
+    [SerializeField][Range(-10f, 0f)] float xMinRange = -5f;
+    [SerializeField] [Range(0f, 10f)] float xMaxRange = 5f;
     [SerializeField] [Range(-5f, -2f)] float yMinRange = -5f;
     [SerializeField] [Range(-2f, 0f)] float yMaxRange = -1f;
     GameObject fragment;
     List<Vector3> finalCoordinates = new List<Vector3>();
-    private int timeToRemovefragments = 900000;
+    List<Vector3> checkpoints = new List<Vector3>();
+    private int timeToRemovefragments = 1000;
     float Animation;
 
     void Start()
@@ -28,24 +27,19 @@ public class RemainsSpawner : MonoBehaviour, IPlayable
         {
             remainsToSpawn.Add(RemainsPrefab[UnityEngine.Random.Range(0, RemainsPrefab.Length)]);
             fragment = Instantiate(remainsToSpawn[i], this.transform.position, Quaternion.identity);
-            fragment.AddComponent<ParabolaRout>();
+            fragment.AddComponent<ParabolaRoute>();
             fragment.transform.SetParent(this.GetComponentInParent<Transform>());
             spawnedRemains.Add(fragment);
         }
-        MoveAction = NullObjectMove;
         Animation += Time.deltaTime;
         Animation = Animation % 5f;
-    }
-
-    void Update()
-    {
-        MoveAction.Invoke();
     }
 
     public void Play()
     {
         SetFinalCoordinates();
-        MoveAction = Move;
+        SetCheckpoints();
+        Move();
     }
 
     private void SetFinalCoordinates()
@@ -54,15 +48,22 @@ public class RemainsSpawner : MonoBehaviour, IPlayable
         {
             finalCoordinates.Add(new Vector3(UnityEngine.Random.Range(xMinRange, xMaxRange) + transform.position.x, UnityEngine.Random.Range(yMinRange, yMaxRange), 0)) ;
         }
+    }
 
+    private void SetCheckpoints()
+    {
+        for (int i = 0; i < numberOfRemains; i++)
+        {
+            checkpoints.Add(new Vector3(UnityEngine.Random.Range(transform.position.x, finalCoordinates[i].x), UnityEngine.Random.Range(finalCoordinates[i].y, transform.position.y), 0));
+        }
     }
 
     public void Stop()
     {
-        MoveAction = NullObjectMove;
         for (int i = 0; i < numberOfRemains; i++)
         {
             spawnedRemains[i].transform.position = transform.position;
+            spawnedRemains[i].GetComponent<ParabolaRoute>().Stop();
         }
         OnFinish?.Invoke();
     }
@@ -79,14 +80,10 @@ public class RemainsSpawner : MonoBehaviour, IPlayable
         var movementThisFrame = moveSpeed * Time.deltaTime;
         for (int i = 0; i < numberOfRemains; i++)
         {
-
-            spawnedRemains[i].transform.position = MathParabola.Parabola(spawnedRemains[i].transform.position, finalCoordinates[i], 1f, Animation / 5f);
-            //spawnedRemains[i].transform.position = Vector2.MoveTowards(spawnedRemains[i].transform.position, finalCoordinates[i], movementThisFrame);
+            var rout = spawnedRemains[i].GetComponent<ParabolaRoute>();
+            rout.AddChceckpoints(spawnedRemains[i].transform.position, checkpoints[i], finalCoordinates[i]);
+            rout.Play();
         }
     }
 
-    private void NullObjectMove()
-    {
-        // intentionally left blank
-    }
 }

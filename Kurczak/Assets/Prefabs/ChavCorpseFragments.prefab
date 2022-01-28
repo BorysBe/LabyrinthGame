@@ -48,7 +48,7 @@ MonoBehaviour:
   - {fileID: 3371791599944445568, guid: 183a9d7f5e8e7cb48933b210e4e82d44, type: 3}
   - {fileID: 1560713629122022710, guid: 0e37bf7751588594fb6ecbfa6116e252, type: 3}
   - {fileID: 7485238750646892665, guid: 9252a6d3822ebba49951cda8228bb3c8, type: 3}
-  numberOfRemains: 100
+  numberOfRemains: 1
   moveSpeed: 1
   xMinRange: -5
   xMaxRange: 5
