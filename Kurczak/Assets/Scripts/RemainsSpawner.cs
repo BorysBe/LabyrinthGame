@@ -18,7 +18,8 @@ public class RemainsSpawner : MonoBehaviour, IPlayable
     [SerializeField] [Range(-2f, 0f)] float yMaxRange = -1f;
     GameObject fragment;
     List<Vector3> finalCoordinates = new List<Vector3>();
-    private int timeToRemovefragments = 1000;
+    private int timeToRemovefragments = 900000;
+    float Animation;
 
     void Start()
 
@@ -27,10 +28,13 @@ public class RemainsSpawner : MonoBehaviour, IPlayable
         {
             remainsToSpawn.Add(RemainsPrefab[UnityEngine.Random.Range(0, RemainsPrefab.Length)]);
             fragment = Instantiate(remainsToSpawn[i], this.transform.position, Quaternion.identity);
+            fragment.AddComponent<ParabolaRout>();
             fragment.transform.SetParent(this.GetComponentInParent<Transform>());
             spawnedRemains.Add(fragment);
         }
         MoveAction = NullObjectMove;
+        Animation += Time.deltaTime;
+        Animation = Animation % 5f;
     }
 
     void Update()
@@ -75,7 +79,9 @@ public class RemainsSpawner : MonoBehaviour, IPlayable
         var movementThisFrame = moveSpeed * Time.deltaTime;
         for (int i = 0; i < numberOfRemains; i++)
         {
-            spawnedRemains[i].transform.position = Vector2.MoveTowards(spawnedRemains[i].transform.position, finalCoordinates[i], movementThisFrame);
+
+            spawnedRemains[i].transform.position = MathParabola.Parabola(spawnedRemains[i].transform.position, finalCoordinates[i], 1f, Animation / 5f);
+            //spawnedRemains[i].transform.position = Vector2.MoveTowards(spawnedRemains[i].transform.position, finalCoordinates[i], movementThisFrame);
         }
     }
 

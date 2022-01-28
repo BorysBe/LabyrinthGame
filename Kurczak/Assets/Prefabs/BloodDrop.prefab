@@ -420,7 +420,7 @@ GameObject:
   m_Component:
   - component: {fileID: 383937777961273692}
   - component: {fileID: 6533054585555136016}
-  - component: {fileID: 1602914447811156}
+  - component: {fileID: 1366571480302337951}
   m_Layer: 0
   m_Name: BloodDrop
   m_TagString: Untagged
@@ -467,7 +467,7 @@ MonoBehaviour:
   - {fileID: 2456844426244198276}
   playOnAwake: 0
   timePerFrameMs: 50
---- !u!114 &1602914447811156
+--- !u!114 &1366571480302337951
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -49,7 +49,7 @@ MonoBehaviour:
   - {fileID: 1560713629122022710, guid: 0e37bf7751588594fb6ecbfa6116e252, type: 3}
   - {fileID: 7485238750646892665, guid: 9252a6d3822ebba49951cda8228bb3c8, type: 3}
   numberOfRemains: 100
-  moveSpeed: 10
+  moveSpeed: 1
   xMinRange: -5
   xMaxRange: 5
   yMinRange: -5
