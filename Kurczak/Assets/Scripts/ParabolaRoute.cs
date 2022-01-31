@@ -1,44 +1,18 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParabolaRoute : MonoBehaviour, IPlayable
+public class ParabolaRoute : MonoBehaviour, IPlayable, ISplashStrategy
 {
-    public float Speed = 8;
+    float speed = 8;
     [SerializeField] public List<Vector3> ParabolaCheckpoints = new List<Vector3>();
     public bool Animation = true;
     internal bool nextParbola = false;
     protected float animationTime = float.MaxValue;
-    protected ParabolaFly gizmo;
     protected ParabolaFly parabolaFly;
 
     public System.Action OnFinish { get; set; }
     private Action MoveAction { get; set; }
-
-    void OnDrawGizmos()
-    {
-        if (gizmo == null)
-        {
-            gizmo = new ParabolaFly(ParabolaCheckpoints);
-        }
-        gizmo.RefreshTransforms(1f);
-        if ((gizmo.Points.Count - 1) % 2 != 0)
-            return;
-
-        int accur = 50;
-        Vector3 prevPos = ParabolaCheckpoints[0];
-        for (int c = 1; c <= accur; c++)
-        {
-            float currTime = c * gizmo.GetDuration() / accur;
-            Vector3 currPos = gizmo.GetPositionAtTime(currTime);
-            float mag = (currPos - prevPos).magnitude * 2;
-            Gizmos.color = new Color(mag, 0, 0, 1);
-            Gizmos.DrawLine(prevPos, currPos);
-            Gizmos.DrawSphere(currPos, 0.01f);
-            prevPos = currPos;
-        }
-    }
 
     void Start()
     {
@@ -50,12 +24,25 @@ public class ParabolaRoute : MonoBehaviour, IPlayable
         MoveAction.Invoke();
     }
 
+    public void Splash(GameObject gameObject, float splashSpeed, Vector3 pos1, Vector3 pos2, Vector3 pos3)
+    {
+        var rout = gameObject.GetComponent<ParabolaRoute>();
+        rout.AddCheckpoints(pos1, pos2, pos3);
+        speed = splashSpeed;
+        rout.Play();
+    }
+
+    public void SplashStop(GameObject gameObject)
+    {
+        var rout = gameObject.GetComponent<ParabolaRoute>();
+        rout.Stop();
+    }
 
     public void Play()
     {
         parabolaFly = new ParabolaFly(ParabolaCheckpoints);
-        RefreshTransforms(Speed);
-        FollowParabola();
+        RefreshTransforms(speed);
+        FollowParabola(speed);
         MoveAction = Move;
     }
 
@@ -66,7 +53,7 @@ public class ParabolaRoute : MonoBehaviour, IPlayable
         OnFinish?.Invoke();
     }
 
-    public void AddChceckpoints(Vector3 pos1, Vector3 pos2, Vector3 pos3)
+    public void AddCheckpoints(Vector3 pos1, Vector3 pos2, Vector3 pos3)
     {
         ParabolaCheckpoints.Add(pos1);
         ParabolaCheckpoints.Add(pos2);
@@ -78,9 +65,9 @@ public class ParabolaRoute : MonoBehaviour, IPlayable
         ParabolaCheckpoints.Clear();
     }
 
-    private void FollowParabola()
+    private void FollowParabola(float speed)
     {
-        RefreshTransforms(Speed);
+        RefreshTransforms(speed);
         animationTime = 0f;
         transform.position = parabolaFly.Points[0];
         Animation = true;
@@ -106,11 +93,6 @@ public class ParabolaRoute : MonoBehaviour, IPlayable
         }
     }
 
-    public List<Vector3> getPoints()
-    {
-        return parabolaFly.Points;
-    }
-
     public void RefreshTransforms(float speed)
     {
         parabolaFly.RefreshTransforms(speed);
@@ -126,7 +108,6 @@ public class ParabolaRoute : MonoBehaviour, IPlayable
     {
         // intentionally left blank
     }
-
 
     public class ParabolaFly
     {
@@ -179,11 +160,6 @@ public class ParabolaRoute : MonoBehaviour, IPlayable
             return completeDuration;
         }
 
-        public Vector3 getHighestPoint(int parabolaIndex)
-        {
-            return parabolas[parabolaIndex].getHighestPoint();
-        }
-
         public void RefreshTransforms(float speed)
         {
             if (speed <= 0f)
@@ -222,32 +198,12 @@ public class ParabolaRoute : MonoBehaviour, IPlayable
         {
         }
 
-        public Parabola3D(Vector3 A, Vector3 B, Vector3 C)
-        {
-            Set(A, B, C);
-        }
-
         public void Set(Vector3 A, Vector3 B, Vector3 C)
         {
             this.A = A;
             this.B = B;
             this.C = C;
             refreshCurve();
-        }
-
-        public Vector3 getHighestPoint()
-        {
-            var d = (C.y - A.y) / parabola2D.Length;
-            var e = A.y - C.y;
-
-            var parabolaCompl = new Parabola2D(parabola2D.a, parabola2D.b + d, parabola2D.c + e, parabola2D.Length);
-
-            Vector3 E = new Vector3();
-            E.y = parabolaCompl.E.y;
-            E.x = A.x + (C.x - A.x) * (parabolaCompl.E.x / parabolaCompl.Length);
-            E.z = A.z + (C.z - A.z) * (parabolaCompl.E.x / parabolaCompl.Length);
-
-            return E;
         }
 
         public Vector3 GetPositionAtLength(float length)
@@ -286,7 +242,6 @@ public class ParabolaRoute : MonoBehaviour, IPlayable
                 refreshCurveClose();
             }
         }
-
 
         private void refreshCurveNormal()
         {
@@ -338,15 +293,6 @@ public class ParabolaRoute : MonoBehaviour, IPlayable
         public Vector2 E { get; private set; }
         public float Length { get; private set; }
 
-        public Parabola2D(float a, float b, float c, float length)
-        {
-            this.a = a;
-            this.b = b;
-            this.c = c;
-
-            setMetadata();
-            this.Length = length;
-        }
 
         public Parabola2D(Vector2 A, Vector2 B, Vector2 C)
         {

@@ -1,38 +1,40 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class RemainsSpawner : MonoBehaviour, IPlayable
 {
     public System.Action OnFinish { get; set; }
+    public SplashType splashType;
+    private ISplashStrategy splashStrategy;
     public GameObject[] RemainsPrefab;
     [SerializeField] int numberOfRemains = 100;
-    [SerializeField] float moveSpeed = 2f;
+    [SerializeField] float speed = 10f;
     List<GameObject> remainsToSpawn = new List<GameObject>();
     List<GameObject> spawnedRemains = new List<GameObject>();
-    [SerializeField][Range(-10f, 0f)] float xMinRange = -5f;
+    [SerializeField] [Range(-10f, 0f)] float xMinRange = -5f;
     [SerializeField] [Range(0f, 10f)] float xMaxRange = 5f;
     [SerializeField] [Range(-5f, -2f)] float yMinRange = -5f;
     [SerializeField] [Range(-2f, 0f)] float yMaxRange = -1f;
     GameObject fragment;
     List<Vector3> finalCoordinates = new List<Vector3>();
     List<Vector3> checkpoints = new List<Vector3>();
-    private int timeToRemovefragments = 1000;
+    private int timeToRemovefragments = 100;
     float Animation;
 
     void Start()
 
     {
-        for (int i = 0; i < numberOfRemains; i ++)
+        for (int i = 0; i < numberOfRemains; i++)
         {
             remainsToSpawn.Add(RemainsPrefab[UnityEngine.Random.Range(0, RemainsPrefab.Length)]);
             fragment = Instantiate(remainsToSpawn[i], this.transform.position, Quaternion.identity);
-            fragment.AddComponent<ParabolaRoute>();
+            SetStrategy(fragment);
             fragment.transform.SetParent(this.GetComponentInParent<Transform>());
             spawnedRemains.Add(fragment);
         }
         Animation += Time.deltaTime;
         Animation = Animation % 5f;
+
     }
 
     public void Play()
@@ -46,7 +48,7 @@ public class RemainsSpawner : MonoBehaviour, IPlayable
     {
         for (int i = 0; i < numberOfRemains; i++)
         {
-            finalCoordinates.Add(new Vector3(UnityEngine.Random.Range(xMinRange, xMaxRange) + transform.position.x, UnityEngine.Random.Range(yMinRange, yMaxRange), 0)) ;
+            finalCoordinates.Add(new Vector3(UnityEngine.Random.Range(xMinRange, xMaxRange) + transform.position.x, UnityEngine.Random.Range(yMinRange, yMaxRange) + transform.position.y, 0));
         }
     }
 
@@ -63,7 +65,7 @@ public class RemainsSpawner : MonoBehaviour, IPlayable
         for (int i = 0; i < numberOfRemains; i++)
         {
             spawnedRemains[i].transform.position = transform.position;
-            spawnedRemains[i].GetComponent<ParabolaRoute>().Stop();
+            splashStrategy?.SplashStop(spawnedRemains[i]);
         }
         OnFinish?.Invoke();
     }
@@ -77,13 +79,20 @@ public class RemainsSpawner : MonoBehaviour, IPlayable
             Stop();
         };
         coroutineTimer.Play();
-        var movementThisFrame = moveSpeed * Time.deltaTime;
         for (int i = 0; i < numberOfRemains; i++)
         {
-            var rout = spawnedRemains[i].GetComponent<ParabolaRoute>();
-            rout.AddChceckpoints(spawnedRemains[i].transform.position, checkpoints[i], finalCoordinates[i]);
-            rout.Play();
+            splashStrategy?.Splash(spawnedRemains[i], speed, spawnedRemains[i].transform.position, checkpoints[i], finalCoordinates[i]);            
         }
     }
-
+    private void SetStrategy(GameObject gameObject)
+    {
+        switch (splashType)
+        {
+            case SplashType.Parabola:
+                splashStrategy = gameObject.AddComponent<ParabolaRoute>();
+                break;
+            default:
+                break;
+        }
+    }
 }
