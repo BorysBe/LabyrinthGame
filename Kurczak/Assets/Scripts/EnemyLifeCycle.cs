@@ -15,6 +15,8 @@ public class EnemyLifeCycle : ObjectLifeCycle, IPlayable
     private void Start()
     {
         animator = this.GetComponent<Animator>();
+        currentHealth = health;
+        _healthbar.SetHealth(currentHealth, health);
     }
 
     public void Damage(int value)
@@ -39,8 +41,7 @@ public class EnemyLifeCycle : ObjectLifeCycle, IPlayable
 
     public override void Play()
     {
-        currentHealth = health;
-        _healthbar.SetHealth(currentHealth, health);
+        //currentHealth = health;
     }
 
     private void AddScore()
@@ -63,5 +64,7 @@ public class EnemyLifeCycle : ObjectLifeCycle, IPlayable
         animator.SetBool("isDead", true);
         AddScore();
         ClearImages();
+        currentHealth = health;
+        _healthbar.SetHealth(currentHealth, health);
     }
 }

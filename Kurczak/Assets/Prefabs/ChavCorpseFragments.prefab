@@ -45,11 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splashType: 0
-  RemainsPrefab:
-  - {fileID: 3371791599944445568, guid: 183a9d7f5e8e7cb48933b210e4e82d44, type: 3}
-  - {fileID: 1560713629122022710, guid: 0e37bf7751588594fb6ecbfa6116e252, type: 3}
-  - {fileID: 7485238750646892665, guid: 9252a6d3822ebba49951cda8228bb3c8, type: 3}
-  numberOfRemains: 100
+  textures:
+  - {fileID: 2800000, guid: efd66dc63b396f249a0eaffd5b1b2ab8, type: 3}
+  - {fileID: 2800000, guid: e632f69cae932e44f9067ce9d1241c7c, type: 3}
+  - {fileID: 2800000, guid: 051a888e5cc28684493abfe7cd6b9e86, type: 3}
+  numberOfRemains: 1
   speed: 10
   xMinRange: -5
   xMaxRange: 5

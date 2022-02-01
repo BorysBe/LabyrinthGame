@@ -7,6 +7,9 @@ public class MoveEnemyBehaviour : MonoBehaviour, IPlayable
 {
     [SerializeField] float moveSpeed = 2f;
     [SerializeField] GameObject enemyPath;
+    [SerializeField] GameObject headHitbox;
+    [SerializeField] GameObject bodyHitbox;
+    [SerializeField] GameObject hitboxCanvas;
     private Vector3 deafaultPosition;
 
     private Action MoveAction { get; set; }
@@ -14,6 +17,7 @@ public class MoveEnemyBehaviour : MonoBehaviour, IPlayable
 
     List<Transform> waypoints;
     int waypointIndex = 0;
+    bool reverseMovement = false;
 
     void Start()
     {
@@ -81,8 +85,10 @@ public class MoveEnemyBehaviour : MonoBehaviour, IPlayable
         {
             var targetPosition = waypoints[waypointIndex].transform.position;
             this.transform.position = targetPosition;
+            reverseMovement = false;
+            transform.rotation = new Quaternion(0, 0, 0, 0);
         }
-        if (waypointIndex <= waypoints.Count - 1)
+        if (waypointIndex <= waypoints.Count - 1 && !reverseMovement)
         {
             var targetPosition = waypoints[waypointIndex].transform.position;
             var movementThisFrame = moveSpeed * Time.deltaTime;
@@ -91,13 +97,24 @@ public class MoveEnemyBehaviour : MonoBehaviour, IPlayable
             if (transform.position == targetPosition)
             {
                 waypointIndex++;
+                if (waypointIndex == waypoints.Count)
+                {
+                    reverseMovement = true;
+                    transform.Rotate(0, 180, 0);
+                }
             }
         }
-        else
-        {
-            this.GetComponent<Animator>().SetBool("ReturnToIdleState", true);
-            Stop();
-        }
 
+        if (waypointIndex >= 0 && reverseMovement)
+        {
+            var targetPosition = waypoints[waypointIndex - 1].transform.position;
+            var movementThisFrame = moveSpeed * Time.deltaTime;
+            this.transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementThisFrame);
+
+            if (transform.position == targetPosition)
+            {
+                waypointIndex--;
+            }
+        }
     }
 }

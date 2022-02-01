@@ -30,4 +30,16 @@ public class TextureFactory
     {
         return Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.one * 0.5f);
     }
+
+    private Sprite CreateSpriteFromTexture(Texture2D texture)
+    {
+        var sprite = CreateSprite(texture);
+        List<Color> colors = new List<Color>();
+        for (int idx = 0; idx < texture.width * texture.height; idx++)
+            colors.Add(new Color(0, 0, 0, 0));
+        Color[] getPixels = colors.ToArray();
+        texture.SetPixels(0, 0, texture.width, texture.height, getPixels);
+        texture.Apply();
+        return sprite;
+    }
 }

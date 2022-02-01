@@ -26,6 +26,15 @@ public class SpriteRendererDrawer: MonoBehaviour
         renderer.sprite.texture.Apply();
     }
 
+    public void DrawSpriteWithDefiniedSprite(Vector3 lastTouchPoint, Texture2D texture)
+    {
+        Vector2 relativePosition = TranslateWordPositionToTexturePosition(lastTouchPoint);
+        var sprite = texture;
+        Color[] getPixels = sprite.GetPixels(0, 0, sprite.width, sprite.height);
+        renderer.sprite.texture.SetPixels((int)relativePosition.x, (int)relativePosition.y, sprite.width, sprite.height, getPixels);
+        renderer.sprite.texture.Apply();
+    }
+
     public void ClearImage()
     {
         drawArea = new Texture2D(drawAreaParameters.x, drawAreaParameters.y);

@@ -6,9 +6,11 @@ public class RemainsSpawner : MonoBehaviour, IPlayable
     public System.Action OnFinish { get; set; }
     public SplashType splashType;
     private ISplashStrategy splashStrategy;
-    public GameObject[] RemainsPrefab;
+    public Texture2D[] textures;
+    //public GameObject[] RemainsPrefab;
     [SerializeField] int numberOfRemains = 100;
     [SerializeField] float speed = 10f;
+    List<Texture2D> listOfUsedTextures = new List<Texture2D>();
     List<GameObject> remainsToSpawn = new List<GameObject>();
     List<GameObject> spawnedRemains = new List<GameObject>();
     [SerializeField] [Range(-10f, 0f)] float xMinRange = -5f;
@@ -18,7 +20,7 @@ public class RemainsSpawner : MonoBehaviour, IPlayable
     GameObject fragment;
     List<Vector3> finalCoordinates = new List<Vector3>();
     List<Vector3> checkpoints = new List<Vector3>();
-    private int timeToRemovefragments = 100;
+    private int timeToRemovefragments = 1000;
     float Animation;
 
     void Start()
@@ -26,10 +28,15 @@ public class RemainsSpawner : MonoBehaviour, IPlayable
     {
         for (int i = 0; i < numberOfRemains; i++)
         {
-            remainsToSpawn.Add(RemainsPrefab[UnityEngine.Random.Range(0, RemainsPrefab.Length)]);
-            fragment = Instantiate(remainsToSpawn[i], this.transform.position, Quaternion.identity);
+            //remainsToSpawn.Add(RemainsPrefab[UnityEngine.Random.Range(0, RemainsPrefab.Length)]);
+            fragment = Instantiate(new GameObject("Object"), this.transform.position, Quaternion.identity);
+            remainsToSpawn.Add(fragment);
+            remainsToSpawn[i].AddComponent<SpriteRenderer>();
+            listOfUsedTextures.Add(textures[UnityEngine.Random.Range(0, textures.Length - 1)]);
+            remainsToSpawn[i].GetComponent<SpriteRenderer>().sprite = Sprite.Create(listOfUsedTextures[i], new Rect(0.0f, 0.0f, listOfUsedTextures[i].width, listOfUsedTextures[i].height), new Vector2(0.5f, 0.5f), 100.0f);
             SetStrategy(fragment);
             fragment.transform.SetParent(this.GetComponentInParent<Transform>());
+            //SetStrategy(remainsToSpawn[i]);
             spawnedRemains.Add(fragment);
         }
         Animation += Time.deltaTime;
@@ -62,8 +69,12 @@ public class RemainsSpawner : MonoBehaviour, IPlayable
 
     public void Stop()
     {
+        var cam = Camera.main;
+        var terrain = GameObject.FindGameObjectWithTag("Terrain").GetComponentInChildren<SpriteRendererDrawer>();
         for (int i = 0; i < numberOfRemains; i++)
         {
+            var position = cam.ScreenToWorldPoint(new Vector3(spawnedRemains[i].transform.position.x, spawnedRemains[i].transform.position.y, cam.nearClipPlane));
+            terrain.DrawSpriteWithDefiniedSprite(position, listOfUsedTextures[i]);
             spawnedRemains[i].transform.position = transform.position;
             splashStrategy?.SplashStop(spawnedRemains[i]);
         }
