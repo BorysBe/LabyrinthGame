@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,15 +29,13 @@ public class RemainsSpawner : MonoBehaviour, IPlayable
     {
         for (int i = 0; i < numberOfRemains; i++)
         {
-            //remainsToSpawn.Add(RemainsPrefab[UnityEngine.Random.Range(0, RemainsPrefab.Length)]);
             fragment = Instantiate(new GameObject("Object"), this.transform.position, Quaternion.identity);
             remainsToSpawn.Add(fragment);
             remainsToSpawn[i].AddComponent<SpriteRenderer>();
-            listOfUsedTextures.Add(textures[UnityEngine.Random.Range(0, textures.Length - 1)]);
+            listOfUsedTextures.Add(textures[UnityEngine.Random.Range(0, textures.Length)]);
             remainsToSpawn[i].GetComponent<SpriteRenderer>().sprite = Sprite.Create(listOfUsedTextures[i], new Rect(0.0f, 0.0f, listOfUsedTextures[i].width, listOfUsedTextures[i].height), new Vector2(0.5f, 0.5f), 100.0f);
             SetStrategy(fragment);
             fragment.transform.SetParent(this.GetComponentInParent<Transform>());
-            //SetStrategy(remainsToSpawn[i]);
             spawnedRemains.Add(fragment);
         }
         Animation += Time.deltaTime;
@@ -53,14 +52,16 @@ public class RemainsSpawner : MonoBehaviour, IPlayable
 
     private void SetFinalCoordinates()
     {
+        UnityEngine.Random.InitState(DateTime.Now.Millisecond);
         for (int i = 0; i < numberOfRemains; i++)
         {
-            finalCoordinates.Add(new Vector3(UnityEngine.Random.Range(xMinRange, xMaxRange) + transform.position.x, UnityEngine.Random.Range(yMinRange, yMaxRange) + transform.position.y, 0));
+            finalCoordinates.Add(new Vector3(UnityEngine.Random.Range(xMinRange, xMaxRange) + transform.position.x, UnityEngine.Random.Range(yMinRange, yMaxRange), 0));
         }
     }
 
     private void SetCheckpoints()
     {
+        UnityEngine.Random.InitState(DateTime.Now.Millisecond);
         for (int i = 0; i < numberOfRemains; i++)
         {
             checkpoints.Add(new Vector3(UnityEngine.Random.Range(transform.position.x, finalCoordinates[i].x), UnityEngine.Random.Range(finalCoordinates[i].y, transform.position.y), 0));
@@ -73,7 +74,7 @@ public class RemainsSpawner : MonoBehaviour, IPlayable
         var terrain = GameObject.FindGameObjectWithTag("Terrain").GetComponentInChildren<SpriteRendererDrawer>();
         for (int i = 0; i < numberOfRemains; i++)
         {
-            var position = cam.ScreenToWorldPoint(new Vector3(spawnedRemains[i].transform.position.x, spawnedRemains[i].transform.position.y, cam.nearClipPlane));
+            var position = cam.WorldToScreenPoint(new Vector3(spawnedRemains[i].transform.position.x, - spawnedRemains[i].transform.position.y, spawnedRemains[i].transform.position.z));
             terrain.DrawSpriteWithDefiniedSprite(position, listOfUsedTextures[i]);
             spawnedRemains[i].transform.position = transform.position;
             splashStrategy?.SplashStop(spawnedRemains[i]);

@@ -45,7 +45,7 @@ public class MoveEnemyBehaviour : MonoBehaviour, IPlayable
             GetComponent<OneTimeAnimation>(),
             GetComponent<LoopAnimation>(),
             GetComponent<OneTimeAnimationComposite>(),
-            GetComponent<EnemyLifeCycle>()
+            GetComponent<ChavLifeCycle>()
         };
         foreach (var anim in stoppable.Where(x => x != null))
         {

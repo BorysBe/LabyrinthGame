@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: -4740378835437198377}
   - component: {fileID: 4094119331494321485}
   - component: {fileID: 7277395734172492854}
-  - component: {fileID: 7837698442012492234}
+  - component: {fileID: 3874601920388887944}
   m_Layer: 0
   m_Name: Enemy_Chav
   m_TagString: Untagged
@@ -557,7 +557,7 @@ MonoBehaviour:
   - {fileID: 5302990124936587472}
   playOnAwake: 0
   timePerFrameMs: 100
---- !u!114 &7837698442012492234
+--- !u!114 &3874601920388887944
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -566,13 +566,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4529947152723500986}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e58bdafc8b50e204393fa9b25e9fa000, type: 3}
+  m_Script: {fileID: 11500000, guid: a021b2d2c73a5574395a0da612e9f057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scoreAdded: 200
   _healthbar: {fileID: 4179669639291470761}
   health: 100
-  _remainsSpawner: {fileID: 790687321700729788, guid: 0c80e179359c2d3438780f8ea358980d, type: 3}
 --- !u!1 &5507165466691015970
 GameObject:
   m_ObjectHideFlags: 0

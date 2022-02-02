@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class EnemyLifeCycle : ObjectLifeCycle, IPlayable
+public class ChavLifeCycle : ObjectLifeCycle, IPlayable
 {
     [SerializeField] int scoreAdded = 200;
     public EnemyHealthbar _healthbar;
@@ -9,8 +8,6 @@ public class EnemyLifeCycle : ObjectLifeCycle, IPlayable
 
     public int health = 200;
     int currentHealth;
-
-    public RemainsSpawner _remainsSpawner;
 
     private void Start()
     {

@@ -23,6 +23,7 @@ public class EnemyFactory : MonoBehaviour
         strategies.Add(PrefabType.ChavGrave, new ChavGraveStrategy());
         strategies.Add(PrefabType.BloodSpring, new BloodSpringStrategy());
         strategies.Add(PrefabType.ChavCorpseFragments, new ChavCorpseFragmentsStrategy());
+        strategies.Add(PrefabType.Satanist, new SatanistStrategy());
         foreach (Pool pool in pools)
         {
             var objectPool = new Queue<GameObject>();
@@ -33,8 +34,8 @@ public class EnemyFactory : MonoBehaviour
                 obj.SetActive(true);
                 objectPool.Enqueue(obj);
 
-                if (ContainsPlayableChild<EnemyLifeCycle>(obj))
-                    SetFinishingInDeveloperRoom<EnemyLifeCycle>(obj, PrefabType.Chav); 
+                if (ContainsPlayableChild<ChavLifeCycle>(obj))
+                    SetFinishingInDeveloperRoom<ChavLifeCycle>(obj, PrefabType.Chav); 
                 if (ContainsPlayableChild<BloodyExplosionLifeCycle>(obj))
                     SetFinishingInDeveloperRoom<BloodyExplosionLifeCycle>(obj, PrefabType.BloodyExplosion);
                 if (ContainsPlayableChild<GraveLifeCycle>(obj))
@@ -43,6 +44,8 @@ public class EnemyFactory : MonoBehaviour
                     SetFinishingInDeveloperRoom<BloodSpringLifeCycle>(obj, PrefabType.BloodSpring);
                 if (ContainsPlayableChild<ChavCorpseFragmentsLifeCycle>(obj))
                     SetFinishingInDeveloperRoom<ChavCorpseFragmentsLifeCycle>(obj, PrefabType.ChavCorpseFragments);
+                if (ContainsPlayableChild<SatanistLifeCycle>(obj))
+                    SetFinishingInDeveloperRoom<SatanistLifeCycle>(obj, PrefabType.Satanist);
             }
 
             poolDictionary.Add(pool.key, objectPool);

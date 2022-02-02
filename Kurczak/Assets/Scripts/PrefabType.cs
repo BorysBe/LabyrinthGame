@@ -5,6 +5,6 @@ public enum PrefabType
     ChavGrave,
     BloodSpring,
     ChavCorpseFragments,
-    EnemySatanist,
+    Satanist,
     Portal
 }

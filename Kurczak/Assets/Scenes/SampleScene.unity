@@ -123,6 +123,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &259124162
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 259124163}
+  m_Layer: 0
+  m_Name: DeadSatanist
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &259124163
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259124162}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &361098984 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2063745099334061838, guid: de7940e8fc3502c4d879429236c05cb0, type: 3}
@@ -229,19 +259,19 @@ MonoBehaviour:
     size: 1
   - key: 1
     prefab: {fileID: 5109212320150265131, guid: df13855951392324ca92a6152e08d321, type: 3}
-    size: 3
+    size: 1
   - key: 2
     prefab: {fileID: 580610821453979240, guid: b72fcab55cd73d1478a941f8744eec26, type: 3}
-    size: 3
+    size: 1
   - key: 5
     prefab: {fileID: 4529947152723500986, guid: 2d05077c1c45958428693936553f469c, type: 3}
-    size: 3
+    size: 1
   - key: 6
     prefab: {fileID: 8519720678214458230, guid: a6d7726028cf5af4ebe3c39ef5840fb4, type: 3}
-    size: 3
+    size: 1
   - key: 3
     prefab: {fileID: 4933154205328245203, guid: c8e519ba28fc5874c92859356779e3a9, type: 3}
-    size: 9
+    size: 1
   - key: 4
     prefab: {fileID: 7119012095797926595, guid: a0163722d31182247b3bae04c524385e, type: 3}
     size: 1
@@ -607,7 +637,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5171463017635291634, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
       propertyPath: spawnedEnemy
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5171463017635291634, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
       propertyPath: timeToActivateWave

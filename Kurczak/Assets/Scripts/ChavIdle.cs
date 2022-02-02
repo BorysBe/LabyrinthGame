@@ -18,7 +18,7 @@ public class ChavIdle : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.GetComponent<Animator>().SetBool("ReturnToIdleState", false);
-        animator.GetComponent<EnemyLifeCycle>().Play();
+        animator.GetComponent<ChavLifeCycle>().Play();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
