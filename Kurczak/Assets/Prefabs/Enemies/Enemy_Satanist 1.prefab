@@ -924,11 +924,9 @@ GameObject:
   - component: {fileID: -4740378835437198377}
   - component: {fileID: 4094119331494321485}
   - component: {fileID: 7277395734172492854}
-  - component: {fileID: 1879870917620140711}
-  - component: {fileID: -1057027699841652162}
   - component: {fileID: 7329832561122262898}
   m_Layer: 0
-  m_Name: Enemy_Satanist
+  m_Name: Enemy_Satanist 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -986,7 +984,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move: {fileID: 7277395734172492854}
   attack: {fileID: 9177993683307360813}
-  attachedAnimations: []
 --- !u!114 &9177993683307360813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1143,9 +1140,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   enemyPath: {fileID: 9168615162809256655, guid: bc786a0d68c70284db8a670821dd4b60, type: 3}
-  headHitbox: {fileID: 0}
-  bodyHitbox: {fileID: 0}
-  hitboxCanvas: {fileID: 0}
 --- !u!114 &7277395734172492854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1162,31 +1156,6 @@ MonoBehaviour:
   - {fileID: 4796559478718752601}
   playOnAwake: 0
   timePerFrameMs: 100
---- !u!114 &1879870917620140711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4529947152723500986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0bbf3409c394c346b22efe6ed5a3ad3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-1057027699841652162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4529947152723500986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee00c167bdf182841ab75f7f2d54983d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animations: []
 --- !u!114 &7329832561122262898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1518,7 +1487,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ff2d805074c6bc74f87b90795c62c560, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 53bee0508d09fee45acdd04169850554, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1610,7 +1579,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6ea6fca86d4c7e745ae7a4237c876bd7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d95ab08f247588942948d83101d8431c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

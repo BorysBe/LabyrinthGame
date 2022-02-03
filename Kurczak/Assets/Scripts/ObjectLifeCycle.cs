@@ -15,16 +15,4 @@ public class ObjectLifeCycle :MonoBehaviour, IPlayable
     {
         OnFinish?.Invoke();
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

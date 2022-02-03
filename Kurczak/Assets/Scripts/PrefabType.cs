@@ -6,5 +6,6 @@ public enum PrefabType
     BloodSpring,
     ChavCorpseFragments,
     Satanist,
-    Portal
+    Portal,
+    Motorcycle
 }

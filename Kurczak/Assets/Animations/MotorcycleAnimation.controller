@@ -38,18 +38,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chavGrave: {fileID: 580610821453979240, guid: b72fcab55cd73d1478a941f8744eec26, type: 3}
---- !u!114 &-7570421739839181920
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 463e6718597738b47aa80428d75f86a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1107 &-4817464186085122434
 AnimatorStateMachine:
   serializedVersion: 6
@@ -226,7 +214,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ChavAnimation
+  m_Name: MotorcycleAnimation
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: isDead
@@ -266,18 +254,6 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!114 &1041160602092522545
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6d1eac441432be4c847cebba0c0530a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1107 &2190066005000243315
 AnimatorStateMachine:
   serializedVersion: 6
@@ -394,7 +370,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: -4599464714966094584}
   m_StateMachineBehaviours:
-  - {fileID: 1041160602092522545}
+  - {fileID: 6995769387648044594}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -529,7 +505,6 @@ AnimatorState:
   - {fileID: 6137445496797580546}
   m_StateMachineBehaviours:
   - {fileID: 3826103558067684498}
-  - {fileID: -7570421739839181920}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -544,6 +519,18 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &6995769387648044594
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4ded450e60c19f428463e4ce414b704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1101 &7412140882200505343
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

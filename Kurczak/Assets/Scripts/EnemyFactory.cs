@@ -24,6 +24,7 @@ public class EnemyFactory : MonoBehaviour
         strategies.Add(PrefabType.BloodSpring, new BloodSpringStrategy());
         strategies.Add(PrefabType.ChavCorpseFragments, new ChavCorpseFragmentsStrategy());
         strategies.Add(PrefabType.Satanist, new SatanistStrategy());
+        strategies.Add(PrefabType.Motorcycle, new MotorcycleStrategy());
         foreach (Pool pool in pools)
         {
             var objectPool = new Queue<GameObject>();
@@ -46,6 +47,8 @@ public class EnemyFactory : MonoBehaviour
                     SetFinishingInDeveloperRoom<ChavCorpseFragmentsLifeCycle>(obj, PrefabType.ChavCorpseFragments);
                 if (ContainsPlayableChild<SatanistLifeCycle>(obj))
                     SetFinishingInDeveloperRoom<SatanistLifeCycle>(obj, PrefabType.Satanist);
+                if (ContainsPlayableChild<MotorcycleLifeCycle>(obj))
+                    SetFinishingInDeveloperRoom<MotorcycleLifeCycle>(obj, PrefabType.Motorcycle);
             }
 
             poolDictionary.Add(pool.key, objectPool);

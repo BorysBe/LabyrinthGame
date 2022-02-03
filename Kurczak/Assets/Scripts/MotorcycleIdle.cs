@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SatanistIdle : StateMachineBehaviour
+public class MotorcycleIdle : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -17,7 +17,7 @@ public class SatanistIdle : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.GetComponent<Animator>().SetBool("ReturnToIdleState", false);
-        animator.GetComponent<SatanistLifeCycle>().Play();
+        animator.GetComponent<MotorcycleLifeCycle>().Play();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

@@ -1,17 +1,16 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ChavBodyHitbox : Toucher
+public class MotorcycleBodyHitbox : Toucher
 {
-    [SerializeField] int hitDamage = 20;
-    ChavLifeCycle enemyHealth;
+    [SerializeField] int hitDamage;
+    MotorcycleLifeCycle enemyHealth;
     [SerializeField] GameObject woundArea;
-
 
     private void Start()
     {
-        enemyHealth = this.transform.root.GetComponent<ChavLifeCycle>();
+        enemyHealth = this.transform.root.GetComponent<MotorcycleLifeCycle>();
     }
 
     protected override void ActionOnTouch(PointerEventData eventData)

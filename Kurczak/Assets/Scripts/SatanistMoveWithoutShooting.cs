@@ -11,7 +11,6 @@ public class SatanistMoveWithoutShooting : StateMachineBehaviour
     {
         animator.SetBool("ReturnToIdleState", false);
         animator.GetComponent<MoveEnemyBehaviour>().Play();
-        animations = animator.GetComponent<CharacterStateAnimation>().attachedAnimations;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

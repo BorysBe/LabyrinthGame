@@ -7,7 +7,6 @@ public class SatanistBodyHitbox : Toucher
     [SerializeField] int hitDamage;
     SatanistLifeCycle enemyHealth;
     [SerializeField] GameObject woundArea;
-    List<GameObject> animations;
 
     private void Start()
     {
@@ -17,7 +16,6 @@ public class SatanistBodyHitbox : Toucher
     protected override void ActionOnTouch(PointerEventData eventData)
     {
         FindObjectOfType<Audio>().Play("PlayerShoot");
-        animations = transform.root.GetComponent<CharacterStateAnimation>().attachedAnimations;
         woundArea.GetComponent<SpriteRendererDrawer>().DrawSprite(this.LastMousePosition);
         var blood = EnemyFactory.Instance.Spawn(PrefabType.BloodSpring, this.LastTouchPoint, transform.root);
         blood.Play();

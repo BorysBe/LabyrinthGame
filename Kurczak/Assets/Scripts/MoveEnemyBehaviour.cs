@@ -7,10 +7,6 @@ public class MoveEnemyBehaviour : MonoBehaviour, IPlayable
 {
     [SerializeField] float moveSpeed = 2f;
     [SerializeField] GameObject enemyPath;
-    [SerializeField] GameObject headHitbox;
-    [SerializeField] GameObject bodyHitbox;
-    [SerializeField] GameObject hitboxCanvas;
-    private Vector3 deafaultPosition;
 
     private Action MoveAction { get; set; }
     public Action OnFinish { get; set; }
@@ -27,7 +23,6 @@ public class MoveEnemyBehaviour : MonoBehaviour, IPlayable
 
     public void Play()
     {
-        deafaultPosition = transform.position;
         MoveAction = Move;
     }
 
@@ -45,17 +40,14 @@ public class MoveEnemyBehaviour : MonoBehaviour, IPlayable
             GetComponent<OneTimeAnimation>(),
             GetComponent<LoopAnimation>(),
             GetComponent<OneTimeAnimationComposite>(),
-            GetComponent<ChavLifeCycle>()
+            GetComponent<ChavLifeCycle>(),
+            GetComponent<MotorcycleLifeCycle>(),
+            GetComponent<SatanistLifeCycle>()
         };
         foreach (var anim in stoppable.Where(x => x != null))
         {
             anim.Stop();
         }
-    }
-
-    private void SetDefaultPosition()
-    {
-        transform.position = deafaultPosition;
     }
 
     private List<Transform> GetWaypoints()
