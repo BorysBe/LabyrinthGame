@@ -6,7 +6,6 @@ public class ChavBodyHitbox : Toucher
 {
     [SerializeField] int hitDamage = 20;
     ChavLifeCycle enemyHealth;
-    [SerializeField] GameObject woundArea;
 
 
     private void Start()
@@ -17,6 +16,7 @@ public class ChavBodyHitbox : Toucher
     protected override void ActionOnTouch(PointerEventData eventData)
     {
         FindObjectOfType<Audio>().Play("PlayerShoot");
+        var woundArea = transform.Find("ChavWoundArea(Clone)");
         woundArea.GetComponent<SpriteRendererDrawer>().DrawSprite(this.LastMousePosition);
         var blood = EnemyFactory.Instance.Spawn(PrefabType.BloodSpring, this.LastTouchPoint, transform.root);
         blood.Play();

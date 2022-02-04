@@ -7,5 +7,9 @@ public enum PrefabType
     ChavCorpseFragments,
     Satanist,
     Portal,
-    Motorcycle
+    Motorcycle,
+    ChavWoundArea,
+    SatanistWoundArea,
+    MotorcycleWoundArea,
+    MotorcycleExplosion
 }

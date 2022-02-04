@@ -6,7 +6,6 @@ public class MotorcycleBodyHitbox : Toucher
 {
     [SerializeField] int hitDamage;
     MotorcycleLifeCycle enemyHealth;
-    [SerializeField] GameObject woundArea;
 
     private void Start()
     {
@@ -16,6 +15,7 @@ public class MotorcycleBodyHitbox : Toucher
     protected override void ActionOnTouch(PointerEventData eventData)
     {
         FindObjectOfType<Audio>().Play("PlayerShoot");
+        var woundArea = transform.Find("MotorcycleWoundArea(Clone)");
         woundArea.GetComponent<SpriteRendererDrawer>().DrawSprite(this.LastMousePosition);
         var blood = EnemyFactory.Instance.Spawn(PrefabType.BloodSpring, this.LastTouchPoint, transform.root);
         blood.Play();

@@ -25,6 +25,10 @@ public class EnemyFactory : MonoBehaviour
         strategies.Add(PrefabType.ChavCorpseFragments, new ChavCorpseFragmentsStrategy());
         strategies.Add(PrefabType.Satanist, new SatanistStrategy());
         strategies.Add(PrefabType.Motorcycle, new MotorcycleStrategy());
+        strategies.Add(PrefabType.ChavWoundArea, new ChavWoundAreaStrategy());
+        strategies.Add(PrefabType.SatanistWoundArea, new SatanistWoundAreaStrategy());
+        strategies.Add(PrefabType.MotorcycleWoundArea, new MotorcycleWoundAreaStrategy());
+        strategies.Add(PrefabType.MotorcycleExplosion, new MotorcycleExplosionStrategy());
         foreach (Pool pool in pools)
         {
             var objectPool = new Queue<GameObject>();
@@ -96,7 +100,7 @@ public class EnemyFactory : MonoBehaviour
     private static bool ContainsPlayableChild<T>(GameObject obj) where T : IPlayable
     {
         return (obj.GetComponent<T>() != null);
-   }
+    }
 
     private Vector3 GetDeveloperRoomPosition()
     {

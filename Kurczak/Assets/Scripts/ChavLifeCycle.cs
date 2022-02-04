@@ -38,7 +38,13 @@ public class ChavLifeCycle : ObjectLifeCycle, IPlayable
 
     public override void Play()
     {
-        //currentHealth = health;
+        var canvas = transform.Find("HitboxCanvas");
+        CanvasRenderer[] hitboxes = canvas.GetComponentsInChildren<CanvasRenderer>();
+        foreach (var h in hitboxes)
+        {
+            var woundArea = EnemyFactory.Instance.Spawn(PrefabType.ChavWoundArea, transform.position, null);
+            woundArea.GameObject.transform.parent = h.transform;
+        }
     }
 
     private void AddScore()
@@ -47,12 +53,12 @@ public class ChavLifeCycle : ObjectLifeCycle, IPlayable
         score.GetComponent<Score>().CountCurrentScore(scoreAdded);
     }
 
-    private void ClearImages()
+    private void DeleteWoundAreas()
     {
-        SpriteRendererDrawer[] images = transform.GetComponentsInChildren<SpriteRendererDrawer>();
+        ChavWoundAreaLifeCycle[] images = transform.GetComponentsInChildren<ChavWoundAreaLifeCycle>();
         foreach (var i in images)
         {
-            i.ClearImage();
+            i.Stop();
         }
     }
 
@@ -60,7 +66,7 @@ public class ChavLifeCycle : ObjectLifeCycle, IPlayable
     {
         animator.SetBool("isDead", true);
         AddScore();
-        ClearImages();
+        DeleteWoundAreas();
         currentHealth = health;
         _healthbar.SetHealth(currentHealth, health);
     }
