@@ -11,5 +11,8 @@ public enum PrefabType
     ChavWoundArea,
     SatanistWoundArea,
     MotorcycleWoundArea,
-    MotorcycleExplosion
+    MotorcycleExplosion,
+    Phantom,
+    PhantomWoundArea,
+    PhantomDeath
 }

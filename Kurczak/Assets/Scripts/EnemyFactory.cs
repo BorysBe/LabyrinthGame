@@ -29,6 +29,10 @@ public class EnemyFactory : MonoBehaviour
         strategies.Add(PrefabType.SatanistWoundArea, new SatanistWoundAreaStrategy());
         strategies.Add(PrefabType.MotorcycleWoundArea, new MotorcycleWoundAreaStrategy());
         strategies.Add(PrefabType.MotorcycleExplosion, new MotorcycleExplosionStrategy());
+        strategies.Add(PrefabType.Phantom, new PhantomStrategy());
+        strategies.Add(PrefabType.PhantomWoundArea, new PhantomWoundAreaStrategy());
+        strategies.Add(PrefabType.PhantomDeath, new PhantomDeathStrategy());
+        strategies.Add(PrefabType.Portal, new PortalStrategy());
         foreach (Pool pool in pools)
         {
             var objectPool = new Queue<GameObject>();
@@ -53,6 +57,14 @@ public class EnemyFactory : MonoBehaviour
                     SetFinishingInDeveloperRoom<SatanistLifeCycle>(obj, PrefabType.Satanist);
                 if (ContainsPlayableChild<MotorcycleLifeCycle>(obj))
                     SetFinishingInDeveloperRoom<MotorcycleLifeCycle>(obj, PrefabType.Motorcycle);
+                if (ContainsPlayableChild<MotorcycleExplosionLifeCycle>(obj))
+                    SetFinishingInDeveloperRoom<MotorcycleExplosionLifeCycle>(obj, PrefabType.Motorcycle);
+                if (ContainsPlayableChild<PhantomLifeCycle>(obj))
+                    SetFinishingInDeveloperRoom<PhantomLifeCycle>(obj, PrefabType.Phantom);
+                if (ContainsPlayableChild<PhantomDeathLifeCycle>(obj))
+                    SetFinishingInDeveloperRoom<PhantomDeathLifeCycle>(obj, PrefabType.PhantomDeath);
+                if (ContainsPlayableChild<PortalLifeCycle>(obj))
+                    SetFinishingInDeveloperRoom<PortalLifeCycle>(obj, PrefabType.Portal);
             }
 
             poolDictionary.Add(pool.key, objectPool);

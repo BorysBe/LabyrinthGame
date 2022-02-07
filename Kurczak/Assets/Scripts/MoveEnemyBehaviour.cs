@@ -7,6 +7,7 @@ public class MoveEnemyBehaviour : MonoBehaviour, IPlayable
 {
     [SerializeField] float moveSpeed = 2f;
     [SerializeField] GameObject enemyPath;
+    [SerializeField] bool reverseSpriteEnambled = true;
 
     private Action MoveAction { get; set; }
     public Action OnFinish { get; set; }
@@ -34,6 +35,11 @@ public class MoveEnemyBehaviour : MonoBehaviour, IPlayable
         StopAllAnimations();
     }
 
+    public void Pause()
+    {
+        MoveAction = NullObjectMove;
+    }
+
     private void StopAllAnimations()
     {
         var stoppable = new List<IPlayable> {
@@ -42,7 +48,9 @@ public class MoveEnemyBehaviour : MonoBehaviour, IPlayable
             GetComponent<OneTimeAnimationComposite>(),
             GetComponent<ChavLifeCycle>(),
             GetComponent<MotorcycleLifeCycle>(),
-            GetComponent<SatanistLifeCycle>()
+            GetComponent<SatanistLifeCycle>(),
+            GetComponent<MotorcycleExplosionLifeCycle>(),
+            GetComponent<PhantomLifeCycle>()
         };
         foreach (var anim in stoppable.Where(x => x != null))
         {
@@ -89,10 +97,14 @@ public class MoveEnemyBehaviour : MonoBehaviour, IPlayable
             if (transform.position == targetPosition)
             {
                 waypointIndex++;
-                if (waypointIndex == waypoints.Count)
+                if (waypointIndex == waypoints.Count )
                 {
                     reverseMovement = true;
-                    transform.Rotate(0, 180, 0);
+                    if (reverseSpriteEnambled)
+                    {
+                        transform.Rotate(0, 180, 0);
+                    }
+
                 }
             }
         }

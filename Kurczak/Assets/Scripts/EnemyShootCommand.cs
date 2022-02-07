@@ -6,6 +6,15 @@ public class EnemyShootCommand: MonoBehaviour
     private CoroutineTimer timer;
     int shot = 0;
     [SerializeField] int timeOfAnimation = 500;
+    [SerializeField] int numberOfAnimationFrames = 2;
+
+    private void Start()
+    {
+        if (numberOfAnimationFrames != 2)
+        {
+            numberOfAnimationFrames++;
+        }
+    }
     public void Execute()
     {
         Debug.Log("Attack!");
@@ -25,7 +34,7 @@ public class EnemyShootCommand: MonoBehaviour
     void TimeOfShootng()
     {
         shot++;
-        bool shouldShot = shot % 2 != 0;
+        bool shouldShot = shot % numberOfAnimationFrames != 0;
 
         if (shouldShot)
         {
