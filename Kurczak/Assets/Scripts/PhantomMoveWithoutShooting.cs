@@ -1,6 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class SatanistMoveWithoutShooting : StateMachineBehaviour
+public class PhantomMoveWithoutShooting : StateMachineBehaviour
 {
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -8,6 +9,7 @@ public class SatanistMoveWithoutShooting : StateMachineBehaviour
     {
         animator.SetBool("ReturnToIdleState", false);
         animator.GetComponent<MoveEnemyBehaviour>().Play();
+        animator.GetComponent<MoveEnemyBehaviour>().PlayEffectsOnStart();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -17,10 +19,10 @@ public class SatanistMoveWithoutShooting : StateMachineBehaviour
     //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        animator.GetComponent<LoopAnimation>().Stop();
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

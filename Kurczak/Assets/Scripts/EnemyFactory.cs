@@ -33,6 +33,8 @@ public class EnemyFactory : MonoBehaviour
         strategies.Add(PrefabType.PhantomWoundArea, new PhantomWoundAreaStrategy());
         strategies.Add(PrefabType.PhantomDeath, new PhantomDeathStrategy());
         strategies.Add(PrefabType.Portal, new PortalStrategy());
+        strategies.Add(PrefabType.RotatingSatanist, new RotatingSatanistStrategy());
+        strategies.Add(PrefabType.SatanistDeath, new SatanistDeathStrategy());
         foreach (Pool pool in pools)
         {
             var objectPool = new Queue<GameObject>();
@@ -65,6 +67,10 @@ public class EnemyFactory : MonoBehaviour
                     SetFinishingInDeveloperRoom<PhantomDeathLifeCycle>(obj, PrefabType.PhantomDeath);
                 if (ContainsPlayableChild<PortalLifeCycle>(obj))
                     SetFinishingInDeveloperRoom<PortalLifeCycle>(obj, PrefabType.Portal);
+                if (ContainsPlayableChild<RotatingSatanistLifeCycle>(obj))
+                    SetFinishingInDeveloperRoom<RotatingSatanistLifeCycle>(obj, PrefabType.RotatingSatanist);
+                if (ContainsPlayableChild<SatanistDeathLifeCycle>(obj))
+                    SetFinishingInDeveloperRoom<SatanistDeathLifeCycle>(obj, PrefabType.SatanistDeath);
             }
 
             poolDictionary.Add(pool.key, objectPool);

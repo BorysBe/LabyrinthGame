@@ -1,13 +1,22 @@
 using UnityEngine;
 
-public class SatanistMoveWithoutShooting : StateMachineBehaviour
-{
 
+public class PhantomDie : StateMachineBehaviour
+{
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool("ReturnToIdleState", false);
-        animator.GetComponent<MoveEnemyBehaviour>().Play();
+        animator.GetComponent<CharacterStateAnimation>().SetPositionOfAnimation(animator.transform.position);
+        var position = animator.GetComponent<CharacterStateAnimation>().ReturnPositionOfAnimation();
+        animator.GetComponent<CharacterStateAnimation>().move.Stop();
+        animator.GetComponent<MoveEnemyBehaviour>().Stop();
+        animator.SetBool("ReturnToIdleState", true);
+        animator.SetBool("Shooting", false);
+        FindObjectOfType<Audio>().Play("WilhelmScream");
+
+
+        var phantomSpawn = GameObject.FindGameObjectWithTag("PhantomSpawn");
+        phantomSpawn.GetComponent<WaveActivator>().ActivateTrigger();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -19,7 +28,6 @@ public class SatanistMoveWithoutShooting : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
-
     //}
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

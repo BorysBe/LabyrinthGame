@@ -8,6 +8,8 @@ public class MoveEnemyBehaviour : MonoBehaviour, IPlayable
     [SerializeField] float moveSpeed = 2f;
     [SerializeField] GameObject enemyPath;
     [SerializeField] bool reverseSpriteEnambled = true;
+    [SerializeField] bool comebackEnambled = true;
+    [SerializeField] PrefabType StartAnimation;
 
     private Action MoveAction { get; set; }
     public Action OnFinish { get; set; }
@@ -25,6 +27,12 @@ public class MoveEnemyBehaviour : MonoBehaviour, IPlayable
     public void Play()
     {
         MoveAction = Move;
+    }
+
+    public void PlayEffectsOnStart()
+    {
+        var effect = EnemyFactory.Instance.Spawn(StartAnimation, waypoints[0].transform.position, null);
+        effect.Play();
     }
 
     public void Stop()
@@ -50,7 +58,8 @@ public class MoveEnemyBehaviour : MonoBehaviour, IPlayable
             GetComponent<MotorcycleLifeCycle>(),
             GetComponent<SatanistLifeCycle>(),
             GetComponent<MotorcycleExplosionLifeCycle>(),
-            GetComponent<PhantomLifeCycle>()
+            GetComponent<PhantomLifeCycle>(),
+            GetComponent<RotatingSatanistLifeCycle>()
         };
         foreach (var anim in stoppable.Where(x => x != null))
         {
@@ -99,7 +108,15 @@ public class MoveEnemyBehaviour : MonoBehaviour, IPlayable
                 waypointIndex++;
                 if (waypointIndex == waypoints.Count )
                 {
-                    reverseMovement = true;
+                    if (comebackEnambled)
+                    {
+                        reverseMovement = true;
+                    }
+                    else
+                    {
+                        this.GetComponent<Animator>().SetBool("ReturnToIdleState", true);
+                        Stop();
+                    }
                     if (reverseSpriteEnambled)
                     {
                         transform.Rotate(0, 180, 0);

@@ -22,6 +22,8 @@ TagManager:
   - Active
   - Inactive
   - Busy
+  - PhantomSpawn
+  - SatanistSpawn
   layers:
   - Default
   - TransparentFX

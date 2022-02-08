@@ -283,13 +283,28 @@ MonoBehaviour:
     size: 8
   - key: 9
     prefab: {fileID: 5889084045688618281, guid: cc81ac14738f7c54c8e1a01dde710f60, type: 3}
-    size: 8
+    size: 24
   - key: 10
     prefab: {fileID: 5889084045688618281, guid: 79c853304633da547ab6cc8548867851, type: 3}
     size: 8
   - key: 11
     prefab: {fileID: 5109212320150265131, guid: dc43c391690ac884897ed9a46148a65d, type: 3}
     size: 3
+  - key: 12
+    prefab: {fileID: 4529947152723500986, guid: 7a2bf53f34ddae049b787e15c718197b, type: 3}
+    size: 1
+  - key: 13
+    prefab: {fileID: 5889084045688618281, guid: af3e4bee32cf7a744855b85a630e4186, type: 3}
+    size: 8
+  - key: 14
+    prefab: {fileID: 5109212320150265131, guid: 7ee79179f696d294dad32a40c121ddfa, type: 3}
+    size: 1
+  - key: 15
+    prefab: {fileID: 4529947152723500986, guid: 5903f99a98e846a49a7aa8882d6e51c0, type: 3}
+    size: 1
+  - key: 16
+    prefab: {fileID: 7584811748475437347, guid: 9eae2b0a5d19bde479ba8c2c874d8af5, type: 3}
+    size: 1
 --- !u!4 &662451908
 Transform:
   m_ObjectHideFlags: 0
@@ -465,7 +480,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7046435233749687052, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
       propertyPath: m_Name
-      value: Chav_WaveActivator (1)
+      value: Chav Wave Activator (1)
       objectReference: {fileID: 0}
     - target: {fileID: 7046435233749687052, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
       propertyPath: m_IsActive
@@ -474,6 +489,236 @@ PrefabInstance:
     - target: {fileID: 7046435233749687052, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
       propertyPath: m_TagString
       value: ChavSpawn
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+--- !u!1001 &893756218
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2507220183434567188, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: m_Name
+      value: Rotating Satanist Wave Activator Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880676559191570292, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880676559191570292, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 39.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880676559191570292, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880676559191570292, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880676559191570292, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880676559191570292, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880676559191570292, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880676559191570292, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880676559191570292, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880676559191570292, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880676559191570292, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171463017635291634, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: spawnPoint.x
+      value: 55.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171463017635291634, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: spawnPoint.y
+      value: -1.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171463017635291634, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: spawnPoint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171463017635291634, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: spawnedEnemy
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171463017635291634, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: timeToActivateWave
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171463017635291634, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: attachedAnimationsNames.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171463017635291634, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: attachedAnimationsNames.Array.data[2]
+      value: Portal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882127770334793012, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+--- !u!1001 &896606408
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 52140505035485804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 52140505035485804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 17.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 52140505035485804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 52140505035485804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 52140505035485804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 52140505035485804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 52140505035485804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 52140505035485804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 52140505035485804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 52140505035485804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 52140505035485804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: enemyPath
+      value: 
+      objectReference: {fileID: 8078350800546268878, guid: e3ca49eec16795840a41cfd7deacc211, type: 3}
+    - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: _waveConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 2881ab626a48bbb4cb8c6586ecc6794a, type: 2}
+    - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: spawnPoint.x
+      value: -14.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: spawnPoint.y
+      value: -9.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: spawnPoint.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: spawnedEnemy
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: waveActivated
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: timeToActivateWave
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: attachedAnimationsNames.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: attachedAnimationsNames.Array.data[0]
+      value: ChavGrave
+      objectReference: {fileID: 0}
+    - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: attachedAnimationsNames.Array.data[1]
+      value: BloodyExplosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: attachedAnimationsNames.Array.data[2]
+      value: BloodDrop
+      objectReference: {fileID: 0}
+    - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: attachedAnimationsNames.Array.data[3]
+      value: BloodDrop
+      objectReference: {fileID: 0}
+    - target: {fileID: 344000684867478762, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: attachedAnimationsNames.Array.data[4]
+      value: BloodDrop
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341786963965429804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341786963965429804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: m_Size.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341786963965429804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341786963965429804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341786963965429804, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7046435233749687052, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: m_Name
+      value: Phantom Wave Activator
+      objectReference: {fileID: 0}
+    - target: {fileID: 7046435233749687052, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7046435233749687052, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
+      propertyPath: m_TagString
+      value: PhantomSpawn
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a3ef2a23e5653a4ab516baa8f2ce65e, type: 3}
@@ -592,7 +837,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2507220183434567188, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
       propertyPath: m_Name
-      value: Satanist_WaveActivator Variant
+      value: Satanist Wave Activator Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2507220183434567188, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
+      propertyPath: m_TagString
+      value: SatanistSpawn
       objectReference: {fileID: 0}
     - target: {fileID: 4880676559191570292, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
       propertyPath: m_RootOrder
@@ -794,7 +1043,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2507220183434567188, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
       propertyPath: m_Name
-      value: Motorcycle_WaveActivator Variant
+      value: Motorcycle WaveActivator Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4880676559191570292, guid: 476b04d5836affe47a1b7bad347f943e, type: 3}
       propertyPath: m_RootOrder
@@ -1032,6 +1281,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1643885977166194318, guid: de7940e8fc3502c4d879429236c05cb0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ef639d6db6c9e744081ff653e9f945f6, type: 3}
+    - target: {fileID: 1665914261815853679, guid: de7940e8fc3502c4d879429236c05cb0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2063745099334061838, guid: de7940e8fc3502c4d879429236c05cb0, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1084,6 +1341,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2433027803558898706, guid: de7940e8fc3502c4d879429236c05cb0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433027803558898706, guid: de7940e8fc3502c4d879429236c05cb0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 4405599731320123457, guid: de7940e8fc3502c4d879429236c05cb0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 4405599731320123457, guid: de7940e8fc3502c4d879429236c05cb0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 8609709128969866008, guid: de7940e8fc3502c4d879429236c05cb0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ef639d6db6c9e744081ff653e9f945f6, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de7940e8fc3502c4d879429236c05cb0, type: 3}
 --- !u!1001 &2946451946904501518
@@ -1158,6 +1435,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4767038824902543953, guid: ceddb1271fbb49b48a83acc039d8c2f4, type: 3}
+      propertyPath: orthographic size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4767038824902543954, guid: ceddb1271fbb49b48a83acc039d8c2f4, type: 3}
       propertyPath: m_Name
       value: Main Camera

@@ -14,5 +14,7 @@ public enum PrefabType
     MotorcycleExplosion,
     Phantom,
     PhantomWoundArea,
-    PhantomDeath
+    PhantomDeath,
+    RotatingSatanist,
+    SatanistDeath
 }
